@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Model;
 
 namespace JohannesVidnerProject.Models
 {
@@ -108,5 +109,19 @@ namespace JohannesVidnerProject.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+    }
+
+    public class UserList
+    {
+        public ICollection<UserListUser> UserViews { get; set; }
+
+
+    }
+
+    public class UserListUser
+    {
+        public User User { get; set; }
+        public bool Selected { get; set; }
+
     }
 }
