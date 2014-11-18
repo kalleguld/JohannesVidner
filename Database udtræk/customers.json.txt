@@ -1,0 +1,27 @@
+/**
+ Export to JSON plugin for PHPMyAdmin
+ @version 0.1
+ */
+
+// Udtræk fra kundedatabase: kunder, der er 'under-kunder' af (partnere med) shzmain
+
+[
+  {
+    "id": "3162",
+    "firma": "Der Insel-Bote",
+    "customer": "derinselbote",
+    "partner_id": "3133",
+  },
+  {
+    "id": "3163",
+    "firma": "Eckernf\u00f6rder Zeitung",
+    "customer": "eckernforderzeitung",
+    "partner_id": "3133",
+  },
+  {
+    "id": "3165",
+    "firma": "Flensburger Tageblatt",
+    "customer": "flensburgertageblatt",
+    "partner_id": "3133",
+  }
+]
