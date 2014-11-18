@@ -1,0 +1,32 @@
+﻿@using JohannesVidnerProject.Controllers
+@using JohannesVidnerProject.Models
+@using Model
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Publikationer</title>
+</head>
+<body>
+    <div>
+        <table>
+            <tr>
+                @foreach (Publication p in Service.GetPublications())
+                {
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                        @Html.DisplayNameFor(model => model.CurrentEdition.Pages)
+                        @Html.DisplayNameFor(model => model.CurrentEdition.SomeKindOfTimeStamp)
+                        @Html.DisplayNameFor(model => model.CurrentEdition.ErrorMessage)
+                    </th> 
+                }
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

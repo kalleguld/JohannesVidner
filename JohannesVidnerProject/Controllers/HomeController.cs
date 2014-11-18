@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using JohannesVidnerProject.Models;
+using Model;
+using Services;
 
 namespace JohannesVidnerProject.Controllers
 {
@@ -25,6 +28,11 @@ namespace JohannesVidnerProject.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public ActionResult Hej()
+        {
+            return View(Service.GetPublications());
         }
     }
 }
