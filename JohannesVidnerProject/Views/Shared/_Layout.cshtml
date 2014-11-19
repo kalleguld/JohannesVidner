@@ -18,13 +18,19 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a href="@Url.Action("Index", "Home")">
-                        <img alt="Home" src="/images/Visiolink-logo-2013-small.png" height="45px" width="78px" class="visiolinkLogo"/>
+                        <img src="/Images/Visiolink-logo-grey.png"
+                             onmouseover="this.src = '/Images/Visiolink-logo-white.png'"
+                             onmouseout="this.src = '/Images/Visiolink-logo-grey.png'"
+                             border="0" alt="Home" id="visiolinkLogo"/>
                     </a>
-                </div>
+
+
+
+</div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav" >
                         <li >@Html.ActionLink("Contact", "Contact", "Home")</li>
-                        <li>@Html.ActionLink("Something", "About", "Home")</li>
+                        <li>@Html.ActionLink("Users", "About", "Home")</li>
                     </ul>
                     @Html.Partial("_LoginPartial")
                 </div>
