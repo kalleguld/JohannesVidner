@@ -33,7 +33,8 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="PublicationId" Type="int" Nullable="true" />
+    <Property Name="ParentPublicationId" Type="int" Nullable="true" />
+    <Property Name="ShortName" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="EditionSet">
     <Key>
@@ -114,7 +115,7 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Publication1">
-        <PropertyRef Name="PublicationId" />
+        <PropertyRef Name="ParentPublicationId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -152,9 +153,10 @@
           <Property Name="Name" Type="String" Nullable="false" />
           <NavigationProperty Name="Editions" Relationship="ModelClasses.PublicationEdition" FromRole="Publication" ToRole="Edition" />
           <NavigationProperty Name="Users" Relationship="ModelClasses.PublicationUser" FromRole="Publication" ToRole="User" />
-          <NavigationProperty Name="Publications" Relationship="ModelClasses.PublicationPublication" FromRole="Publication" ToRole="Publication1" />
-          <NavigationProperty Name="PublicationParent" Relationship="ModelClasses.PublicationPublication" FromRole="Publication1" ToRole="Publication" />
-          <Property Name="PublicationId" Type="Int32" Nullable="true" />
+          <NavigationProperty Name="ChildPublications" Relationship="ModelClasses.PublicationPublication" FromRole="Publication" ToRole="Publication1" />
+          <NavigationProperty Name="ParentPublication" Relationship="ModelClasses.PublicationPublication" FromRole="Publication1" ToRole="Publication" />
+          <Property Name="ParentPublicationId" Type="Int32" Nullable="true" />
+          <Property Name="ShortName" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="Edition">
           <Key>
@@ -239,7 +241,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Publication1">
-              <PropertyRef Name="PublicationId" />
+              <PropertyRef Name="ParentPublicationId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -254,7 +256,8 @@
         <MappingFragment StoreEntitySet="PublicationSet">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="PublicationId" ColumnName="PublicationId" />
+          <ScalarProperty Name="ParentPublicationId" ColumnName="ParentPublicationId" />
+          <ScalarProperty Name="ShortName" ColumnName="ShortName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
