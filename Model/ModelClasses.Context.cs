@@ -28,5 +28,6 @@ namespace Model
         public virtual DbSet<Publication> PublicationSet { get; set; }
         public virtual DbSet<Edition> EditionSet { get; set; }
         public virtual DbSet<User> UserSet { get; set; }
+        public virtual DbSet<Page> PageSet { get; set; }
     }
 }

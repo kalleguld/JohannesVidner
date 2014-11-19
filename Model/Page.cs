@@ -12,16 +12,13 @@ namespace Model
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Page
     {
         public int Id { get; set; }
-        public string Username { get; set; }
-        public string PasswordText { get; set; }
-        public string Name { get; set; }
-        public bool WriteAccess { get; set; }
-        public bool UserAdminAccess { get; set; }
-        public int PublicationId { get; set; }
+        public int Section { get; set; }
+        public int PageNumber { get; set; }
+        public int EditionId { get; set; }
     
-        public virtual Publication Publication { get; set; }
+        public virtual Edition Edition { get; set; }
     }
 }
