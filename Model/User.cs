@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,7 +37,15 @@ namespace Model
             return _password != null && _password == password;
         }
 
-
-
+        private Publication _publication ;
+        public Publication Publication
+        {
+            get { return _publication; }
+            set
+            {
+                _publication = value;
+                _publication.AddUser(this);
+            }
+        }
     }
 }

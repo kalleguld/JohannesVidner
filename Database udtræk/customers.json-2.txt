@@ -1,0 +1,15 @@
+/**
+ Export to JSON plugin for PHPMyAdmin
+ @version 0.1
+ */
+
+// Udtræk fra kundedatabase på shzs hoved-bruger
+
+[
+  {
+    "id": "3133",
+    "firma": "Shz",
+    "customer": "shzmain",
+    "partner_id": "8",
+  }
+]
