@@ -23,7 +23,7 @@ namespace Model
     
         public int Id { get; set; }
         public string Name { get; set; }
-        public int PublicationId { get; set; }
+        public Nullable<int> PublicationId { get; set; }
     
         public virtual ICollection<Edition> Editions { get; set; }
         public virtual ICollection<User> Users { get; set; }
