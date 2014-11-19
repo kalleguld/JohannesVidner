@@ -1,0 +1,30 @@
+﻿.publ {
+				max-width: 650px;
+				margin: 10px;
+				padding: 10px;
+                                color: #000000;
+                                font-family: "Trebuchet MS";
+                                border-radius: 12px;
+                                
+
+			}
+			.bad-publ{
+				background-color: lightcoral;
+                                
+			}
+			.good-publ{
+				background-color: lightgreen;
+			}
+			.warning-publ {
+				background-color: yellow;
+			}
+			.name{
+				font-weight: bold;
+				font-size: larger
+			}
+			.datetime {
+				float: right;
+			}
+			.error{
+				font-weight: bold;
+			}
