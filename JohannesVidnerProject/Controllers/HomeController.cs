@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using JohannesVidnerProject.Models;
+using Microsoft.Ajax.Utilities;
 using Microsoft.AspNet.Identity.Owin;
 using Model;
 
@@ -17,12 +18,11 @@ namespace JohannesVidnerProject.Controllers
         
         public ActionResult Index()
         {
-            if (!Service.GetInstance().LoggedIn)
+            if (SessionService.Instance.CurrentUser == null)
             {
-                Service.GetInstance().LoggedIn = true;
                 return RedirectToRoute(new { controller = "Home", action = "Login" });   
             }
-            return View();
+            return View(SessionService.Instance.CurrentUser);
         }
 
         public ActionResult About()
@@ -39,8 +39,6 @@ namespace JohannesVidnerProject.Controllers
             return View();
         }
 
-        
-
         // Http GET
         public ActionResult Login()
         {
@@ -49,18 +47,20 @@ namespace JohannesVidnerProject.Controllers
             return View();
         }
 
-        // POST: /Account/Login
+        // POST: 
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginViewModel model)
         {
-            if (!ModelState.IsValid)
+            SessionService.Instance.CurrentUser = DbService.Instance.GetUser(model.Email, model.Password);
+            // Hvis det lykkes at finde en bruger der passer med det indtastede
+            if (SessionService.Instance.CurrentUser != null)
             {
-                return View(model);
+                return RedirectToRoute(new { controller = "Home", action = "Index" });
             }
-            // lav tjek på om pw og email er ok
-            return RedirectToRoute(new { controller = "Home", action = "Index" });
+            return View(model);
+        }
 
         public ActionResult PublicationList()
         {
