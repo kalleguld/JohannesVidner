@@ -32,7 +32,7 @@ namespace JohannesVidnerProject.Controllers
 
         public ActionResult PublicationList()
         {
-            return View(Service.GetPublications());
+            return View(TestService.GetPublications());
         }
     }
 }

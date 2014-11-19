@@ -9,6 +9,7 @@ namespace Model
         public bool Running { get; set; }
         public string Log { get; set; }
         public string Errormessage { get; set; }
+        public int Pages { get; set; }
 
         private readonly Publication _publication;
         public Publication Publication { get { return _publication; }}
