@@ -86,6 +86,7 @@ namespace JohannesVidnerProject.Models
 
     public class EditUserViewModel : CreateUserViewModel
     {
+        public EditUserViewModel() { /*Nothing*/ }
         public EditUserViewModel(Publication creatorPublication) : base(creatorPublication)
         {
             /* Nothing */

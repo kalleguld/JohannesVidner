@@ -11,9 +11,12 @@ namespace Services
     {
         private static DbService _instance;
 
+        
+
         private DbService()
         {
             //TODO 
+            
         }
         public static DbService Instance
         {
@@ -42,6 +45,20 @@ namespace Services
         }
 
         public User CreateUser(string username, string password, string name, Publication publication)
+        {
+            throw new NotImplementedException();
+        }
+
+        public User GetUserById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public User Create(User user)
+        {
+            throw new NotImplementedException();
+        }
+        public void Update(User user)
         {
             throw new NotImplementedException();
         }

@@ -78,16 +78,84 @@ namespace JohannesVidnerProject.Controllers
                 //This should only happen if user has changed some html or http
                 return RedirectToAction("Index", "Home");
             }
-            var newUser = dbService.CreateUser(viewModel.Username,
-                                               viewModel.Password,
-                                               viewModel.Name,
-                                               targetPublication);
-            newUser.UserAdminAccess = viewModel.UserAdmin;
-            newUser.WriteAccess = viewModel.WriteAccess;
+            var user = new User
+            {
+                Username =          viewModel.Username,
+                Name =              viewModel.Name,
+                PasswordText =      viewModel.Password,
+                Publication =       targetPublication,
+                UserAdminAccess =   viewModel.UserAdmin,
+                WriteAccess =       viewModel.WriteAccess
+            };
+            dbService.Create(user);
 
             return RedirectToAction("Index", "Users");
         }
 
-        public ActionResult Edit
+        public ActionResult Edit()
+        {
+            var sessionService = SessionService.Instance;
+            var currentUser = sessionService.CurrentUser;
+            if (currentUser == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            if (!currentUser.UserAdminAccess)
+            {
+                return RedirectToAction("Error", "Shared");
+            }
+            var userIdObj = Request.RequestContext.RouteData.Values["id"];
+            int userId;
+            if (!int.TryParse((string)userIdObj, out userId))
+            {
+                return RedirectToAction("Error", "Shared");
+            }
+            var dbService = DbService.Instance;
+            var user = dbService.GetUserById(userId);
+            if (user == null)
+            {
+                return RedirectToAction("Error", "Shared");
+            }
+            var userViewModel = new EditUserViewModel(user);
+            return View(userViewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(EditUserViewModel viewModel)
+        {
+            var sessionService = SessionService.Instance;
+            var currentUser = sessionService.CurrentUser;
+            if (currentUser == null)
+            {
+                return RedirectToAction("Error", "Shared");
+            }
+            if (!currentUser.UserAdminAccess)
+            {
+                return RedirectToAction("Error", "Shared");
+            }
+            var dbService = DbService.Instance;
+            var targetUser = dbService.GetUserById(viewModel.UserId);
+            if (!dbService.IsDesendent(targetUser.Publication, currentUser.Publication))
+            {
+                return RedirectToAction("Error", "Shared");
+            }
+            if (targetUser.PublicationId != viewModel.SelectedPublicationId)
+            {
+                var newPublication = dbService.GetPublicationById(viewModel.SelectedPublicationId);
+                if (!dbService.IsDesendent(newPublication, currentUser.Publication))
+                {
+                    return RedirectToAction("Error", "Shared");
+                }
+                targetUser.Publication = newPublication;
+            }
+            targetUser.Name = viewModel.Name;
+            targetUser.Username = viewModel.Username;
+            targetUser.UserAdminAccess = viewModel.UserAdmin;
+            targetUser.WriteAccess = viewModel.WriteAccess;
+            dbService.Update(targetUser);
+
+            return RedirectToAction("Index", "Users");
+        }
     }
 }
