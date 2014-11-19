@@ -6,6 +6,8 @@ using System.Web;
 using System.Web.Mvc;
 using JohannesVidnerProject.Models;
 using Microsoft.AspNet.Identity.Owin;
+using Model;
+
 using Services;
 
 namespace JohannesVidnerProject.Controllers
@@ -36,6 +38,7 @@ namespace JohannesVidnerProject.Controllers
 
             return View();
         }
+
         
 
         // Http GET
@@ -58,6 +61,11 @@ namespace JohannesVidnerProject.Controllers
             }
             // lav tjek på om pw og email er ok
             return RedirectToRoute(new { controller = "Home", action = "Index" });
+
+        public ActionResult PublicationList()
+        {
+            return View(TestService.GetPublications());
+
         }
     }
 }

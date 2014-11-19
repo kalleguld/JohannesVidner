@@ -1,0 +1,13 @@
+
+
+De to ‘customers’-filer repæsenterer kundedatabasen (eller en lille del af den). Heri kan I se hierarkiet med at en kunde (som f.eks. flensburgertageblatt) har et ‘partner-id’, der refererer til ‘shzmain’. Dette betyder, at shzmain kan se ned i flensburgertageblatt.
+
+Jeg tænker umiddelbart, at det ville være rigeligt at modellere muligheden for partner-id’er i 2 niveauer. Derved tages der højde for kundernes verden, mens Visiolink-medarbejderen nok stadig skulle logge ind på en bestemt kunde for at se deres processering. Mit bud er, at det også ville være svært overskueligt at se samtlige processeringer i een oversigt hvis man loggede ind som admin.
+
+Normalizer.json.txt indeholder sidste processering - og normalizer_log.json.txt er så vidt jeg ved en mere detaljeret log af hvad der er sket under processeringen.
+
+Hvis der mangler noget information må I sige til, så vil jeg se om jeg kan finde ud af hvor den information kunne være tilgængelig.
+
+Mvh,
+/morten
+

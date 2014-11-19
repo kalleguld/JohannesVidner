@@ -12,16 +12,15 @@ namespace Model
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Edition
     {
         public int Id { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public string Name { get; set; }
-        public bool WriteAccess { get; set; }
-        public bool UserAdminAccess { get; set; }
+        public System.DateTime RunningStarted { get; set; }
+        public int MaxMissingPages { get; set; }
+        public bool Running { get; set; }
+        public string Log { get; set; }
+		public string ErrorMessage { get; set; }
         public int PublicationId { get; set; }
-    
         public virtual Publication Publication { get; set; }
     }
 }

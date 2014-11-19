@@ -1,0 +1,251 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ModelClasses.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ModelClassesStoreContainer">
+    <EntitySet Name="PublicationSet" EntityType="ModelClasses.Store.PublicationSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EditionSet" EntityType="ModelClasses.Store.EditionSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserSet" EntityType="ModelClasses.Store.UserSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="PublicationEdition" Association="ModelClasses.Store.PublicationEdition">
+      <End Role="Publication" EntitySet="PublicationSet" />
+      <End Role="Edition" EntitySet="EditionSet" />
+    </AssociationSet>
+    <AssociationSet Name="PublicationUser" Association="ModelClasses.Store.PublicationUser">
+      <End Role="Publication" EntitySet="PublicationSet" />
+      <End Role="User" EntitySet="UserSet" />
+    </AssociationSet>
+    <AssociationSet Name="PublicationPublication" Association="ModelClasses.Store.PublicationPublication">
+      <End Role="Publication" EntitySet="PublicationSet" />
+      <End Role="Publication1" EntitySet="PublicationSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="PublicationSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PublicationId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EditionSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RunningStarted" Type="datetime" Nullable="false" />
+    <Property Name="MaxMissingPages" Type="int" Nullable="false" />
+    <Property Name="Running" Type="bit" Nullable="false" />
+    <Property Name="Log" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ErrorMessage" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PublicationId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="WriteAccess" Type="bit" Nullable="false" />
+    <Property Name="UserAdminAccess" Type="bit" Nullable="false" />
+    <Property Name="PublicationId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="PublicationEdition">
+    <End Role="Publication" Type="ModelClasses.Store.PublicationSet" Multiplicity="1" />
+    <End Role="Edition" Type="ModelClasses.Store.EditionSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Publication">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Edition">
+        <PropertyRef Name="PublicationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PublicationUser">
+    <End Role="Publication" Type="ModelClasses.Store.PublicationSet" Multiplicity="1" />
+    <End Role="User" Type="ModelClasses.Store.UserSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Publication">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="PublicationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PublicationPublication">
+    <End Role="Publication" Type="ModelClasses.Store.PublicationSet" Multiplicity="1" />
+    <End Role="Publication1" Type="ModelClasses.Store.PublicationSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Publication">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Publication1">
+        <PropertyRef Name="PublicationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ModelClasses" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="ModelClassesContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="PublicationSet" EntityType="ModelClasses.Publication" />
+          <EntitySet Name="EditionSet" EntityType="ModelClasses.Edition" />
+          <EntitySet Name="UserSet" EntityType="ModelClasses.User" />
+          <AssociationSet Name="PublicationEdition" Association="ModelClasses.PublicationEdition">
+            <End Role="Publication" EntitySet="PublicationSet" />
+            <End Role="Edition" EntitySet="EditionSet" />
+          </AssociationSet>
+          <AssociationSet Name="PublicationUser" Association="ModelClasses.PublicationUser">
+            <End Role="Publication" EntitySet="PublicationSet" />
+            <End Role="User" EntitySet="UserSet" />
+          </AssociationSet>
+          <AssociationSet Name="PublicationPublication" Association="ModelClasses.PublicationPublication">
+            <End Role="Publication" EntitySet="PublicationSet" />
+            <End Role="Publication1" EntitySet="PublicationSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Publication">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Editions" Relationship="ModelClasses.PublicationEdition" FromRole="Publication" ToRole="Edition" />
+          <NavigationProperty Name="Users" Relationship="ModelClasses.PublicationUser" FromRole="Publication" ToRole="User" />
+          <NavigationProperty Name="Publications" Relationship="ModelClasses.PublicationPublication" FromRole="Publication" ToRole="Publication1" />
+          <NavigationProperty Name="PublicationParent" Relationship="ModelClasses.PublicationPublication" FromRole="Publication1" ToRole="Publication" />
+          <Property Name="PublicationId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Edition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RunningStarted" Type="DateTime" Nullable="false" />
+          <Property Name="MaxMissingPages" Type="Int32" Nullable="false" />
+          <Property Name="Running" Type="Boolean" Nullable="false" />
+          <Property Name="Log" Type="String" Nullable="false" />
+          <Property Name="ErrorMessage" Type="String" Nullable="false" />
+          <NavigationProperty Name="Publication" Relationship="ModelClasses.PublicationEdition" FromRole="Edition" ToRole="Publication" />
+          <Property Name="PublicationId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="WriteAccess" Type="Boolean" Nullable="false" />
+          <Property Name="UserAdminAccess" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Publication" Relationship="ModelClasses.PublicationUser" FromRole="User" ToRole="Publication" />
+          <Property Name="PublicationId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="PublicationEdition">
+          <End Type="ModelClasses.Publication" Role="Publication" Multiplicity="1" />
+          <End Type="ModelClasses.Edition" Role="Edition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publication">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Edition">
+              <PropertyRef Name="PublicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PublicationUser">
+          <End Type="ModelClasses.Publication" Role="Publication" Multiplicity="1" />
+          <End Type="ModelClasses.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publication">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="PublicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PublicationPublication">
+          <End Type="ModelClasses.Publication" Role="Publication" Multiplicity="1" />
+          <End Type="ModelClasses.Publication" Role="Publication1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publication">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Publication1">
+              <PropertyRef Name="PublicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelClassesStoreContainer" CdmEntityContainer="ModelClassesContainer">
+    <EntitySetMapping Name="PublicationSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelClasses.Publication)">
+        <MappingFragment StoreEntitySet="PublicationSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PublicationId" ColumnName="PublicationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EditionSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelClasses.Edition)">
+        <MappingFragment StoreEntitySet="EditionSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RunningStarted" ColumnName="RunningStarted" />
+          <ScalarProperty Name="MaxMissingPages" ColumnName="MaxMissingPages" />
+          <ScalarProperty Name="Running" ColumnName="Running" />
+          <ScalarProperty Name="Log" ColumnName="Log" />
+          <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+          <ScalarProperty Name="PublicationId" ColumnName="PublicationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelClasses.User)">
+        <MappingFragment StoreEntitySet="UserSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="WriteAccess" ColumnName="WriteAccess" />
+          <ScalarProperty Name="UserAdminAccess" ColumnName="UserAdminAccess" />
+          <ScalarProperty Name="PublicationId" ColumnName="PublicationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

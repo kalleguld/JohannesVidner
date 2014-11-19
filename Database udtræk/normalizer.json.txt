@@ -1,0 +1,24 @@
+/**
+ Export to JSON plugin for PHPMyAdmin
+ @version 0.1
+ */
+
+// Udtræk fra een af vores processeringskøer, hvor seneste processering fra kunden findes
+
+[
+  {
+    "id": "657",
+    "customer": "flensburgertageblatt",
+    "description": "Flensburger Tageblatt - shz",
+    "last_successful_run": "2014-11-16",
+    "tries_since_success": "0",
+    "running": "false",
+    "running_started": "2014-11-16 22:39:41",
+    "max_missing_pages": "2",
+    "folder_id": "4401",
+    "log": "Checking: flensburgertageblatt\nLog generated: 2014-11-17 14:03\nUsing XML to determine run date\nNext release version - for current run_date: 2\n\nSkipping (flensburgertageblatt_20141107.xml): xml->releaseversion: 2\nSkipping (flensburgertageblatt_20141111.xml): xml->releaseversion: 2\nSkipping (flensburgertageblatt_20141108.xml): xml->releaseversion: 1\nSkipping (flensburgertageblatt_20141106.xml): xml->releaseversion: 1\nSkipping (flensburgertageblatt_20141117.xml): xml->releaseversion: 1\nSkipping (flensburgertageblatt_20141110.xml): xml->releaseversion: 1\nSkipping (flensburgertageblatt_20141113.xml): xml->releaseversion: 1\nSkipping (flensburgertageblatt_20141114.xml): xml->releaseversion: 1\nSkipping (flensburgertageblatt_20141105.xml): xml->releaseversion: 1\nSkipping (flensburgertageblatt_20141115.xml): xml->releaseversion: 1\nSkipping (flensburgertageblatt_20141112.xml): xml->releaseversion: 2\nSkipping (flensburgertageblatt_20141104.xml): xml->releaseversion: 1\nNo XML-file triggered a new release\n\n",
+    "log_last_failed_run": "Checking: flensburgertageblatt\nLog generated: 2014-11-16 22:35\nUsing XML to determine run date\nNext release version - for current run_date: 1\n\nSkipping (flensburgertageblatt_20141107.xml): xml->releaseversion: 2\nSkipping (flensburgertageblatt_20141111.xml): xml->releaseversion: 2\nSkipping (flensburgertageblatt_20141108.xml): xml->releaseversion: 1\nSkipping (flensburgertageblatt_20141106.xml): xml->releaseversion: 1\nflensburgertageblatt_20141117.xml triggers a run - new run date from xml 2014-11-17:\n<?xml version=\"1.0\" encoding=\"UTF-8\"?><data><pdfdate>17.11.14<\/pdfdate><releasedate>17.11.14<\/releasedate><releasetime>00:01<\/releasetime><pages><\/pages><releaseversion>1<\/releaseversion><\/data>\nrelease_version for new run date: 1\nDelaying run! A file was very recently modified: FLT_20141117_s01_p001.pdf (created at: 2014-11-16 22:33:52)\n\n\n",
+    "support_log": "Mon, 17 Nov 2014 14:03:50 +0100\n",
+    "created": "2012-06-28 10:58:14"
+  }
+]

@@ -12,16 +12,22 @@ namespace Model
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Publication
     {
+        public Publication()
+        {
+            this.Editions = new HashSet<Edition>();
+            this.Users = new HashSet<User>();
+            this.Publications = new HashSet<Publication>();
+        }
+    
         public int Id { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
         public string Name { get; set; }
-        public bool WriteAccess { get; set; }
-        public bool UserAdminAccess { get; set; }
         public int PublicationId { get; set; }
     
-        public virtual Publication Publication { get; set; }
+        public virtual ICollection<Edition> Editions { get; set; }
+        public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<Publication> Publications { get; set; }
+        public virtual Publication PublicationParent { get; set; }
     }
 }
