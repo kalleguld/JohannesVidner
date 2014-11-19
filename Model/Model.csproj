@@ -66,6 +66,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelClasses.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Page.cs">
+      <DependentUpon>ModelClasses.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Publication.cs">
       <DependentUpon>ModelClasses.tt</DependentUpon>
