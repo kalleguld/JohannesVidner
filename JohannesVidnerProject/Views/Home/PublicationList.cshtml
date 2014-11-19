@@ -19,15 +19,15 @@
     <div>
         <table>
             <tr>
-                @foreach (var p in TestService.GetPublications())
+                @foreach (var p in DbService.Instance.GetPublications())
                 {
-                    <div class='@TestService.SetStatusColor(p.Editions.Last())'>
+                    <div class='publ good-publ'>
                         <div class='line1'>
                             <span class='name'>@p.Name</span>
                             <span class='datetime'>@p.Editions.Last().RunningStarted</span>
                         </div>
                         <div class='line2'>
-                            <span class='pages'>9 pages</span>
+                            <span class='pages'>@p.Editions.Last().NumberOfPages pages</span>
                         </div>
                         <div class='line3'>
                             <span class='status error'>@p.Editions.Last().ErrorMessage</span>

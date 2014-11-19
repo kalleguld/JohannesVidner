@@ -58,5 +58,12 @@ namespace Services
         {
             _dbContext.SaveChanges();
         }
+
+        // TODO: Should only return logged in users publications
+        public List<Publication> GetPublications()
+        {
+            var pubes = _dbContext.PublicationSet.ToList();
+            return pubes;
+        }
     }
 }
