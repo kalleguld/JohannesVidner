@@ -35,10 +35,11 @@ namespace JohannesVidnerProject.Models
         }
     }
 
-    public class TempBase
+    public class TempRepository
     {
         public List<Publication> Publications { get; set; }
-        public TempBase()
+
+        public TempRepository()
         {
             var temp = new List<Publication>();
             var p1 = new Publication("Jydske Vestkysten Kolding");

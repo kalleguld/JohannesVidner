@@ -5,14 +5,15 @@ namespace JohannesVidnerProject.Models
 {
     public static class Service
     {
-        static readonly TempBase Data = new TempBase();
-        // TODO
+        static readonly TempRepository Data = new TempRepository();
+
+        // TODO: Should only return logged in users publications
         public static List<Publication> GetPublications()
         {
             return Data.Publications;
         }
 
-        // TODO
+        // Returns a list of the current/newest edition of each publication.
         public static List<Edition> GetCurrentEditions()
         {
             var pubs = GetPublications();

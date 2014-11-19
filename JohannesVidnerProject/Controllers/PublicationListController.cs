@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using JohannesVidnerProject.Models;
 using Model;
-using Publication = JohannesVidnerProject.Models.Publication;
 
 namespace JohannesVidnerProject.Controllers
 {
