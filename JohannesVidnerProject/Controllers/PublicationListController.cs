@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using JohannesVidnerProject.Models;
 using Model;
 
 namespace JohannesVidnerProject.Controllers
@@ -13,7 +12,7 @@ namespace JohannesVidnerProject.Controllers
         // GET: PublicationList
         public ActionResult Details(Publication p)
         {
-            return View(p.CurrentEdition());
+            return View(p.Editions.Last());
         }
     }
 }

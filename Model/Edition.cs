@@ -19,9 +19,8 @@ namespace Model
         public int MaxMissingPages { get; set; }
         public bool Running { get; set; }
         public string Log { get; set; }
-        public string ErrorMessage { get; set; }
+		public string ErrorMessage { get; set; }
         public int PublicationId { get; set; }
-    
         public virtual Publication Publication { get; set; }
     }
 }

@@ -1,7 +1,8 @@
 ﻿@using JohannesVidnerProject.Controllers
 @using JohannesVidnerProject.Models
 @using Model
-@model List<JohannesVidnerProject.Models.Publication>
+@using Services
+@model List<Model.Publication>
 @{
     Layout = null;
 }
@@ -18,18 +19,18 @@
     <div>
         <table>
             <tr>
-                @foreach (Publication p in Model)
+                @foreach (var p in TestService.GetPublications())
                 {
-                    <div class='publ bad-publ'>
+                    <div class='@TestService.SetStatusColor(p.Editions.Last())'>
                         <div class='line1'>
                             <span class='name'>@p.Name</span>
-                            <span class='datetime'>@p.CurrentEdition().Time</span>
+                            <span class='datetime'>@p.Editions.Last().RunningStarted</span>
                         </div>
                         <div class='line2'>
-                            <span class='pages'>@p.CurrentEdition().Pages sider</span>
+                            <span class='pages'>@p.Editions.Last().Pages pages</span>
                         </div>
                         <div class='line3'>
-                            <span class='status error'>@p.CurrentEdition().Status</span>
+                            <span class='status error'>@p.Editions.Last().Errormessage</span>
                         </div>
                     </div>
                 }
