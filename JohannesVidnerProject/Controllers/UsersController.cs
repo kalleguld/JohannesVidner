@@ -22,12 +22,21 @@ namespace JohannesVidnerProject.Controllers
             if (!currentUser.UserAdminAccess)
             {
                 //TODO redirect to an error page instead of giving an empty list
-                return View(new List<User>());
+                return View(new List<ListUsersViewModel>());
             }
+            var users = new List<ListUsersViewModel>();
+            PopulateUsersList(users, currentUser.Publication);
 
-            var dbService = DbService.Instance;
-            var users = dbService.GetUsersByPublicationRecursive(currentUser.Publication);
             return View(users);
+        }
+
+        private static void PopulateUsersList(List<ListUsersViewModel> targetUsers, Publication publication)
+        {
+            targetUsers.AddRange(publication.Users.Select(user => new ListUsersViewModel(user)));
+            foreach (var child in publication.ChildPublications)
+            {
+                PopulateUsersList(targetUsers, child);
+            }
         }
 
         public ActionResult Create()
@@ -42,19 +51,8 @@ namespace JohannesVidnerProject.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            var viewModel = new CreateUserViewModel();
-            var dbService = DbService.Instance;
-            var allowedPublications = dbService.GetUsersByPublicationRecursive(currentUser.Publication);
-            viewModel.AllowedPublications = new List<SelectListItem>(allowedPublications.Count);
-            foreach (var publication in allowedPublications)
-            {
-                viewModel.AllowedPublications.Add(
-                    new SelectListItem
-                        {
-                            Text  = publication.Name, 
-                            Value = publication.Id.ToString()
-                        });
-            }
+            var viewModel = new CreateUserViewModel(currentUser.Publication);
+            
             return View(viewModel);
         }
 
@@ -89,5 +87,7 @@ namespace JohannesVidnerProject.Controllers
 
             return RedirectToAction("Index", "Users");
         }
-}
+
+        public ActionResult Edit
+    }
 }
