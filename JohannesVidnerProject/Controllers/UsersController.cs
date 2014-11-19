@@ -59,7 +59,8 @@ namespace JohannesVidnerProject.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(CreateUserViewModel createUserViewModel)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(CreateUserViewModel viewModel)
         {
             var sessionService = SessionService.Instance;
             var currentUser = sessionService.CurrentUser;
@@ -71,7 +72,22 @@ namespace JohannesVidnerProject.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
+            var dbService = DbService.Instance;
+            var targetPublication = dbService.GetPublicationById(viewModel.SelectedPublicationId);
+            
+            if (!dbService.IsDesendent(currentUser.Publication, targetPublication))
+            {
+                //This should only happen if user has changed some html or http
+                return RedirectToAction("Index", "Home");
+            }
+            var newUser = dbService.CreateUser(viewModel.Username,
+                                               viewModel.Password,
+                                               viewModel.Name,
+                                               targetPublication);
+            newUser.UserAdminAccess = viewModel.UserAdmin;
+            newUser.WriteAccess = viewModel.WriteAccess;
 
+            return RedirectToAction("Index", "Users");
         }
 }
 }

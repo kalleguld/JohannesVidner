@@ -27,6 +27,23 @@ namespace Services
         {
             throw new NotImplementedException();
         }
-        
+
+        public Publication GetPublicationById(int publicationId)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Returns true if child is a child or grandchild of parent.
+        /// </summary>
+        public bool IsDesendent(Publication child, Publication parent)
+        {
+            throw new NotImplementedException();
+        }
+
+        public User CreateUser(string username, string password, string name, Publication publication)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
