@@ -9,6 +9,7 @@
     <EntitySet Name="PublicationSet" EntityType="ModelClasses.Store.PublicationSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="EditionSet" EntityType="ModelClasses.Store.EditionSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="UserSet" EntityType="ModelClasses.Store.UserSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PageSet" EntityType="ModelClasses.Store.PageSet" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="PublicationEdition" Association="ModelClasses.Store.PublicationEdition">
       <End Role="Publication" EntitySet="PublicationSet" />
       <End Role="Edition" EntitySet="EditionSet" />
@@ -16,6 +17,10 @@
     <AssociationSet Name="PublicationUser" Association="ModelClasses.Store.PublicationUser">
       <End Role="Publication" EntitySet="PublicationSet" />
       <End Role="User" EntitySet="UserSet" />
+    </AssociationSet>
+    <AssociationSet Name="EditionPage" Association="ModelClasses.Store.EditionPage">
+      <End Role="Edition" EntitySet="EditionSet" />
+      <End Role="Page" EntitySet="PageSet" />
     </AssociationSet>
     <AssociationSet Name="PublicationPublication" Association="ModelClasses.Store.PublicationPublication">
       <End Role="Publication" EntitySet="PublicationSet" />
@@ -28,7 +33,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="PublicationId" Type="int" Nullable="false" />
+    <Property Name="PublicationId" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="EditionSet">
     <Key>
@@ -38,9 +43,11 @@
     <Property Name="RunningStarted" Type="datetime" Nullable="false" />
     <Property Name="MaxMissingPages" Type="int" Nullable="false" />
     <Property Name="Running" Type="bit" Nullable="false" />
-    <Property Name="Log" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LogText" Type="nvarchar(max)" Nullable="false" />
     <Property Name="ErrorMessage" Type="nvarchar(max)" Nullable="false" />
     <Property Name="PublicationId" Type="int" Nullable="false" />
+    <Property Name="NumberOfPages" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastLogCheck" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="UserSet">
     <Key>
@@ -48,11 +55,20 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PasswordText" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="WriteAccess" Type="bit" Nullable="false" />
     <Property Name="UserAdminAccess" Type="bit" Nullable="false" />
     <Property Name="PublicationId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PageSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Section" Type="int" Nullable="false" />
+    <Property Name="PageNumber" Type="int" Nullable="false" />
+    <Property Name="EditionId" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="PublicationEdition">
     <End Role="Publication" Type="ModelClasses.Store.PublicationSet" Multiplicity="1" />
@@ -78,8 +94,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="EditionPage">
+    <End Role="Edition" Type="ModelClasses.Store.EditionSet" Multiplicity="1" />
+    <End Role="Page" Type="ModelClasses.Store.PageSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Edition">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Page">
+        <PropertyRef Name="EditionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="PublicationPublication">
-    <End Role="Publication" Type="ModelClasses.Store.PublicationSet" Multiplicity="1" />
+    <End Role="Publication" Type="ModelClasses.Store.PublicationSet" Multiplicity="0..1" />
     <End Role="Publication1" Type="ModelClasses.Store.PublicationSet" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Publication">
@@ -106,6 +134,11 @@
             <End Role="Publication" EntitySet="PublicationSet" />
             <End Role="User" EntitySet="UserSet" />
           </AssociationSet>
+          <EntitySet Name="PageSet" EntityType="ModelClasses.Page" />
+          <AssociationSet Name="EditionPage" Association="ModelClasses.EditionPage">
+            <End Role="Edition" EntitySet="EditionSet" />
+            <End Role="Page" EntitySet="PageSet" />
+          </AssociationSet>
           <AssociationSet Name="PublicationPublication" Association="ModelClasses.PublicationPublication">
             <End Role="Publication" EntitySet="PublicationSet" />
             <End Role="Publication1" EntitySet="PublicationSet" />
@@ -121,7 +154,7 @@
           <NavigationProperty Name="Users" Relationship="ModelClasses.PublicationUser" FromRole="Publication" ToRole="User" />
           <NavigationProperty Name="Publications" Relationship="ModelClasses.PublicationPublication" FromRole="Publication" ToRole="Publication1" />
           <NavigationProperty Name="PublicationParent" Relationship="ModelClasses.PublicationPublication" FromRole="Publication1" ToRole="Publication" />
-          <Property Name="PublicationId" Type="Int32" Nullable="false" />
+          <Property Name="PublicationId" Type="Int32" Nullable="true" />
         </EntityType>
         <EntityType Name="Edition">
           <Key>
@@ -131,10 +164,13 @@
           <Property Name="RunningStarted" Type="DateTime" Nullable="false" />
           <Property Name="MaxMissingPages" Type="Int32" Nullable="false" />
           <Property Name="Running" Type="Boolean" Nullable="false" />
-          <Property Name="Log" Type="String" Nullable="false" />
+          <Property Name="LogText" Type="String" Nullable="false" />
           <Property Name="ErrorMessage" Type="String" Nullable="false" />
           <NavigationProperty Name="Publication" Relationship="ModelClasses.PublicationEdition" FromRole="Edition" ToRole="Publication" />
           <Property Name="PublicationId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="MissingPages" Relationship="ModelClasses.EditionPage" FromRole="Edition" ToRole="Page" />
+          <Property Name="NumberOfPages" Type="String" Nullable="false" />
+          <Property Name="LastLogCheck" Type="DateTime" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -142,7 +178,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Username" Type="String" Nullable="false" />
-          <Property Name="Password" Type="String" Nullable="false" />
+          <Property Name="PasswordText" Type="String" Nullable="false" />
           <Property Name="Name" Type="String" Nullable="false" />
           <Property Name="WriteAccess" Type="Boolean" Nullable="false" />
           <Property Name="UserAdminAccess" Type="Boolean" Nullable="false" />
@@ -173,8 +209,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Page">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Section" Type="Int32" Nullable="false" />
+          <Property Name="PageNumber" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Edition" Relationship="ModelClasses.EditionPage" FromRole="Page" ToRole="Edition" />
+          <Property Name="EditionId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="EditionPage">
+          <End Type="ModelClasses.Edition" Role="Edition" Multiplicity="1" />
+          <End Type="ModelClasses.Page" Role="Page" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Edition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Page">
+              <PropertyRef Name="EditionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="PublicationPublication">
-          <End Type="ModelClasses.Publication" Role="Publication" Multiplicity="1" />
+          <End Type="ModelClasses.Publication" Role="Publication" Multiplicity="0..1" />
           <End Type="ModelClasses.Publication" Role="Publication1" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Publication">
@@ -207,9 +265,11 @@
           <ScalarProperty Name="RunningStarted" ColumnName="RunningStarted" />
           <ScalarProperty Name="MaxMissingPages" ColumnName="MaxMissingPages" />
           <ScalarProperty Name="Running" ColumnName="Running" />
-          <ScalarProperty Name="Log" ColumnName="Log" />
+          <ScalarProperty Name="LogText" ColumnName="LogText" />
           <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
           <ScalarProperty Name="PublicationId" ColumnName="PublicationId" />
+          <ScalarProperty Name="NumberOfPages" ColumnName="NumberOfPages" />
+          <ScalarProperty Name="LastLogCheck" ColumnName="LastLogCheck" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -218,11 +278,21 @@
         <MappingFragment StoreEntitySet="UserSet">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Username" ColumnName="Username" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="PasswordText" ColumnName="PasswordText" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="WriteAccess" ColumnName="WriteAccess" />
           <ScalarProperty Name="UserAdminAccess" ColumnName="UserAdminAccess" />
           <ScalarProperty Name="PublicationId" ColumnName="PublicationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PageSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelClasses.Page)">
+        <MappingFragment StoreEntitySet="PageSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Section" ColumnName="Section" />
+          <ScalarProperty Name="PageNumber" ColumnName="PageNumber" />
+          <ScalarProperty Name="EditionId" ColumnName="EditionId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

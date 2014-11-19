@@ -14,13 +14,28 @@ namespace Model
     
     public partial class Edition
     {
+        public Edition()
+        {
+            this.MissingPages = new HashSet<Page>();
+        }
+    
         public int Id { get; set; }
         public System.DateTime RunningStarted { get; set; }
         public int MaxMissingPages { get; set; }
         public bool Running { get; set; }
+<<<<<<< HEAD
         public string Log { get; set; }
 		public string ErrorMessage { get; set; }
         public int PublicationId { get; set; }
+=======
+        public string LogText { get; set; }
+        public string ErrorMessage { get; set; }
+        public int PublicationId { get; set; }
+        public string NumberOfPages { get; set; }
+        public System.DateTime LastLogCheck { get; set; }
+    
+>>>>>>> modellag
         public virtual Publication Publication { get; set; }
+        public virtual ICollection<Page> MissingPages { get; set; }
     }
 }
