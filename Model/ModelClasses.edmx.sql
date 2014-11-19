@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/19/2014 11:58:38
+-- Date Created: 11/19/2014 15:57:13
 -- Generated from EDMX file: C:\Users\HolgerKyhl\Documents\Datamatik\4. sem\SUM2 - 2\SUM Visiolink Projekt\Model\ModelClasses.edmx
 -- --------------------------------------------------
 
@@ -23,11 +23,11 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_PublicationUser]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[UserSet] DROP CONSTRAINT [FK_PublicationUser];
 GO
-IF OBJECT_ID(N'[dbo].[FK_PublicationPublication]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[PublicationSet] DROP CONSTRAINT [FK_PublicationPublication];
-GO
 IF OBJECT_ID(N'[dbo].[FK_EditionPage]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[PageSet] DROP CONSTRAINT [FK_EditionPage];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PublicationPublication]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[PublicationSet] DROP CONSTRAINT [FK_PublicationPublication];
 GO
 
 -- --------------------------------------------------
@@ -55,7 +55,8 @@ GO
 CREATE TABLE [dbo].[PublicationSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
-    [PublicationId] int  NULL
+    [ParentPublicationId] int  NULL,
+    [ShortName] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -171,10 +172,10 @@ ON [dbo].[PageSet]
     ([EditionId]);
 GO
 
--- Creating foreign key on [PublicationId] in table 'PublicationSet'
+-- Creating foreign key on [ParentPublicationId] in table 'PublicationSet'
 ALTER TABLE [dbo].[PublicationSet]
 ADD CONSTRAINT [FK_PublicationPublication]
-    FOREIGN KEY ([PublicationId])
+    FOREIGN KEY ([ParentPublicationId])
     REFERENCES [dbo].[PublicationSet]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -183,7 +184,7 @@ GO
 -- Creating non-clustered index for FOREIGN KEY 'FK_PublicationPublication'
 CREATE INDEX [IX_FK_PublicationPublication]
 ON [dbo].[PublicationSet]
-    ([PublicationId]);
+    ([ParentPublicationId]);
 GO
 
 -- --------------------------------------------------
