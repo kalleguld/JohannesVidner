@@ -169,6 +169,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\UsersViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SessionService.cs" />
     <Compile Include="Startup.cs" />
@@ -227,9 +228,9 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Users\List.cshtml" />
-    <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\PublicationList\PublicationList.cshtml" />
     <Content Include="Views\Home\PublicationList.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
