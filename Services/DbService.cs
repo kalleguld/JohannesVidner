@@ -10,30 +10,21 @@ namespace Services
     public class DbService
     {
         private static DbService _instance;
-
+        private readonly ModelClassesContainer _dbContext;
         
 
         private DbService()
         {
-            //TODO 
-            
+           _dbContext = new ModelClassesContainer(); 
         }
         public static DbService Instance
         {
             get { return _instance ?? (_instance = new DbService()); }
         }
 
-        /// <summary>
-        /// Returns all users assigned to the publication or a sub-publication
-        /// </summary>
-        public ICollection<User> GetUsersByPublicationRecursive(Publication publication)
-        {
-            throw new NotImplementedException();
-        }
-
         public Publication GetPublicationById(int publicationId)
         {
-            throw new NotImplementedException();
+            return _dbContext.PublicationSet.FirstOrDefault(pub => pub.Id == publicationId);
         }
 
         /// <summary>
@@ -41,26 +32,31 @@ namespace Services
         /// </summary>
         public bool IsDesendent(Publication child, Publication parent)
         {
-            throw new NotImplementedException();
-        }
-
-        public User CreateUser(string username, string password, string name, Publication publication)
-        {
-            throw new NotImplementedException();
+            while (true)
+            {
+                if (!child.ParentPublicationId.HasValue || child.ParentPublicationId.Value == child.Id)
+                {
+                    return false;
+                }
+                child = child.ParentPublication;
+            }
         }
 
         public User GetUserById(int id)
         {
-            throw new NotImplementedException();
+            return _dbContext.UserSet.FirstOrDefault(u => u.Id == id);
         }
 
         public User Create(User user)
         {
-            throw new NotImplementedException();
+            _dbContext.UserSet.Add(user);
+            _dbContext.SaveChanges();
+            return user;
         }
+
         public void Update(User user)
         {
-            throw new NotImplementedException();
+            _dbContext.SaveChanges();
         }
     }
 }
