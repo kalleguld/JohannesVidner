@@ -1,30 +1,40 @@
 ﻿.publ {
-				max-width: 650px;
-				margin: 10px;
-				padding: 10px;
-                                color: #000000;
-                                font-family: "Trebuchet MS";
-                                border-radius: 12px;
-                                
+    max-width: 650px;
+    margin-bottom: 2px;
+    padding: 10px;
+    color: #000000;
+    font-family: "Trebuchet MS";
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 12px;
+    box-shadow: 5px 5px 5px #696969;
+}
+.publ:hover {
+    opacity: 0.8;
+    max-width: 660px;
+}
 
-			}
-			.bad-publ{
-				background-color: lightcoral;
-                                
-			}
-			.good-publ{
-				background-color: lightgreen;
-			}
-			.warning-publ {
-				background-color: yellow;
-			}
-			.name{
-				font-weight: bold;
-				font-size: larger
-			}
-			.datetime {
-				float: right;
-			}
-			.error{
-				font-weight: bold;
-			}
+.bad-publ {
+    background-color: rgb(255, 0, 0);
+}
+
+.good-publ {
+    background-color: rgb(0, 212, 0);
+}
+
+.warning-publ {
+    background-color: rgb(255, 255, 18);
+}
+
+.name {
+    font-weight: bold;
+    font-size: larger;
+}
+
+.datetime {
+    float: right;
+}
+
+.error {
+    font-weight: bold;
+}
