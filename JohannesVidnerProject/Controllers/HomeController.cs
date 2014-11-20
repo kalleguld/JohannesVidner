@@ -64,10 +64,5 @@ namespace JohannesVidnerProject.Controllers
             ModelState.AddModelError("","Error in username or password");
             return View(model);
         }
-
-        public ActionResult PublicationList()
-        {
-            return View(DbService.Instance.GetPublications());
-        }
     }
 }

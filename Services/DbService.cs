@@ -79,9 +79,9 @@ namespace Services
             return null;
         }
         // TODO: Should only return logged in users publications
-        public List<Publication> GetPublications()
+        public List<Publication> GetPublications(User user)
         {
-            var pubes = _dbContext.PublicationSet.ToList();
+            var pubes = user.Publication.ChildPublications.ToList();
             pubes.RemoveAll(p => p.Editions.Count == 0);
             return pubes;
         }
