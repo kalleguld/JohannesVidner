@@ -30,13 +30,11 @@ namespace JohannesVidnerProject.Models
         public string Workplace { get; set; }
     }
 
-
-    
-    public class CreateUserViewModel
+    public abstract class CreateEditViewModel
     {
-        public CreateUserViewModel() { /*Nothing*/ }
+        internal CreateEditViewModel() { /*Nothing*/ }
 
-        public CreateUserViewModel(Publication creatorPublication)
+        internal CreateEditViewModel(Publication creatorPublication)
         {
             AllowedPublications = new List<SelectListItem>();
             AddRecursive(creatorPublication, 0);
@@ -46,20 +44,10 @@ namespace JohannesVidnerProject.Models
         [Required]
         [Display(Name = "Username")]
         public String Username { get; set; }
-        
+
         [Required]
         [Display(Name = "Name")]
         public String Name { get; set; }
-
-        [Required]
-        [DataType(DataType.Password)]
-        [Display(Name = "Password")]
-        public string Password { get; set; }
-
-        [Required]
-        [EmailAddress]
-        [Display(Name = "Email Address")]
-        public string MailAddress { get; set; }
 
         [Display(Name = "Write access to publications")]
         public bool WriteAccess { get; set; }
@@ -72,10 +60,14 @@ namespace JohannesVidnerProject.Models
         public ICollection<SelectListItem> AllowedPublications { get; set; }
 
 
-        private void AddRecursive(Publication sourcePublication, int depth)
+        protected void AddRecursive(Publication sourcePublication, int depth)
         {
             var listItemText = new string('-', depth) + sourcePublication.Name;
-            var listItem = new SelectListItem {Text = listItemText, Value = sourcePublication.Id.ToString()};
+            var listItem = new SelectListItem
+            {
+                Text = listItemText, 
+                Value = sourcePublication.Id.ToString()
+            };
             AllowedPublications.Add(listItem);
             foreach (var childPublication in sourcePublication.ChildPublications)
             {
@@ -83,24 +75,37 @@ namespace JohannesVidnerProject.Models
             }
         }
     }
+    
+    public class CreateUserViewModel : CreateEditViewModel
+    {
+        public CreateUserViewModel() { /*Nothing*/ }
+        public CreateUserViewModel(Publication publication) : base(publication) { /*Nothing*/ }
 
-    public class EditUserViewModel : CreateUserViewModel
+        [Required]
+        [DataType(DataType.Password)]
+        [Display(Name = "Password")]
+        public string Password { get; set; }
+
+    }
+
+    public class EditUserViewModel : CreateEditViewModel
     {
         public EditUserViewModel() { /*Nothing*/ }
-        public EditUserViewModel(Publication creatorPublication) : base(creatorPublication)
+        
+        public EditUserViewModel(Publication publication, User targetUser) : base(publication)
         {
-            /* Nothing */
+            Username = targetUser.Username;
+            Name = targetUser.Name;
+            WriteAccess = targetUser.WriteAccess;
+            UserAdmin = targetUser.UserAdminAccess;
+            SelectedPublicationId = targetUser.PublicationId;
+            UserId = targetUser.Id;
         }
 
-        public EditUserViewModel(User user) : base(user.Publication)
-        {
-            Username = user.Username;
-            Name = user.Name;
-            WriteAccess = user.WriteAccess;
-            UserAdmin = user.UserAdminAccess;
-            SelectedPublicationId = user.PublicationId;
-            UserId = user.Id;
-        }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "Password")]
+        public string Password { get; set; }
 
         public int UserId { get; set; }
     }

@@ -17,7 +17,7 @@ namespace JohannesVidnerProject.Controllers
             var currentUser = sessionService.CurrentUser;
             if (currentUser == null)
             {
-                return RedirectToAction("Login", "Account");
+                return RedirectToAction("Login", "Home");
             }
             if (!currentUser.UserAdminAccess)
             {
@@ -45,7 +45,7 @@ namespace JohannesVidnerProject.Controllers
             var currentUser = sessionService.CurrentUser;
             if (currentUser == null)
             {
-                return RedirectToAction("Login", "Account");
+                return RedirectToAction("Login", "Home");
             }
             if (!currentUser.UserAdminAccess)
             {
@@ -64,7 +64,7 @@ namespace JohannesVidnerProject.Controllers
             var currentUser = sessionService.CurrentUser;
             if (currentUser == null)
             {
-                return RedirectToAction("Login", "Account");
+                return RedirectToAction("Login", "Home");
             }
             if (!currentUser.UserAdminAccess)
             {
@@ -98,7 +98,7 @@ namespace JohannesVidnerProject.Controllers
             var currentUser = sessionService.CurrentUser;
             if (currentUser == null)
             {
-                return RedirectToAction("Login", "Account");
+                return RedirectToAction("Login", "Home");
             }
             if (!currentUser.UserAdminAccess)
             {
@@ -116,7 +116,7 @@ namespace JohannesVidnerProject.Controllers
             {
                 return RedirectToAction("Error", "Shared");
             }
-            var userViewModel = new EditUserViewModel(user);
+            var userViewModel = new EditUserViewModel(currentUser.Publication, user);
             return View(userViewModel);
         }
 
@@ -158,4 +158,6 @@ namespace JohannesVidnerProject.Controllers
             return RedirectToAction("Index", "Users");
         }
     }
+
+
 }
