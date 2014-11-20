@@ -8,30 +8,21 @@
 @using Services
 @model User
 
-<!DOCTYPE html>
-
-<head>
-        <meta name="viewport" content="width=device-width" />
-        <title>Publikationer</title>
-        <link rel="stylesheet" type="text/css" href="\Content\PublicationList.css">
-    </head>
+@Styles.Render("~/Content/PublicationList");
 <div>
-    <table>
-        <tr>
-            @foreach (var p in DbService.Instance.GetPublications(Model))
-            {
-                <div class='publ good-publ'>
-                    <div class='line1'>
-                        <span class='name'>@p.Name</span>
-                        <span class='datetime'>@p.Editions.Last().RunningStarted</span>
-                    </div>
-                    <div class='line2'>
-                        <span class='pages'>@p.Editions.Last().NumberOfPages pages</span>
-                    </div>
-                    <div class='line3'>
-                        <span class='status error'>@p.Editions.Last().ErrorMessage</span>
-                    </div>
-                </div>
-            }
-    </table>
+    @foreach (var p in DbService.Instance.GetPublications(Model))
+    {
+        <div class='alert alert-success' role="alert">
+            <div class='line1'>
+                <span class='name'>@p.Name</span>
+                <span class='datetime'>@p.Editions.Last().RunningStarted</span>
+            </div>
+            <div class='line2'>
+                <span class='pages'>@p.Editions.Last().NumberOfPages pages</span>
+            </div>
+            <div class='line3'>
+                <span class='status error'>@p.Editions.Last().ErrorMessage</span>
+            </div>
+        </div>
+    }
 </div>
