@@ -11,7 +11,7 @@ namespace Services
     {
         private ModelClassesContainer _dbContext;
         private static DbService _instance;
-        private readonly ModelClassesContainer _dbContext;
+       
         
 
         private DbService()
