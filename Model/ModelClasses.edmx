@@ -49,6 +49,7 @@
     <Property Name="PublicationId" Type="int" Nullable="false" />
     <Property Name="NumberOfPages" Type="nvarchar(max)" Nullable="false" />
     <Property Name="LastLogCheck" Type="datetime" Nullable="false" />
+    <Property Name="ExpectedReleaseTime" Type="datetime" Nullable="true" />
   </EntityType>
   <EntityType Name="UserSet">
     <Key>
@@ -173,6 +174,7 @@
           <NavigationProperty Name="MissingPages" Relationship="ModelClasses.EditionPage" FromRole="Edition" ToRole="Page" />
           <Property Name="NumberOfPages" Type="String" Nullable="false" />
           <Property Name="LastLogCheck" Type="DateTime" Nullable="false" />
+          <Property Name="ExpectedReleaseTime" Type="DateTime" Nullable="true" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -273,6 +275,7 @@
           <ScalarProperty Name="PublicationId" ColumnName="PublicationId" />
           <ScalarProperty Name="NumberOfPages" ColumnName="NumberOfPages" />
           <ScalarProperty Name="LastLogCheck" ColumnName="LastLogCheck" />
+          <ScalarProperty Name="ExpectedReleaseTime" ColumnName="ExpectedReleaseTime" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
