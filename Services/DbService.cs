@@ -9,6 +9,7 @@ namespace Services
 {
     public class DbService
     {
+        private ModelClassesContainer _dbContext;
         private static DbService _instance;
         private readonly ModelClassesContainer _dbContext;
         
@@ -72,6 +73,17 @@ namespace Services
         {
             var pubes = _dbContext.PublicationSet.ToList();
             return pubes;
+        }
+
+        public User GetUserByUsernameAndPassword(string username,string password)
+        {
+            List<User> list = (_dbContext.UserSet.ToList().Where(u => u.Username == username && u.PasswordText == password)).ToList();
+
+            if (list.Count != 0)
+            {
+                return list[0];
+            }
+            return null;
         }
     }
 }
