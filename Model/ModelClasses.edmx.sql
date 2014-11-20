@@ -35,7 +35,10 @@ GO
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
-
+drop table EditionSet;
+drop table PageSet;
+drop table PublicationSet;
+drop table UserSet;
 
 -- --------------------------------------------------
 -- Creating all tables
