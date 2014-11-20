@@ -68,13 +68,6 @@ namespace Services
             _dbContext.SaveChanges();
         }
 
-        // TODO: Should only return logged in users publications
-        public List<Publication> GetPublications()
-        {
-            var pubes = _dbContext.PublicationSet.ToList();
-            return pubes;
-        }
-
         public User GetUserByUsernameAndPassword(string username,string password)
         {
             List<User> list = (_dbContext.UserSet.ToList().Where(u => u.Username == username && u.PasswordText == password)).ToList();
@@ -84,6 +77,44 @@ namespace Services
                 return list[0];
             }
             return null;
+        }
+        // TODO: Should only return logged in users publications
+        public List<Publication> GetPublications()
+        {
+            var pubes = _dbContext.PublicationSet.ToList();
+            pubes.RemoveAll(p => p.Editions.Count == 0);
+            return pubes;
+        }
+
+        // maybe TODO: Change conditions for determining colors
+        public string DetermineStatusColor(Publication p)
+        {
+            string s = "bad-publ";
+            Edition e = p.Editions.Last();
+            if (e.ErrorMessage.StartsWith("Success"))
+            {
+                s = "good-publ";
+                e.ErrorMessage = "Online";
+            }
+            if (e.Running || e.ErrorMessage.StartsWith("Hold"))
+            {
+                s = "warning-publ";
+                e.ErrorMessage = "Running";
+            }
+            return s;
+        }
+
+    }
+
+    public class ColorComparer : IComparer<Publication>
+    {
+        public int Compare(Publication p1, Publication p2)
+        {
+            if (DbService.Instance.DetermineStatusColor(p1) == "bad-publ")
+            {
+                //DbService.Instance.DetermineStatusColor(p2) == "bad-publ";
+            }
+            return 0;
         }
     }
 }
