@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/19/2014 15:57:13
+-- Date Created: 11/20/2014 09:22:21
 -- Generated from EDMX file: C:\Users\HolgerKyhl\Documents\Datamatik\4. sem\SUM2 - 2\SUM Visiolink Projekt\Model\ModelClasses.edmx
 -- --------------------------------------------------
 
@@ -70,7 +70,8 @@ CREATE TABLE [dbo].[EditionSet] (
     [ErrorMessage] nvarchar(max)  NOT NULL,
     [PublicationId] int  NOT NULL,
     [NumberOfPages] nvarchar(max)  NOT NULL,
-    [LastLogCheck] datetime  NOT NULL
+    [LastLogCheck] datetime  NOT NULL,
+    [ExpectedReleaseTime] datetime  NULL
 );
 GO
 

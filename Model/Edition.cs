@@ -28,6 +28,7 @@ namespace Model
         public int PublicationId { get; set; }
         public string NumberOfPages { get; set; }
         public System.DateTime LastLogCheck { get; set; }
+        public Nullable<System.DateTime> ExpectedReleaseTime { get; set; }
     
         public virtual Publication Publication { get; set; }
         public virtual ICollection<Page> MissingPages { get; set; }
