@@ -24,16 +24,7 @@ namespace JohannesVidnerProject
             get { return _instance ?? (_instance = new SessionService()); }
         }
 
-        public User CurrentUser
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
+        public User CurrentUser { get; set; }
+    
     }
 }

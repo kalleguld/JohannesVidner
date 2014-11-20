@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -8,7 +9,6 @@ using JohannesVidnerProject.Models;
 using Microsoft.Ajax.Utilities;
 using Microsoft.AspNet.Identity.Owin;
 using Model;
-
 using Services;
 
 namespace JohannesVidnerProject.Controllers
@@ -53,19 +53,19 @@ namespace JohannesVidnerProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginViewModel model)
         {
-            SessionService.Instance.CurrentUser = DbService.Instance.GetUser(model.Email, model.Password);
-            // Hvis det lykkes at finde en bruger der passer med det indtastede
+            SessionService.Instance.CurrentUser = DbService.Instance.GetUserByUsernameAndPassword(model.Email, model.Password);
+
             if (SessionService.Instance.CurrentUser != null)
             {
                 return RedirectToRoute(new { controller = "Home", action = "Index" });
             }
+            ModelState.AddModelError("","Error in email or password");
             return View(model);
         }
 
         public ActionResult PublicationList()
         {
             return View(TestService.GetPublications());
-
         }
     }
 }

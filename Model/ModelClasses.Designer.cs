@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\HolgerKyhl\Documents\Datamatik\4. sem\SUM2 - 2\SUM Visiolink Projekt\Model\ModelClasses.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Anders\Desktop\JohannesVidner\Model\ModelClasses.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

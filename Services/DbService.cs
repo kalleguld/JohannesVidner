@@ -9,7 +9,7 @@ namespace Services
 {
     public class DbService
     {
-        private ModelClassesContainer _dbContext;
+        private ModelClassesContainer _dbContext = new ModelClassesContainer();
         private static DbService _instance;
 
         private DbService()
@@ -21,9 +21,15 @@ namespace Services
             get { return _instance ?? (_instance = new DbService()); }
         }
 
-        public User GetUser(string username,string password)
+        public User GetUserByUsernameAndPassword(string username,string password)
         {
-            return _dbContext.UserSet.ToList().Where(u => u.Username == username && u.Password == password);
+            List<User> list = (_dbContext.UserSet.ToList().Where(u => u.Username == username && u.PasswordText == password)).ToList();
+
+            if (list.Count != 0)
+            {
+                return list[0];
+            }
+            return null;
         }
     }
 }
