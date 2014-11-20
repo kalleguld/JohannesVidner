@@ -53,13 +53,13 @@ namespace JohannesVidnerProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginViewModel model)
         {
-            SessionService.Instance.CurrentUser = DbService.Instance.GetUserByUsernameAndPassword(model.Email, model.Password);
+            SessionService.Instance.CurrentUser = DbService.Instance.GetUserByUsernameAndPassword(model.Username, model.Password);
 
             if (SessionService.Instance.CurrentUser != null)
             {
                 return RedirectToRoute(new { controller = "Home", action = "Index" });
             }
-            ModelState.AddModelError("","Error in email or password");
+            ModelState.AddModelError("","Error in username or password");
             return View(model);
         }
 
