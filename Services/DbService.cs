@@ -28,15 +28,23 @@ namespace Services
         }
 
         /// <summary>
-        /// Returns true if child is a child or grandchild of parent.
+        /// Returns true if child is a child or grandchild of parent, or if they are the same.
         /// </summary>
         public bool IsDesendent(Publication child, Publication parent)
         {
+            if (child.Id == parent.Id)
+            {
+                return true;
+            }
             while (true)
             {
                 if (!child.ParentPublicationId.HasValue || child.ParentPublicationId.Value == child.Id)
                 {
                     return false;
+                }
+                if (child.ParentPublicationId.Value == parent.Id)
+                {
+                    return true;
                 }
                 child = child.ParentPublication;
             }
