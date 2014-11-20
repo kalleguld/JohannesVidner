@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model;
+using Model.Extensions;
 
 namespace Services
 {
@@ -70,20 +71,28 @@ namespace Services
 
         public User GetUserByUsernameAndPassword(string username,string password)
         {
-            List<User> list = (_dbContext.UserSet.ToList().Where(u => u.Username == username && u.PasswordText == password)).ToList();
-
-            if (list.Count != 0)
-            {
-                return list[0];
-            }
-            return null;
+            var user = _dbContext.UserSet.FirstOrDefault(u => u.Username == username);
+            if (user == null) return null;
+            if (!user.HasPassword(password)) return null;
+            return user;
         }
-        // TODO: Should only return logged in users publications
-        public List<Publication> GetPublications(User user)
+
+        public ICollection<Publication> GetPublications(User user)
         {
-            var pubes = user.Publication.ChildPublications.ToList();
-            pubes.RemoveAll(p => p.Editions.Count == 0);
-            return pubes;
+            var ans = new List<Publication>();
+            var pub = user.Publication;
+            AddChildrenRecursively(ans, pub);
+            ans.RemoveAll(p => p.Editions.Count == 0);
+            return ans;
+        }
+
+        private static void AddChildrenRecursively(ICollection<Publication> list, Publication pub)
+        {
+            list.Add(pub);
+            foreach (var child in pub.ChildPublications)
+            {
+                AddChildrenRecursively(list, child);
+            }
         }
 
         // maybe TODO: Change conditions for determining colors
