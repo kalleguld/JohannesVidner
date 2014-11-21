@@ -21,13 +21,12 @@
                         <img src="/Images/Visiolink-logo-grey.png"
                              onmouseover=" this.src = '/Images/Visiolink-logo-white.png' "
                              onmouseout=" this.src = '/Images/Visiolink-logo-grey.png' "
-                             border="0" alt="Home" id="visiolinkLogo"/>
+                             alt="Home" id="visiolinkLogo"/>
                     </a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav" >
                         <li >@Html.ActionLink("Contact", "Contact", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
                         @if (@Session.GetCurrentUser() != null && @Session.GetCurrentUser().UserAdminAccess)
                         {
                             <li>@Html.ActionLink("Users", "Index", "Users")</li>
