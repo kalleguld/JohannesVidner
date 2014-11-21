@@ -21,7 +21,7 @@ namespace JohannesVidnerProject.Controllers
             var currentUser = Session.GetCurrentUser();
             if (currentUser == null)
             {
-                return RedirectToRoute(new { controller = "Home", action = "Login" });
+                return RedirectToAction("Login", "Home");
             }
             var ans = new List<HomeIndexViewModel>();
             var publications = DbService.Instance.GetPublications(currentUser);
@@ -53,31 +53,26 @@ namespace JohannesVidnerProject.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
 
         // Http GET
         public ActionResult Login()
         {
-            ViewBag.Message = "Your Login page.";
-
             return View();
         }
 
         public ActionResult Logoff()
         {
-            ViewBag.Message = "Your Logoff page.";
+            Session.SetCurrentUser(null);
 
-            return View();
+            return RedirectToAction("Login");
         }
 
         // POST: 
@@ -94,6 +89,7 @@ namespace JohannesVidnerProject.Controllers
                 return RedirectToAction("Index", "Home");
             }
             ModelState.AddModelError("", "Error in username or password");
+            model.Password = "";
             return View(model);
         }
     }
