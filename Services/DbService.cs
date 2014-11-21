@@ -77,7 +77,7 @@ namespace Services
 
         public User GetUserByUsernameAndPassword(string username,string password)
         {
-            List<User> list = (_dbContext.UserSet.ToList().Where(u => u.Username == username && u.PasswordText == password)).ToList();
+            List<User> list = (_dbContext.UserSet.Where(u => u.Username == username && u.PasswordText == password)).ToList();
 
             if (list.Count != 0)
             {
