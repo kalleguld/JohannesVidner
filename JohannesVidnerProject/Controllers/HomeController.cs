@@ -51,11 +51,6 @@ namespace JohannesVidnerProject.Controllers
             return View(newans);
         }
 
-        public ActionResult About()
-        {
-
-            return View();
-        }
 
         public ActionResult Contact()
         {
