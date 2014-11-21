@@ -98,7 +98,6 @@ namespace Services
         // maybe TODO: Change conditions for determining colors
         public string DetermineStatusColor(Publication p)
         {
-            List<User> list = (_dbContext.UserSet.Where(u => u.Username == username && u.PasswordText == password)).ToList();
             string s = "bad-publ";
             Edition e = p.Editions.Last();
             if (e.ErrorMessage.StartsWith("Success"))
