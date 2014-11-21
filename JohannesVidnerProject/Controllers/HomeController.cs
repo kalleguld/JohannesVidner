@@ -15,15 +15,29 @@ namespace JohannesVidnerProject.Controllers
 {
     public class HomeController : Controller
     {
-        
+
         public ActionResult Index()
         {
             var currentUser = Session.GetCurrentUser();
             if (currentUser == null)
             {
-                return RedirectToRoute(new { controller = "Home", action = "Login" });   
+                return RedirectToRoute(new { controller = "Home", action = "Login" });
             }
-            return View(currentUser);
+            var ans = new List<HomeIndexViewModel>();
+            var publications = DbService.Instance.GetPublications(currentUser);
+            foreach (var publication in publications)
+            {
+                var viewModel = new HomeIndexViewModel();
+                var e = publication.Editions.Last();
+                viewModel.Name = publication.Name;
+                viewModel.NumberOfPages = Convert.ToInt32(e.NumberOfPages);
+                viewModel.ErrorMessage = e.ErrorMessage;
+                viewModel.RunningStarted = e.RunningStarted;
+                viewModel.Running = e.Running;
+                viewModel.DetermineStatusColor();
+                ans.Add(viewModel);
+            }
+            return View(ans);
         }
 
         public ActionResult About()
@@ -61,7 +75,7 @@ namespace JohannesVidnerProject.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            ModelState.AddModelError("","Error in username or password");
+            ModelState.AddModelError("", "Error in username or password");
             return View(model);
         }
     }
