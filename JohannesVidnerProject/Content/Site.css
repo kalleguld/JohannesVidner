@@ -23,6 +23,11 @@
     padding-left: 8px;
 }
 
+#disabled {
+   pointer-events: none;
+   cursor: default;
+}
+
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,

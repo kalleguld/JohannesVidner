@@ -48,6 +48,13 @@ namespace JohannesVidnerProject.Controllers
             return View();
         }
 
+        public ActionResult Logoff()
+        {
+            ViewBag.Message = "Your Logoff page.";
+
+            return View();
+        }
+
         // POST: 
         [HttpPost]
         [AllowAnonymous]
