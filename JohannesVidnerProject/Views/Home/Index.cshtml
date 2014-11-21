@@ -15,6 +15,15 @@
             <div class='line3'>
                 <span class='status error'>@p.ErrorMessage</span>
             </div>
+            @if (p.MissingPages.Count != 0)
+            {
+                foreach (var page in p.MissingPages)
+                 {
+                     <div>
+                         <span>Missing page from section @page.Section, page @page.PageNumber.</span>
+                     </div>
+                 }
+            }
         </div>
     }
 </div>
