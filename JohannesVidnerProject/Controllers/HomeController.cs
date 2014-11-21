@@ -34,10 +34,18 @@ namespace JohannesVidnerProject.Controllers
                 viewModel.ErrorMessage = e.ErrorMessage;
                 viewModel.RunningStarted = e.RunningStarted;
                 viewModel.Running = e.Running;
+                viewModel.Status = e.CurrentStatus;
                 viewModel.DetermineStatusColor();
                 ans.Add(viewModel);
             }
-            return View(ans);
+            // Sort by name
+            var ans2 = ans.OrderBy(vm => vm.Name);
+            // Sort by color - red, yellow, green
+            var newans = new List<HomeIndexViewModel>(ans.Count);
+            newans.AddRange(ans2.Where(vm => vm.CssClass == "danger"));
+            newans.AddRange(ans2.Where(vm => vm.CssClass == "warning"));
+            newans.AddRange(ans2.Where(vm => vm.CssClass == "success"));
+            return View(newans);
         }
 
         public ActionResult About()

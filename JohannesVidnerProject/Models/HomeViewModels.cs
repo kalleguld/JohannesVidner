@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Microsoft.Ajax.Utilities;
+using Model;
 
 namespace JohannesVidnerProject.Models
 {
-    public class HomeIndexViewModel : IComparable
+    public class HomeIndexViewModel
     {
         public string Name { get; set; }
         public DateTime RunningStarted { get; set; }
@@ -16,13 +17,7 @@ namespace JohannesVidnerProject.Models
         public string CssClass { get; set; }
 
         public bool Running { get; set; }
-        public Enum Status { get; set; }
-
-        public int CompareTo(object abcd)
-        {
-            var hivm = (HomeIndexViewModel)abcd;
-
-        }
+        public CurrentStatus Status { get; set; }
 
         // maybe TODO: Change conditions for determining colors
         public void DetermineStatusColor()
