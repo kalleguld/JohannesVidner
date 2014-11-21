@@ -26,9 +26,10 @@ namespace Model
         public string LogText { get; set; }
         public string ErrorMessage { get; set; }
         public int PublicationId { get; set; }
-        public string NumberOfPages { get; set; }
+        public int NumberOfPages { get; set; }
         public System.DateTime LastLogCheck { get; set; }
         public Nullable<System.DateTime> ExpectedReleaseTime { get; set; }
+        public CurrentStatus CurrentStatus { get; set; }
     
         public virtual Publication Publication { get; set; }
         public virtual ICollection<Page> MissingPages { get; set; }

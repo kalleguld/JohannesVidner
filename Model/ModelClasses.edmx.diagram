@@ -10,7 +10,7 @@
         <EntityTypeShape EntityType="ModelClasses.User" Width="1.5" PointX="2.5" PointY="3.75" />
         <AssociationConnector Association="ModelClasses.PublicationEdition" />
         <AssociationConnector Association="ModelClasses.PublicationUser" />
-        <EntityTypeShape EntityType="ModelClasses.Page" Width="1.5" PointX="5.125" PointY="4.25" />
+        <EntityTypeShape EntityType="ModelClasses.Page" Width="1.5" PointX="5.125" PointY="4.5" />
         <AssociationConnector Association="ModelClasses.EditionPage" />
         <AssociationConnector Association="ModelClasses.PublicationPublication" />
       </Diagram>

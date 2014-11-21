@@ -47,9 +47,10 @@
     <Property Name="LogText" Type="nvarchar(max)" Nullable="false" />
     <Property Name="ErrorMessage" Type="nvarchar(max)" Nullable="false" />
     <Property Name="PublicationId" Type="int" Nullable="false" />
-    <Property Name="NumberOfPages" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="NumberOfPages" Type="int" Nullable="false" />
     <Property Name="LastLogCheck" Type="datetime" Nullable="false" />
     <Property Name="ExpectedReleaseTime" Type="datetime" Nullable="true" />
+    <Property Name="CurrentStatus" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="UserSet">
     <Key>
@@ -172,9 +173,10 @@
           <NavigationProperty Name="Publication" Relationship="ModelClasses.PublicationEdition" FromRole="Edition" ToRole="Publication" />
           <Property Name="PublicationId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="MissingPages" Relationship="ModelClasses.EditionPage" FromRole="Edition" ToRole="Page" />
-          <Property Name="NumberOfPages" Type="String" Nullable="false" />
+          <Property Name="NumberOfPages" Type="Int32" Nullable="false" />
           <Property Name="LastLogCheck" Type="DateTime" Nullable="false" />
           <Property Name="ExpectedReleaseTime" Type="DateTime" Nullable="true" />
+          <Property Name="CurrentStatus" Type="ModelClasses.CurrentStatus" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -247,6 +249,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EnumType Name="CurrentStatus">
+          <Member Name="NotStarted" />
+          <Member Name="Running" />
+          <Member Name="OnHold" />
+          <Member Name="Released" />
+          <Member Name="RecoverableError" />
+          <Member Name="UnrecoverableError" />
+        </EnumType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -276,6 +286,7 @@
           <ScalarProperty Name="NumberOfPages" ColumnName="NumberOfPages" />
           <ScalarProperty Name="LastLogCheck" ColumnName="LastLogCheck" />
           <ScalarProperty Name="ExpectedReleaseTime" ColumnName="ExpectedReleaseTime" />
+          <ScalarProperty Name="CurrentStatus" ColumnName="CurrentStatus" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
