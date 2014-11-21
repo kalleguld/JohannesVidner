@@ -16,15 +16,9 @@ namespace JohannesVidnerProject.Controllers
         public ActionResult Index()
         {
             var currentUser = Session.GetCurrentUser();
-            if (currentUser == null)
-            {
-                return RedirectToAction("Login", "Home");
-            }
-            if (!currentUser.UserAdminAccess)
-            {
-                //TODO redirect to an error page instead of giving an empty list
-                return View(new List<ListUsersViewModel>());
-            }
+            var redirect = GetRedirectIfNotUserAdmin(currentUser);
+            if (redirect != null) return redirect;
+
             var users = new List<ListUsersViewModel>();
             PopulateUsersList(users, currentUser.Publication);
 
@@ -43,14 +37,9 @@ namespace JohannesVidnerProject.Controllers
         public ActionResult Create()
         {
             var currentUser = Session.GetCurrentUser();
-            if (currentUser == null)
-            {
-                return RedirectToAction("Login", "Home");
-            }
-            if (!currentUser.UserAdminAccess)
-            {
-                return RedirectToAction("Index", "Home");
-            }
+            var redirect = GetRedirectIfNotUserAdmin(currentUser);
+            if (redirect != null) return redirect;
+
             var viewModel = new CreateUserViewModel(currentUser.Publication);
             
             return View(viewModel);
@@ -61,14 +50,9 @@ namespace JohannesVidnerProject.Controllers
         public ActionResult Create(CreateUserViewModel viewModel)
         {
             var currentUser = Session.GetCurrentUser();
-            if (currentUser == null)
-            {
-                return RedirectToAction("Login", "Home");
-            }
-            if (!currentUser.UserAdminAccess)
-            {
-                return RedirectToAction("Index", "Home");
-            }
+            var redirect = GetRedirectIfNotUserAdmin(currentUser);
+            if (redirect != null) return redirect;
+
             var dbService = DbService.Instance;
             var targetPublication = dbService.GetPublicationById(viewModel.SelectedPublicationId);
             
@@ -88,31 +72,26 @@ namespace JohannesVidnerProject.Controllers
             };
             dbService.Create(user);
 
-            return RedirectToAction("Index", "Users");
+            return RedirectToAction("Index");
         }
 
         public ActionResult Edit()
         {
             var currentUser = Session.GetCurrentUser();
-            if (currentUser == null)
-            {
-                return RedirectToAction("Login", "Home");
-            }
-            if (!currentUser.UserAdminAccess)
-            {
-                return RedirectToAction("Error", "Shared");
-            }
+            var redirect = GetRedirectIfNotUserAdmin(currentUser);
+            if (redirect != null) return redirect;
+
             var userIdObj = Request.RequestContext.RouteData.Values["id"];
             int userId;
             if (!int.TryParse((string)userIdObj, out userId))
             {
-                return RedirectToAction("Error", "Shared");
+                return RedirectToAction("Index");
             }
             var dbService = DbService.Instance;
             var user = dbService.GetUserById(userId);
             if (user == null)
             {
-                return RedirectToAction("Error", "Shared");
+                return RedirectToAction("Index");
             }
             var userViewModel = new EditUserViewModel(user, currentUser.Publication);
             return View(userViewModel);
@@ -123,26 +102,23 @@ namespace JohannesVidnerProject.Controllers
         public ActionResult Edit(EditUserViewModel viewModel)
         {
             var currentUser = Session.GetCurrentUser();
-            if (currentUser == null)
-            {
-                return RedirectToAction("Error", "Shared");
-            }
-            if (!currentUser.UserAdminAccess)
-            {
-                return RedirectToAction("Error", "Shared");
-            }
+            var redirect = GetRedirectIfNotUserAdmin(currentUser);
+            if (redirect != null) return redirect;
+
             var dbService = DbService.Instance;
             var targetUser = dbService.GetUserById(viewModel.UserId);
             if (!dbService.IsDesendent(targetUser.Publication, currentUser.Publication))
             {
-                return RedirectToAction("Error", "Shared");
+                //currentUser is trying to move a user who doesn't work for currentUser
+                return RedirectToAction("Error", "Home");
             }
             if (targetUser.PublicationId != viewModel.SelectedPublicationId)
             {
                 var newPublication = dbService.GetPublicationById(viewModel.SelectedPublicationId);
                 if (!dbService.IsDesendent(newPublication, currentUser.Publication))
                 {
-                    return RedirectToAction("Error", "Shared");
+                    //currentUser is trying to make another user work at a place he can't
+                    return RedirectToAction("Error", "Home");
                 }
                 targetUser.Publication = newPublication;
             }
@@ -158,6 +134,49 @@ namespace JohannesVidnerProject.Controllers
             dbService.Update(targetUser);
 
             return RedirectToAction("Index", "Users");
+        }
+
+        public ActionResult Delete()
+        {
+            var currentUser = Session.GetCurrentUser();
+            var redirect = GetRedirectIfNotUserAdmin(currentUser);
+            if (redirect != null) return redirect;
+            var user = GetUserFromRequestId();
+            if (user == null) return RedirectToAction("Index");
+
+            var vm = new DeleteUserViewModel
+            {
+                Name = user.Name,
+                Username = user.Username,
+                UserId = user.Id
+            };
+            return View(vm);
+        }
+
+
+        private User GetUserFromRequestId()
+        {
+            var userIdObj = Request.RequestContext.RouteData.Values["id"];
+            int userId;
+            if (!int.TryParse((string)userIdObj, out userId))
+            {
+                return null;
+            }
+            var dbService = DbService.Instance;
+            var user = dbService.GetUserById(userId);
+            return user;
+        }
+        private ActionResult GetRedirectIfNotUserAdmin(User user)
+        {
+            if (user == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            if (!user.UserAdminAccess)
+            {
+                return RedirectToAction("Logoff", "Home");
+            }
+            return null;
         }
     }
 }

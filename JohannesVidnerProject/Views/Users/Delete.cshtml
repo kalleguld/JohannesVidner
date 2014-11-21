@@ -1,0 +1,19 @@
+﻿@model JohannesVidnerProject.Models.Users.DeleteUserViewModel
+
+@{
+    ViewBag.Title = "Delete User";
+}
+
+<h2>Delete @Model.Username</h2>
+
+<h4>Are you sure you want to delete @Model.Username (@Model.Name)?</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.UserId)
+    <div >
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        <a href="@Url.Action("Index")" class="btn btn-default">Cancel</a>
+    </div>
+}

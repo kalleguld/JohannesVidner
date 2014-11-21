@@ -167,6 +167,7 @@
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\Users\CreateEditViewModel.cs" />
     <Compile Include="Models\Users\CreateUserViewModel.cs" />
+    <Compile Include="Models\Users\DeleteUserViewModel.cs" />
     <Compile Include="Models\Users\ListUsersViewModel.cs" />
     <Compile Include="Models\Users\EditUserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -219,6 +220,7 @@
     <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
