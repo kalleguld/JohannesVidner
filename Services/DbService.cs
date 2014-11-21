@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model;
+using Model.Extensions;
 
 namespace Services
 {
@@ -68,22 +69,62 @@ namespace Services
             _dbContext.SaveChanges();
         }
 
-        // TODO: Should only return logged in users publications
-        public List<Publication> GetPublications()
-        {
-            var pubes = _dbContext.PublicationSet.ToList();
-            return pubes;
-        }
-
         public User GetUserByUsernameAndPassword(string username,string password)
         {
-            List<User> list = (_dbContext.UserSet.Where(u => u.Username == username && u.PasswordText == password)).ToList();
+            var user = _dbContext.UserSet.FirstOrDefault(u => u.Username == username);
+            if (user == null) return null;
+            if (!user.HasPassword(password)) return null;
+            return user;
+        }
 
-            if (list.Count != 0)
+        public ICollection<Publication> GetPublications(User user)
+        {
+            var ans = new List<Publication>();
+            var pub = user.Publication;
+            AddChildrenRecursively(ans, pub);
+            ans.RemoveAll(p => p.Editions.Count == 0);
+            return ans;
+        }
+
+        private static void AddChildrenRecursively(ICollection<Publication> list, Publication pub)
+        {
+            list.Add(pub);
+            foreach (var child in pub.ChildPublications)
             {
-                return list[0];
+                AddChildrenRecursively(list, child);
             }
-            return null;
+        }
+
+        // maybe TODO: Change conditions for determining colors
+        public string DetermineStatusColor(Publication p)
+        {
+            List<User> list = (_dbContext.UserSet.Where(u => u.Username == username && u.PasswordText == password)).ToList();
+            string s = "bad-publ";
+            Edition e = p.Editions.Last();
+            if (e.ErrorMessage.StartsWith("Success"))
+            {
+                s = "good-publ";
+                e.ErrorMessage = "Online";
+            }
+            if (e.Running || e.ErrorMessage.StartsWith("Hold"))
+            {
+                s = "warning-publ";
+                e.ErrorMessage = "Running";
+            }
+            return s;
+        }
+
+    }
+
+    public class ColorComparer : IComparer<Publication>
+    {
+        public int Compare(Publication p1, Publication p2)
+        {
+            if (DbService.Instance.DetermineStatusColor(p1) == "bad-publ")
+            {
+                //DbService.Instance.DetermineStatusColor(p2) == "bad-publ";
+            }
+            return 0;
         }
     }
 }

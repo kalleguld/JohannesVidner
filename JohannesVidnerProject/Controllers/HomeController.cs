@@ -18,11 +18,12 @@ namespace JohannesVidnerProject.Controllers
         
         public ActionResult Index()
         {
-            if (SessionService.Instance.CurrentUser == null)
+            var currentUser = Session.GetCurrentUser();
+            if (currentUser == null)
             {
                 return RedirectToRoute(new { controller = "Home", action = "Login" });   
             }
-            return View(SessionService.Instance.CurrentUser);
+            return View(currentUser);
         }
 
         public ActionResult About()
@@ -53,19 +54,15 @@ namespace JohannesVidnerProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginViewModel model)
         {
-            SessionService.Instance.CurrentUser = DbService.Instance.GetUserByUsernameAndPassword(model.Email, model.Password);
+            var newUser = DbService.Instance.GetUserByUsernameAndPassword(model.Username, model.Password);
+            Session.SetCurrentUser(newUser);
 
-            if (SessionService.Instance.CurrentUser != null)
+            if (newUser != null)
             {
-                return RedirectToRoute(new { controller = "Home", action = "Index" });
+                return RedirectToAction("Index", "Home");
             }
-            ModelState.AddModelError("","Error in email or password");
+            ModelState.AddModelError("","Error in username or password");
             return View(model);
-        }
-
-        public ActionResult PublicationList()
-        {
-            return View(DbService.Instance.GetPublications());
         }
     }
 }

@@ -13,11 +13,10 @@ namespace JohannesVidnerProject.Controllers
     {
         public ActionResult Index()
         {
-            var sessionService = SessionService.Instance;
-            var currentUser = sessionService.CurrentUser;
+            var currentUser = Session.GetCurrentUser();
             if (currentUser == null)
             {
-                return RedirectToAction("Login", "Account");
+                return RedirectToAction("Login", "Home");
             }
             if (!currentUser.UserAdminAccess)
             {
@@ -41,11 +40,10 @@ namespace JohannesVidnerProject.Controllers
 
         public ActionResult Create()
         {
-            var sessionService = SessionService.Instance;
-            var currentUser = sessionService.CurrentUser;
+            var currentUser = Session.GetCurrentUser();
             if (currentUser == null)
             {
-                return RedirectToAction("Login", "Account");
+                return RedirectToAction("Login", "Home");
             }
             if (!currentUser.UserAdminAccess)
             {
@@ -60,11 +58,10 @@ namespace JohannesVidnerProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(CreateUserViewModel viewModel)
         {
-            var sessionService = SessionService.Instance;
-            var currentUser = sessionService.CurrentUser;
+            var currentUser = Session.GetCurrentUser();
             if (currentUser == null)
             {
-                return RedirectToAction("Login", "Account");
+                return RedirectToAction("Login", "Home");
             }
             if (!currentUser.UserAdminAccess)
             {
@@ -94,11 +91,10 @@ namespace JohannesVidnerProject.Controllers
 
         public ActionResult Edit()
         {
-            var sessionService = SessionService.Instance;
-            var currentUser = sessionService.CurrentUser;
+            var currentUser = Session.GetCurrentUser();
             if (currentUser == null)
             {
-                return RedirectToAction("Login", "Account");
+                return RedirectToAction("Login", "Home");
             }
             if (!currentUser.UserAdminAccess)
             {
@@ -124,8 +120,7 @@ namespace JohannesVidnerProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(EditUserViewModel viewModel)
         {
-            var sessionService = SessionService.Instance;
-            var currentUser = sessionService.CurrentUser;
+            var currentUser = Session.GetCurrentUser();
             if (currentUser == null)
             {
                 return RedirectToAction("Error", "Shared");
