@@ -12,7 +12,7 @@ namespace JohannesVidnerProject.Controllers
         // GET: PublicationList
         public ActionResult Details(Publication p)
         {
-            return View(p.Editions.Last());
+            return View();
         }
     }
 }

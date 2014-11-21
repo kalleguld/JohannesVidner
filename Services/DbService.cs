@@ -12,12 +12,12 @@ namespace Services
     {
         private ModelClassesContainer _dbContext;
         private static DbService _instance;
-       
-        
+
+
 
         private DbService()
         {
-           _dbContext = new ModelClassesContainer(); 
+            _dbContext = new ModelClassesContainer();
         }
         public static DbService Instance
         {
@@ -69,7 +69,7 @@ namespace Services
             _dbContext.SaveChanges();
         }
 
-        public User GetUserByUsernameAndPassword(string username,string password)
+        public User GetUserByUsernameAndPassword(string username, string password)
         {
             var user = _dbContext.UserSet.FirstOrDefault(u => u.Username == username);
             if (user == null) return null;
@@ -93,37 +93,6 @@ namespace Services
             {
                 AddChildrenRecursively(list, child);
             }
-        }
-
-        // maybe TODO: Change conditions for determining colors
-        public string DetermineStatusColor(Publication p)
-        {
-            string s = "bad-publ";
-            Edition e = p.Editions.Last();
-            if (e.ErrorMessage.StartsWith("Success"))
-            {
-                s = "good-publ";
-                e.ErrorMessage = "Online";
-            }
-            if (e.Running || e.ErrorMessage.StartsWith("Hold"))
-            {
-                s = "warning-publ";
-                e.ErrorMessage = "Running";
-            }
-            return s;
-        }
-
-    }
-
-    public class ColorComparer : IComparer<Publication>
-    {
-        public int Compare(Publication p1, Publication p2)
-        {
-            if (DbService.Instance.DetermineStatusColor(p1) == "bad-publ")
-            {
-                //DbService.Instance.DetermineStatusColor(p2) == "bad-publ";
-            }
-            return 0;
         }
     }
 }

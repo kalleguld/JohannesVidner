@@ -1,27 +1,19 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿@model List<JohannesVidnerProject.Models.HomeIndexViewModel>
 
-@using JohannesVidnerProject.Controllers
-@using JohannesVidnerProject.Models
-@using Model
-@using Services
-@model User
-
-@Styles.Render("~/Content/PublicationList");
+@Styles.Render("~/Content/PublicationList")&nbsp;
 <div>
-    @foreach (var p in DbService.Instance.GetPublications(Model))
+    @foreach (var p in Model)
     {
-        <div class='alert alert-success' role="alert">
+        <div class='alert alert-@p.CssClass' role="alert" onclick="location.href='@Url.Action("Details", "PublicationList")'">
             <div class='line1'>
                 <span class='name'>@p.Name</span>
-                <span class='datetime'>@p.Editions.Last().RunningStarted</span>
+                <span class='datetime'>@p.RunningStarted</span>
             </div>
             <div class='line2'>
-                <span class='pages'>@p.Editions.Last().NumberOfPages pages</span>
+                <span class='pages'>@p.NumberOfPages pages</span>
             </div>
             <div class='line3'>
-                <span class='status error'>@p.Editions.Last().ErrorMessage</span>
+                <span class='status error'>@p.ErrorMessage</span>
             </div>
         </div>
     }
