@@ -35,6 +35,9 @@ namespace JohannesVidnerProject.Controllers
                 viewModel.RunningStarted = e.RunningStarted;
                 viewModel.Running = e.Running;
                 viewModel.Status = e.CurrentStatus;
+                var mpages = new List<Page>();
+                mpages.AddRange(e.MissingPages);
+                viewModel.MissingPages = mpages;
                 viewModel.DetermineStatusColor();
                 ans.Add(viewModel);
             }
