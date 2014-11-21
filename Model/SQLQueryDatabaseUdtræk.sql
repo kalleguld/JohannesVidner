@@ -23,7 +23,7 @@ INSERT INTO EditionSet (RunningStarted,MaxMissingPages,Running,LogText,ErrorMess
 		28,
 		'2014-11-16 23:08:41',
 		3
-	);
+	),
 	(
 		'2014-11-16 22:45:52',
 		1,
@@ -34,7 +34,7 @@ INSERT INTO EditionSet (RunningStarted,MaxMissingPages,Running,LogText,ErrorMess
 		25,
 		'2014-11-17 01:32:25',
 		4
-	);
+	),
 	(
 		'2014-11-16 23:39:10',
 		0,
@@ -61,7 +61,8 @@ INSERT INTO EditionSet (RunningStarted,MaxMissingPages,Running,LogText,ErrorMess
 	);
 
 
-INSERT INTO UserSet (Username,PasswordText,Name,WriteAccess,UserAdminAccess,PublicationId) VALUES ('VisioLinkAdmin','1234','VisioLink administrator',1,1,1);
+INSERT INTO UserSet (Username,PasswordText,Name,WriteAccess,UserAdminAccess,PublicationId) VALUES 
+	('VisioLinkAdmin','1234','VisioLink administrator',1,1,1),
 	('MhnAdmin','1234','Mhn administrator',1,1,2),
 	('MhnManager','1234','Mhn manager',1,0,2),
 	('MhnWorker','1234','Mhn sequrity worker',0,0,2),
