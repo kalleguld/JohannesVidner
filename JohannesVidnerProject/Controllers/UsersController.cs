@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using JohannesVidnerProject.Models;
+using JohannesVidnerProject.Models.Users;
+using Microsoft.Ajax.Utilities;
 using Model;
 using Services;
 
@@ -112,7 +114,7 @@ namespace JohannesVidnerProject.Controllers
             {
                 return RedirectToAction("Error", "Shared");
             }
-            var userViewModel = new EditUserViewModel(user);
+            var userViewModel = new EditUserViewModel(user, currentUser.Publication);
             return View(userViewModel);
         }
 
@@ -143,6 +145,11 @@ namespace JohannesVidnerProject.Controllers
                     return RedirectToAction("Error", "Shared");
                 }
                 targetUser.Publication = newPublication;
+            }
+
+            if (!viewModel.Password.IsNullOrWhiteSpace())
+            {
+                targetUser.PasswordText = viewModel.Password;
             }
             targetUser.Name = viewModel.Name;
             targetUser.Username = viewModel.Username;
