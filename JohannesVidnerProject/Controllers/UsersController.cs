@@ -57,7 +57,7 @@ namespace JohannesVidnerProject.Controllers
             var dbService = DbService.Instance;
             var targetPublication = dbService.GetPublicationById(viewModel.SelectedPublicationId);
             
-            if (!dbService.IsDesendent(currentUser.Publication, targetPublication))
+            if (!targetPublication.IsDesendent(currentUser.Publication))
             {
                 //This should only happen if user has changed some html or http
                 return RedirectToAction("Index", "Home");
