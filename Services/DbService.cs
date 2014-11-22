@@ -69,6 +69,11 @@ namespace Services
             _dbContext.SaveChanges();
         }
 
+        public void Delete(User user)
+        {
+            _dbContext.UserSet.Remove(user);
+        }
+
         public User GetUserByUsernameAndPassword(string username, string password)
         {
             var user = _dbContext.UserSet.FirstOrDefault(u => u.Username == username);

@@ -12,6 +12,7 @@
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(m => m.UserId)
+    @Html.HiddenFor(m => m.HasSeenConfirmation)
     <div >
         <input type="submit" value="Delete" class="btn btn-danger" />
         <a href="@Url.Action("Index")" class="btn btn-default">Cancel</a>

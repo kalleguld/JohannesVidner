@@ -10,5 +10,6 @@ namespace JohannesVidnerProject.Models.Users
         public string Username { get; set; }
         public string Name { get; set; }
         public int UserId { get; set; }
+        public bool HasSeenConfirmation { get; set; }
     }
 }

@@ -7,6 +7,7 @@ using JohannesVidnerProject.Models;
 using JohannesVidnerProject.Models.Users;
 using Microsoft.Ajax.Utilities;
 using Model;
+using Model.Extensions;
 using Services;
 
 namespace JohannesVidnerProject.Controllers
@@ -141,16 +142,36 @@ namespace JohannesVidnerProject.Controllers
             var currentUser = Session.GetCurrentUser();
             var redirect = GetRedirectIfNotUserAdmin(currentUser);
             if (redirect != null) return redirect;
-            var user = GetUserFromRequestId();
-            if (user == null) return RedirectToAction("Index");
+            var targetUser = GetUserFromRequestId();
+            if (targetUser == null) return RedirectToAction("Index");
 
             var vm = new DeleteUserViewModel
             {
-                Name = user.Name,
-                Username = user.Username,
-                UserId = user.Id
+                Name = targetUser.Name,
+                Username = targetUser.Username,
+                UserId = targetUser.Id,
+                HasSeenConfirmation = true
+                
             };
             return View(vm);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(DeleteUserViewModel vm)
+        {
+            var currentUser = Session.GetCurrentUser();
+            var redirect = GetRedirectIfNotUserAdmin(currentUser);
+            if (redirect != null) return redirect;
+            var targetUserId = vm.UserId;
+            var dbService = DbService.Instance;
+            var targetUser = dbService.GetUserById(targetUserId);
+
+            if (targetUser == null) return RedirectToAction("Index");
+            if (!targetUser.Publication.IsDesendent(currentUser.Publication)) return RedirectToAction("Error", "Home");
+
+            dbService.Delete(targetUser);
+            return RedirectToAction("Index");
         }
 
 
