@@ -16,7 +16,7 @@ namespace Model
     {
         public int Id { get; set; }
         public string Username { get; set; }
-        public string PasswordText { get; set; }
+        public string PasswordText { private get; set; }
         public string Name { get; set; }
         public bool WriteAccess { get; set; }
         public bool UserAdminAccess { get; set; }

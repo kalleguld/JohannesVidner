@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model;
-using Model.Extensions;
 
 namespace Services
 {
@@ -32,24 +31,10 @@ namespace Services
         /// <summary>
         /// Returns true if child is a child or grandchild of parent, or if they are the same.
         /// </summary>
+        [Obsolete("Use publication.IsDesendent(parent)")]
         public bool IsDesendent(Publication child, Publication parent)
         {
-            if (child.Id == parent.Id)
-            {
-                return true;
-            }
-            while (true)
-            {
-                if (!child.ParentPublicationId.HasValue || child.ParentPublicationId.Value == child.Id)
-                {
-                    return false;
-                }
-                if (child.ParentPublicationId.Value == parent.Id)
-                {
-                    return true;
-                }
-                child = child.ParentPublication;
-            }
+            return child.IsDesendent(parent);
         }
 
         public User GetUserById(int id)

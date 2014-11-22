@@ -56,8 +56,7 @@
     <Compile Include="Edition.cs">
       <DependentUpon>ModelClasses.tt</DependentUpon>
     </Compile>
-    <Compile Include="Extensions\Publication.cs" />
-    <Compile Include="Extensions\UserExtensions.cs" />
+    <Compile Include="Extensions\User.cs" />
     <Compile Include="ModelClasses.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -80,6 +79,7 @@
     <Compile Include="Publication.cs">
       <DependentUpon>ModelClasses.tt</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\Publication.cs" />
     <Compile Include="User.cs">
       <DependentUpon>ModelClasses.tt</DependentUpon>
     </Compile>

@@ -4,19 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model.Extensions
+namespace Model
 {
-    public static class PublicationExtensions
+
+    public partial class Publication
     {
-        public static bool IsDesendent(this Publication child, Publication possibleParent)
+        public bool IsDesendent(Publication possibleParent)
         {
-            var item = child;
+            var item = this;
             while (item.ParentPublicationId != item.Id && item.ParentPublicationId.HasValue)
             {
                 if (item.ParentPublicationId == possibleParent.Id)
                 {
                     return true;
                 }
+                item = item.ParentPublication;
+
             }
             return false;
         }

@@ -7,7 +7,6 @@ using JohannesVidnerProject.Models;
 using JohannesVidnerProject.Models.Users;
 using Microsoft.Ajax.Utilities;
 using Model;
-using Model.Extensions;
 using Services;
 
 namespace JohannesVidnerProject.Controllers
@@ -108,7 +107,7 @@ namespace JohannesVidnerProject.Controllers
 
             var dbService = DbService.Instance;
             var targetUser = dbService.GetUserById(viewModel.UserId);
-            if (!dbService.IsDesendent(targetUser.Publication, currentUser.Publication))
+            if (!targetUser.Publication.IsDesendent(currentUser.Publication))
             {
                 //currentUser is trying to move a user who doesn't work for currentUser
                 return RedirectToAction("Error", "Home");
@@ -116,7 +115,7 @@ namespace JohannesVidnerProject.Controllers
             if (targetUser.PublicationId != viewModel.SelectedPublicationId)
             {
                 var newPublication = dbService.GetPublicationById(viewModel.SelectedPublicationId);
-                if (!dbService.IsDesendent(newPublication, currentUser.Publication))
+                if (!newPublication.IsDesendent(currentUser.Publication))
                 {
                     //currentUser is trying to make another user work at a place he can't
                     return RedirectToAction("Error", "Home");

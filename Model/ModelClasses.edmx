@@ -184,7 +184,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Username" Type="String" Nullable="false" />
-          <Property Name="PasswordText" Type="String" Nullable="false" />
+          <Property Name="PasswordText" Type="String" Nullable="false" cg:GetterAccess="Private" />
           <Property Name="Name" Type="String" Nullable="false" />
           <Property Name="WriteAccess" Type="Boolean" Nullable="false" />
           <Property Name="UserAdminAccess" Type="Boolean" Nullable="false" />
