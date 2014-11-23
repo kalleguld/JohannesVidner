@@ -31,10 +31,10 @@ namespace Services
         /// <summary>
         /// Returns true if child is a child or grandchild of parent, or if they are the same.
         /// </summary>
-        [Obsolete("Use publication.IsDesendent(parent)")]
+        [Obsolete("Use publication.IsDescendant(parent)")]
         public bool IsDesendent(Publication child, Publication parent)
         {
-            return child.IsDesendent(parent);
+            return child.IsDescendant(parent);
         }
 
         public User GetUserById(int id)

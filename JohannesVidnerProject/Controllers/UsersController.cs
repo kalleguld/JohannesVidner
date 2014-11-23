@@ -56,7 +56,7 @@ namespace JohannesVidnerProject.Controllers
             var dbService = DbService.Instance;
             var targetPublication = dbService.GetPublicationById(viewModel.SelectedPublicationId);
             
-            if (!targetPublication.IsDesendent(currentUser.Publication))
+            if (!targetPublication.IsDescendant(currentUser.Publication))
             {
                 //This should only happen if user has changed some html or http
                 return RedirectToAction("Index", "Home");
@@ -107,7 +107,7 @@ namespace JohannesVidnerProject.Controllers
 
             var dbService = DbService.Instance;
             var targetUser = dbService.GetUserById(viewModel.UserId);
-            if (!targetUser.Publication.IsDesendent(currentUser.Publication))
+            if (!targetUser.Publication.IsDescendant(currentUser.Publication))
             {
                 //currentUser is trying to move a user who doesn't work for currentUser
                 return RedirectToAction("Error", "Home");
@@ -115,7 +115,7 @@ namespace JohannesVidnerProject.Controllers
             if (targetUser.PublicationId != viewModel.SelectedPublicationId)
             {
                 var newPublication = dbService.GetPublicationById(viewModel.SelectedPublicationId);
-                if (!newPublication.IsDesendent(currentUser.Publication))
+                if (!newPublication.IsDescendant(currentUser.Publication))
                 {
                     //currentUser is trying to make another user work at a place he can't
                     return RedirectToAction("Error", "Home");
@@ -167,7 +167,7 @@ namespace JohannesVidnerProject.Controllers
             var targetUser = dbService.GetUserById(targetUserId);
 
             if (targetUser == null) return RedirectToAction("Index");
-            if (!targetUser.Publication.IsDesendent(currentUser.Publication)) return RedirectToAction("Error", "Home");
+            if (!targetUser.Publication.IsDescendant(currentUser.Publication)) return RedirectToAction("Error", "Home");
 
             dbService.Delete(targetUser);
             return RedirectToAction("Index");
