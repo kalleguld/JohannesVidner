@@ -23,8 +23,9 @@ namespace JohannesVidnerProject.Controllers
             {
                 return RedirectToAction("Login", "Home");
             }
-            var ans = new List<HomeIndexViewModel>();
-            var publications = DbService.Instance.GetPublications(currentUser);
+            var viewModels = new List<HomeIndexViewModel>();
+            var publications = DbService.Instance.GetdescendantPublications(currentUser.Publication);
+            publications.RemoveAll(p => p.Editions.Count == 0);
             foreach (var publication in publications)
             {
                 var viewModel = new HomeIndexViewModel();
@@ -39,16 +40,14 @@ namespace JohannesVidnerProject.Controllers
                 mpages.AddRange(e.MissingPages);
                 viewModel.MissingPages = mpages;
                 viewModel.DetermineStatusColor();
-                ans.Add(viewModel);
+                viewModels.Add(viewModel);
             }
-            // Sort by name
-            var ans2 = ans.OrderBy(vm => vm.Name);
             // Sort by color - red, yellow, green
-            var newans = new List<HomeIndexViewModel>(ans.Count);
-            newans.AddRange(ans2.Where(vm => vm.CssClass == "danger"));
-            newans.AddRange(ans2.Where(vm => vm.CssClass == "warning"));
-            newans.AddRange(ans2.Where(vm => vm.CssClass == "success"));
-            return View(newans);
+            var ans = new List<HomeIndexViewModel>(viewModels.Count);
+            ans.AddRange(viewModels.Where(vm => vm.CssClass == "danger"));
+            ans.AddRange(viewModels.Where(vm => vm.CssClass == "warning"));
+            ans.AddRange(viewModels.Where(vm => vm.CssClass == "success"));
+            return View(ans);
         }
 
 

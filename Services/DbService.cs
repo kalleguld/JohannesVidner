@@ -67,19 +67,17 @@ namespace Services
             return user;
         }
 
-        public ICollection<Publication> GetPublications(User user)
+        public List<Publication> GetdescendantPublications(Publication parent)
         {
             var ans = new List<Publication>();
-            var pub = user.Publication;
-            AddChildrenRecursively(ans, pub);
-            ans.RemoveAll(p => p.Editions.Count == 0);
+            AddChildrenRecursively(ans, parent);
             return ans;
         }
 
         private static void AddChildrenRecursively(ICollection<Publication> list, Publication pub)
         {
             list.Add(pub);
-            foreach (var child in pub.ChildPublications)
+            foreach (var child in pub.ChildPublications.OrderBy(p => p.Name))
             {
                 AddChildrenRecursively(list, child);
             }
