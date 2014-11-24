@@ -9,7 +9,7 @@ namespace Model
 
     public partial class Publication
     {
-        public bool IsDesendent(Publication possibleParent)
+        public bool IsDescendant(Publication possibleParent)
         {
             var item = this;
             while (item.ParentPublicationId != item.Id && item.ParentPublicationId.HasValue)

@@ -31,10 +31,10 @@ namespace Services
         /// <summary>
         /// Returns true if child is a child or grandchild of parent, or if they are the same.
         /// </summary>
-        [Obsolete("Use publication.IsDesendent(parent)")]
+        [Obsolete("Use publication.IsDescendant(parent)")]
         public bool IsDesendent(Publication child, Publication parent)
         {
-            return child.IsDesendent(parent);
+            return child.IsDescendant(parent);
         }
 
         public User GetUserById(int id)
@@ -65,21 +65,20 @@ namespace Services
             if (user == null) return null;
             if (!user.HasPassword(password)) return null;
             return user;
+
         }
 
-        public ICollection<Publication> GetPublications(User user)
+        public List<Publication> GetdescendantPublications(Publication parent)
         {
             var ans = new List<Publication>();
-            var pub = user.Publication;
-            AddChildrenRecursively(ans, pub);
-            ans.RemoveAll(p => p.Editions.Count == 0);
+            AddChildrenRecursively(ans, parent);
             return ans;
         }
 
         private static void AddChildrenRecursively(ICollection<Publication> list, Publication pub)
         {
             list.Add(pub);
-            foreach (var child in pub.ChildPublications)
+            foreach (var child in pub.ChildPublications.OrderBy(p => p.Name))
             {
                 AddChildrenRecursively(list, child);
             }

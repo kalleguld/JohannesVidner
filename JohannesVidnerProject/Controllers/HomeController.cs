@@ -27,7 +27,8 @@ namespace JohannesVidnerProject.Controllers
             }
 
             var publicationViewModels = new List<PublicationViewModel>();
-            var publications = DbService.Instance.GetPublications(currentUser);
+            var publications = DbService.Instance.GetdescendantPublications(currentUser.Publication);
+            publications.RemoveAll(p => p.ChildPublications.Count == 0);
             foreach (var publication in publications)
             {
                 var viewModel = new PublicationViewModel();
@@ -44,16 +45,15 @@ namespace JohannesVidnerProject.Controllers
                 viewModel.DetermineStatusColor();
                 publicationViewModels.Add(viewModel);
             }
-            // Sort by name
-            var ans2 = publicationViewModels.OrderBy(vm => vm.Name);
             // Sort by color - red, yellow, green
             var newans = new List<PublicationViewModel>(publicationViewModels.Count);
-            newans.AddRange(ans2.Where(vm => vm.CssClass == "danger"));
-            newans.AddRange(ans2.Where(vm => vm.CssClass == "warning"));
-            newans.AddRange(ans2.Where(vm => vm.CssClass == "success"));
+            newans.AddRange(publicationViewModels.Where(vm => vm.CssClass == "danger"));
+            newans.AddRange(publicationViewModels.Where(vm => vm.CssClass == "warning"));
+            newans.AddRange(publicationViewModels.Where(vm => vm.CssClass == "success"));
 
             oldVm.PublicationViewModels = newans;
             return View(oldVm);
+
         }
 
 
