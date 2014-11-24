@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -22,14 +23,18 @@ namespace JohannesVidnerProject.Controllers
                 return RedirectToAction("Login", "Home");
             }
 
-            var publicationDepths = DbService.Instance.GetDescendantPublicationDepths(currentUser.Publication);
+            var dbService = DbService.Instance;
 
                                                         //Fill the main list of publications
+            IEnumerable<Publication> filteredPublications = dbService.GetdescendantPublications(currentUser.Publication);
+            filteredPublications = filteredPublications.Where(p => p.Editions.Any());
+
+                        //TODO filter filteredPublications further here
+
             var publicationViewModels = new List<PublicationViewModel>();
-            foreach (var pd in publicationDepths.Where(p => p.Publication.Editions.Count > 0))
+            foreach (var publication in filteredPublications)
             {
                 var pvm = new PublicationViewModel();
-                var publication = pd.Publication;
                 var edition = publication.Editions.LastOrDefault();
                 if (edition == null) continue;
                 pvm.Name = publication.Name;
@@ -53,6 +58,7 @@ namespace JohannesVidnerProject.Controllers
             viewModel.PublicationViewModels = sortedPubs;
 
                                                         //Fill the filtering dropdown box with publications
+            var publicationDepths = DbService.Instance.GetDescendantPublicationDepths(currentUser.Publication);
             var publicationDropdownItems = new List<SelectListItem>(publicationDepths.Count);
             publicationDropdownItems.AddRange(publicationDepths.Select(pd => new SelectListItem
             {
