@@ -1,6 +1,26 @@
-﻿@model List<JohannesVidnerProject.Models.HomeIndexViewModel>
-
+﻿@model System.Collections.Generic.List<JohannesVidnerProject.Models.HomeIndexViewModel>
 @Styles.Render("~/Content/PublicationList")&nbsp;
+
+<div>
+    @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+    {
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-6"></div>
+            <div class="col-md-3">
+                <select class="form-control" name="p">
+                    <option value="1">Blah</option>
+                    <option value="2">Blah blah</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input type="text" class="form-control" placeholder="Search..." name="q" />
+            </div>
+        </div>
+    </div>
+    }
+</div>
+<hr/>
 <div>
     @foreach (var p in Model)
     {
