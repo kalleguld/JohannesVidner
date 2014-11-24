@@ -65,6 +65,7 @@ namespace Services
             if (user == null) return null;
             if (!user.HasPassword(password)) return null;
             return user;
+
         }
 
         public List<Publication> GetdescendantPublications(Publication parent)
