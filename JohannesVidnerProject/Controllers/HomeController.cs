@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 using JohannesVidnerProject.Models.Home;
-using Microsoft.Ajax.Utilities;
-using Microsoft.AspNet.Identity.Owin;
 using Model;
 using Services;
 
@@ -16,43 +11,58 @@ namespace JohannesVidnerProject.Controllers
     public class HomeController : Controller
     {
 
-        public ActionResult Index(IndexViewModel oldVm)
+        public ActionResult Index(IndexViewModel viewModel)
         {
-            if (oldVm == null) oldVm = new IndexViewModel();
+            if (viewModel == null) viewModel = new IndexViewModel();
 
+                                                        //check for login
             var currentUser = Session.GetCurrentUser();
             if (currentUser == null)
             {
                 return RedirectToAction("Login", "Home");
             }
 
-            var publicationViewModels = new List<PublicationViewModel>();
-            var publications = DbService.Instance.GetdescendantPublications(currentUser.Publication);
-            publications.RemoveAll(p => p.ChildPublications.Count == 0);
-            foreach (var publication in publications)
-            {
-                var viewModel = new PublicationViewModel();
-                var e = publication.Editions.Last();
-                viewModel.Name = publication.Name;
-                viewModel.NumberOfPages = Convert.ToInt32(e.NumberOfPages);
-                viewModel.ErrorMessage = e.ErrorMessage;
-                viewModel.RunningStarted = e.RunningStarted;
-                viewModel.Running = e.Running;
-                viewModel.Status = e.CurrentStatus;
-                var mpages = new List<Page>();
-                mpages.AddRange(e.MissingPages);
-                viewModel.MissingPages = mpages;
-                viewModel.DetermineStatusColor();
-                publicationViewModels.Add(viewModel);
-            }
-            // Sort by color - red, yellow, green
-            var newans = new List<PublicationViewModel>(publicationViewModels.Count);
-            newans.AddRange(publicationViewModels.Where(vm => vm.CssClass == "danger"));
-            newans.AddRange(publicationViewModels.Where(vm => vm.CssClass == "warning"));
-            newans.AddRange(publicationViewModels.Where(vm => vm.CssClass == "success"));
+            var publicationDepths = DbService.Instance.GetDescendantPublicationDepths(currentUser.Publication);
 
-            oldVm.PublicationViewModels = newans;
-            return View(oldVm);
+                                                        //Fill the main list of publications
+            var publicationViewModels = new List<PublicationViewModel>();
+            foreach (var pd in publicationDepths.Where(p => p.Publication.Editions.Count > 0))
+            {
+                var pvm = new PublicationViewModel();
+                var publication = pd.Publication;
+                var edition = publication.Editions.LastOrDefault();
+                if (edition == null) continue;
+                pvm.Name = publication.Name;
+                pvm.NumberOfPages = Convert.ToInt32(edition.NumberOfPages);
+                pvm.ErrorMessage = edition.ErrorMessage;
+                pvm.RunningStarted = edition.RunningStarted;
+                pvm.Running = edition.Running;
+                pvm.Status = edition.CurrentStatus;
+                var mpages = new List<Page>();
+                mpages.AddRange(edition.MissingPages);
+                pvm.MissingPages = mpages;
+                pvm.DetermineStatusColor();
+                publicationViewModels.Add(pvm);
+            }
+                                                        // Sort by color - red, yellow, green
+            var sortedPubs = new List<PublicationViewModel>(publicationViewModels.Count);
+            sortedPubs.AddRange(publicationViewModels.Where(pvm => pvm.CssClass == "danger"));
+            sortedPubs.AddRange(publicationViewModels.Where(pvm => pvm.CssClass == "warning"));
+            sortedPubs.AddRange(publicationViewModels.Where(pvm => pvm.CssClass == "success"));
+
+            viewModel.PublicationViewModels = sortedPubs;
+
+                                                        //Fill the filtering dropdown box with publications
+            var publicationDropdownItems = new List<SelectListItem>(publicationDepths.Count);
+            publicationDropdownItems.AddRange(publicationDepths.Select(pd => new SelectListItem
+            {
+                Value = pd.Publication.Id.ToString(), 
+                Text = new string('-', pd.Depth) + pd.Publication.Name
+            }));
+
+            viewModel.PublicationDropdownItems = publicationDropdownItems;
+
+            return View(viewModel);
 
         }
 

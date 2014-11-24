@@ -1,20 +1,20 @@
-@model JohannesVidnerProject.Models.Home.IndexViewModel
+﻿@model JohannesVidnerProject.Models.Home.IndexViewModel
 @Styles.Render("~/Content/PublicationList")
-
+<br/>
 <div>
     @using (Html.BeginForm("Index", "Home", FormMethod.Get))
     {
     <div class="form-horizontal">
         <div class="form-group">
-            <div class="col-md-6"></div>
-            <div class="col-md-3">
-                <select class="form-control" name="p">
-                    <option value="1">Blah</option>
-                    <option value="2">Blah blah</option>
-                </select>
+            <div class="col-md-7"></div>
+            <div class="col-md-2">
+                @Html.DropDownListFor(m => m.p, Model.PublicationDropdownItems, new {@class = "form-control"})
             </div>
-            <div class="col-md-3">
-                <input type="text" class="form-control" placeholder="Search..." name="q" />
+            <div class="col-md-2">
+                @Html.TextBoxFor(m => m.q, new {@class = "form-control", placeholder = "Search..."})
+            </div>
+            <div class="col-md-1">
+                <input type="submit" class="btn" value="Search"/>
             </div>
         </div>
     </div>

@@ -83,5 +83,23 @@ namespace Services
                 AddChildrenRecursively(list, child);
             }
         }
+
+        public List<PublicationDepth> GetDescendantPublicationDepths(Publication parentPublication,
+                                                                     Func<Publication, string> ordering = null)
+        {
+            if (ordering == null) ordering = p => p.Name;
+            var ans = new List<PublicationDepth>();
+            AddChildrenRecursively(ans, parentPublication, 0, ordering);
+            return ans;
+        }
+
+        private static void AddChildrenRecursively(ICollection<PublicationDepth> list, Publication pub, int depth, Func<Publication, string> ordering)
+        {
+            list.Add(new PublicationDepth(pub, depth));
+            foreach (var childPublication in pub.ChildPublications.OrderBy(ordering))
+            {
+                AddChildrenRecursively(list, childPublication, depth + 1, ordering);
+            }
+        }
     }
 }

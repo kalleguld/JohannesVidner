@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Web.Mvc;
 using Model;
 
 namespace JohannesVidnerProject.Models.Home
@@ -20,6 +21,7 @@ namespace JohannesVidnerProject.Models.Home
         public int p { get; set; }
 
         public ICollection<PublicationViewModel> PublicationViewModels { get; set; }
+        public ICollection<SelectListItem> PublicationDropdownItems { get; set; } 
     }
 
     public class PublicationViewModel
