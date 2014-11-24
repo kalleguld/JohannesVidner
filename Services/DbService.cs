@@ -65,6 +65,7 @@ namespace Services
             if (user == null) return null;
             if (!user.HasPassword(password)) return null;
             return user;
+
         }
 
         public ICollection<Publication> GetPublications(User user)
