@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using JohannesVidnerProject.Models;
+using JohannesVidnerProject.Models.Home;
 using Microsoft.Ajax.Utilities;
 using Microsoft.AspNet.Identity.Owin;
 using Model;
@@ -16,18 +16,21 @@ namespace JohannesVidnerProject.Controllers
     public class HomeController : Controller
     {
 
-        public ActionResult Index()
+        public ActionResult Index(IndexViewModel oldVm)
         {
+            if (oldVm == null) oldVm = new IndexViewModel();
+
             var currentUser = Session.GetCurrentUser();
             if (currentUser == null)
             {
                 return RedirectToAction("Login", "Home");
             }
-            var ans = new List<HomeIndexViewModel>();
+
+            var publicationViewModels = new List<PublicationViewModel>();
             var publications = DbService.Instance.GetPublications(currentUser);
             foreach (var publication in publications)
             {
-                var viewModel = new HomeIndexViewModel();
+                var viewModel = new PublicationViewModel();
                 var e = publication.Editions.Last();
                 viewModel.Name = publication.Name;
                 viewModel.NumberOfPages = Convert.ToInt32(e.NumberOfPages);
@@ -39,16 +42,18 @@ namespace JohannesVidnerProject.Controllers
                 mpages.AddRange(e.MissingPages);
                 viewModel.MissingPages = mpages;
                 viewModel.DetermineStatusColor();
-                ans.Add(viewModel);
+                publicationViewModels.Add(viewModel);
             }
             // Sort by name
-            var ans2 = ans.OrderBy(vm => vm.Name);
+            var ans2 = publicationViewModels.OrderBy(vm => vm.Name);
             // Sort by color - red, yellow, green
-            var newans = new List<HomeIndexViewModel>(ans.Count);
+            var newans = new List<PublicationViewModel>(publicationViewModels.Count);
             newans.AddRange(ans2.Where(vm => vm.CssClass == "danger"));
             newans.AddRange(ans2.Where(vm => vm.CssClass == "warning"));
             newans.AddRange(ans2.Where(vm => vm.CssClass == "success"));
-            return View(newans);
+
+            oldVm.PublicationViewModels = newans;
+            return View(oldVm);
         }
 
 

@@ -1,14 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Microsoft.Ajax.Utilities;
 using Model;
 
-namespace JohannesVidnerProject.Models
+namespace JohannesVidnerProject.Models.Home
 {
-    public class HomeIndexViewModel
+
+    public class IndexViewModel
     {
+        //The name of these two properties must be short, since they become part of the url when searching
+
+        /// <summary>
+        /// The search query
+        /// </summary>
+        public string q { get; set; }
+
+        /// <summary>
+        /// The ID of the selected publication
+        /// </summary>
+        public int p { get; set; }
+
+        public ICollection<PublicationViewModel> PublicationViewModels { get; set; }
+    }
+
+    public class PublicationViewModel
+    {
+        
+
         public string Name { get; set; }
         public DateTime RunningStarted { get; set; }
         public int NumberOfPages { get; set; }

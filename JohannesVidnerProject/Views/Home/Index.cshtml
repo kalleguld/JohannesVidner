@@ -1,5 +1,5 @@
-﻿@model System.Collections.Generic.List<JohannesVidnerProject.Models.HomeIndexViewModel>
-@Styles.Render("~/Content/PublicationList")&nbsp;
+﻿@model JohannesVidnerProject.Models.Home.IndexViewModel
+@Styles.Render("~/Content/PublicationList")
 
 <div>
     @using (Html.BeginForm("Index", "Home", FormMethod.Get))
@@ -22,7 +22,7 @@
 </div>
 <hr/>
 <div>
-    @foreach (var p in Model)
+    @foreach (var p in Model.PublicationViewModels)
     {
         <div class='alert alert-@p.CssClass' role="alert" onclick="location.href='@Url.Action("Details", "PublicationList")'">
             <div class='line1'>
