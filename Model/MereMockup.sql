@@ -1,6 +1,9 @@
 
 --Kør SQLQueryDatabaseUdtræk først
 
+use [JohannesVidner]
+go
+
 INSERT INTO PublicationSet([Name],[ParentPublicationId],[ShortName]) VALUES('Lacus Mauris Limited',1,'Xanthus');
 INSERT INTO PublicationSet([Name],[ParentPublicationId],[ShortName]) VALUES('Ipsum Corp.',8,'Caldwell');
 INSERT INTO PublicationSet([Name],[ParentPublicationId],[ShortName]) VALUES('Ac Ipsum Consulting',9,'Regina');

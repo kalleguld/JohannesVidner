@@ -1,8 +1,28 @@
-﻿@model System.Collections.Generic.List<JohannesVidnerProject.Models.HomeIndexViewModel>
-
-@Styles.Render("~/Content/PublicationList")&nbsp;
+﻿@model JohannesVidnerProject.Models.Home.IndexViewModel
+@Styles.Render("~/Content/PublicationList")
+<br/>
 <div>
-    @foreach (var p in Model)
+    @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+    {
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-7"></div>
+            <div class="col-md-2">
+                @Html.DropDownListFor(m => m.p, Model.PublicationDropdownItems, new {@class = "form-control"})
+            </div>
+            <div class="col-md-2">
+                @Html.TextBoxFor(m => m.q, new {@class = "form-control", placeholder = "Search..."})
+            </div>
+            <div class="col-md-1">
+                <input type="submit" class="btn" value="Search"/>
+            </div>
+        </div>
+    </div>
+    }
+</div>
+<hr/>
+<div>
+    @foreach (var p in Model.PublicationViewModels)
     {
         <div class='alert alert-@p.CssClass' role="alert" onclick="location.href='@Url.Action("Details", "PublicationList")'">
             <div class='line1'>

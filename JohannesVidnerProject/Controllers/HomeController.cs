@@ -1,13 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+using System.Drawing.Drawing2D;
 using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
+using System.Text.RegularExpressions;
 using System.Web.Mvc;
-using JohannesVidnerProject.Models;
-using Microsoft.Ajax.Utilities;
-using Microsoft.AspNet.Identity.Owin;
+using JohannesVidnerProject.Models.Home;
 using Model;
 using Services;
 
@@ -16,38 +14,81 @@ namespace JohannesVidnerProject.Controllers
     public class HomeController : Controller
     {
 
-        public ActionResult Index()
+        private readonly DbService dbService = DbService.Instance;
+
+        public ActionResult Index(IndexViewModel viewModel)
         {
+            if (viewModel == null) viewModel = new IndexViewModel();
+
+                                                        //check for login
             var currentUser = Session.GetCurrentUser();
             if (currentUser == null)
             {
                 return RedirectToAction("Login", "Home");
             }
-            var viewModels = new List<HomeIndexViewModel>();
-            var publications = DbService.Instance.GetdescendantPublications(currentUser.Publication);
-            publications.RemoveAll(p => p.Editions.Count == 0);
-            foreach (var publication in publications)
+
+            //Take the topmost publication 
+                                                        //from the dropdown
+            var topmostPublication = TopmostPublication(viewModel.p, currentUser);
+            //Fill the main list of publications
+            IEnumerable<Publication> filteredPublications = dbService.GetdescendantPublications(topmostPublication);
+            filteredPublications = filteredPublications.Where(p => p.Editions.Any());
+
+            if(!string.IsNullOrEmpty(viewModel.q))
+                 filteredPublications = SearchPublications(filteredPublications, viewModel.q);
+
+            var publicationViewModels = new List<PublicationViewModel>();
+            foreach (var publication in filteredPublications)
             {
-                var viewModel = new HomeIndexViewModel();
-                var e = publication.Editions.Last();
-                viewModel.Name = publication.Name;
-                viewModel.NumberOfPages = Convert.ToInt32(e.NumberOfPages);
-                viewModel.ErrorMessage = e.ErrorMessage;
-                viewModel.RunningStarted = e.RunningStarted;
-                viewModel.Running = e.Running;
-                viewModel.Status = e.CurrentStatus;
-                var mpages = new List<Page>();
-                mpages.AddRange(e.MissingPages);
-                viewModel.MissingPages = mpages;
-                viewModel.DetermineStatusColor();
-                viewModels.Add(viewModel);
+                var edition = publication.Editions.LastOrDefault();
+                if (edition == null) continue;
+                var pvm = new PublicationViewModel
+                {
+                    Name = publication.Name,
+                    NumberOfPages = Convert.ToInt32(edition.NumberOfPages),
+                    ErrorMessage = edition.ErrorMessage,
+                    RunningStarted = edition.RunningStarted,
+                    Running = edition.Running,
+                    Status = edition.CurrentStatus,
+                    MissingPages = new List<Page>(edition.MissingPages)
+                };
+                pvm.DetermineStatusColor();
+                publicationViewModels.Add(pvm);
             }
-            // Sort by color - red, yellow, green
-            var ans = new List<HomeIndexViewModel>(viewModels.Count);
-            ans.AddRange(viewModels.Where(vm => vm.CssClass == "danger"));
-            ans.AddRange(viewModels.Where(vm => vm.CssClass == "warning"));
-            ans.AddRange(viewModels.Where(vm => vm.CssClass == "success"));
-            return View(ans);
+                                                        // Sort by color - red, yellow, green
+            var sortedPubs = new List<PublicationViewModel>(publicationViewModels.Count);
+            sortedPubs.AddRange(publicationViewModels.Where(pvm => pvm.CssClass == "danger"));
+            sortedPubs.AddRange(publicationViewModels.Where(pvm => pvm.CssClass == "warning"));
+            sortedPubs.AddRange(publicationViewModels.Where(pvm => pvm.CssClass == "success"));
+
+            viewModel.PublicationViewModels = sortedPubs;
+
+                                                        //Fill the filtering dropdown box with publications
+            var publicationDepths = DbService.Instance.GetDescendantPublicationDepths(currentUser.Publication);
+            var publicationDropdownItems = new List<SelectListItem>(publicationDepths.Count);
+            publicationDropdownItems.AddRange(publicationDepths.Select(pd => new SelectListItem
+            {
+                Value = pd.Publication.Id.ToString(), 
+                Text = new string('-', pd.Depth) + pd.Publication.Name
+            }));
+
+            viewModel.PublicationDropdownItems = publicationDropdownItems;
+
+            return View(viewModel);
+
+        }
+
+        private Publication TopmostPublication(int publicationId, User currentUser)
+        {
+            var topmostPublication = currentUser.Publication;
+            var requestedPublication = dbService.GetPublicationById(publicationId);
+            if (requestedPublication == null) return topmostPublication;
+            topmostPublication = requestedPublication;
+            if (!topmostPublication.IsDescendant(currentUser.Publication))
+            {
+                topmostPublication = currentUser.Publication;
+            }
+            return topmostPublication;
         }
 
 
@@ -85,6 +126,21 @@ namespace JohannesVidnerProject.Controllers
             ModelState.AddModelError("", "Error in username or password");
             model.Password = "";
             return View(model);
+        }
+
+        public IEnumerable<Publication> SearchPublications(IEnumerable<Publication> publications, string searchString)
+        {
+            
+            var foundPublications = new List<Publication>();
+            searchString = searchString.ToLower();
+            var stringArray = searchString.Split(' ');            
+            foreach (var pub in publications)
+            {
+                int foundCount = stringArray.Count(s => pub.Name.ToLower().Contains(s));
+                if(foundCount == stringArray.Length)
+                    foundPublications.Add(pub);
+            }                       
+            return foundPublications;
         }
     }
 }
