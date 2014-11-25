@@ -109,7 +109,7 @@ namespace JohannesVidnerProject.Controllers
             if (!targetUser.Publication.IsDescendant(currentUser.Publication))
             {
                 //currentUser is trying to move a user who doesn't work for currentUser
-                return RedirectToAction("Error", "Home");
+                return RedirectToAction("Index", "Home");
             }
             if (targetUser.PublicationId != viewModel.SelectedPublicationId)
             {
@@ -117,7 +117,7 @@ namespace JohannesVidnerProject.Controllers
                 if (!newPublication.IsDescendant(currentUser.Publication))
                 {
                     //currentUser is trying to make another user work at a place he can't
-                    return RedirectToAction("Error", "Home");
+                    return RedirectToAction("Index", "Home");
                 }
                 targetUser.Publication = newPublication;
             }
@@ -168,7 +168,7 @@ namespace JohannesVidnerProject.Controllers
             if (!targetUser.Publication.IsDescendant(currentUser.Publication))
             {
                 //User tried to delete another user who doesn't work for him
-                return RedirectToAction("Error", "Home");
+                return RedirectToAction("Index", "Home");
             }
 
             _dbService.Delete(targetUser);
