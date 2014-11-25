@@ -14,6 +14,8 @@ namespace JohannesVidnerProject.Controllers
     public class HomeController : Controller
     {
 
+        private readonly DbService dbService = DbService.Instance;
+
         public ActionResult Index(IndexViewModel viewModel)
         {
             if (viewModel == null) viewModel = new IndexViewModel();
@@ -25,10 +27,11 @@ namespace JohannesVidnerProject.Controllers
                 return RedirectToAction("Login", "Home");
             }
 
-            var dbService = DbService.Instance;
-
-                                                        //Fill the main list of publications
-            IEnumerable<Publication> filteredPublications = dbService.GetdescendantPublications(currentUser.Publication);
+            //Take the topmost publication 
+                                                        //from the dropdown
+            var topmostPublication = TopmostPublication(viewModel.p, currentUser);
+            //Fill the main list of publications
+            IEnumerable<Publication> filteredPublications = dbService.GetdescendantPublications(topmostPublication);
             filteredPublications = filteredPublications.Where(p => p.Editions.Any());
 
             if(!string.IsNullOrEmpty(viewModel.q))
@@ -37,18 +40,18 @@ namespace JohannesVidnerProject.Controllers
             var publicationViewModels = new List<PublicationViewModel>();
             foreach (var publication in filteredPublications)
             {
-                var pvm = new PublicationViewModel();
                 var edition = publication.Editions.LastOrDefault();
                 if (edition == null) continue;
-                pvm.Name = publication.Name;
-                pvm.NumberOfPages = Convert.ToInt32(edition.NumberOfPages);
-                pvm.ErrorMessage = edition.ErrorMessage;
-                pvm.RunningStarted = edition.RunningStarted;
-                pvm.Running = edition.Running;
-                pvm.Status = edition.CurrentStatus;
-                var mpages = new List<Page>();
-                mpages.AddRange(edition.MissingPages);
-                pvm.MissingPages = mpages;
+                var pvm = new PublicationViewModel
+                {
+                    Name = publication.Name,
+                    NumberOfPages = Convert.ToInt32(edition.NumberOfPages),
+                    ErrorMessage = edition.ErrorMessage,
+                    RunningStarted = edition.RunningStarted,
+                    Running = edition.Running,
+                    Status = edition.CurrentStatus,
+                    MissingPages = new List<Page>(edition.MissingPages)
+                };
                 pvm.DetermineStatusColor();
                 publicationViewModels.Add(pvm);
             }
@@ -73,6 +76,19 @@ namespace JohannesVidnerProject.Controllers
 
             return View(viewModel);
 
+        }
+
+        private Publication TopmostPublication(int publicationId, User currentUser)
+        {
+            var topmostPublication = currentUser.Publication;
+            var requestedPublication = dbService.GetPublicationById(publicationId);
+            if (requestedPublication == null) return topmostPublication;
+            topmostPublication = requestedPublication;
+            if (!topmostPublication.IsDescendant(currentUser.Publication))
+            {
+                topmostPublication = currentUser.Publication;
+            }
+            return topmostPublication;
         }
 
 
