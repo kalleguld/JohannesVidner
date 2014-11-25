@@ -13,6 +13,8 @@ namespace JohannesVidnerProject.Controllers
 {
     public class UsersController : Controller
     {
+        private readonly DbService _dbService  = DbService.Instance;
+
         public ActionResult Index()
         {
             var currentUser = Session.GetCurrentUser();
@@ -53,8 +55,7 @@ namespace JohannesVidnerProject.Controllers
             var redirect = GetRedirectIfNotUserAdmin(currentUser);
             if (redirect != null) return redirect;
 
-            var dbService = DbService.Instance;
-            var targetPublication = dbService.GetPublicationById(viewModel.SelectedPublicationId);
+            var targetPublication = _dbService.GetPublicationById(viewModel.SelectedPublicationId);
             
             if (!targetPublication.IsDescendant(currentUser.Publication))
             {
@@ -70,7 +71,7 @@ namespace JohannesVidnerProject.Controllers
                 UserAdminAccess =   viewModel.UserAdmin,
                 WriteAccess =       viewModel.WriteAccess
             };
-            dbService.Create(user);
+            _dbService.Create(user);
 
             return RedirectToAction("Index");
         }
@@ -87,8 +88,7 @@ namespace JohannesVidnerProject.Controllers
             {
                 return RedirectToAction("Index");
             }
-            var dbService = DbService.Instance;
-            var user = dbService.GetUserById(userId);
+            var user = _dbService.GetUserById(userId);
             if (user == null)
             {
                 return RedirectToAction("Index");
@@ -105,8 +105,7 @@ namespace JohannesVidnerProject.Controllers
             var redirect = GetRedirectIfNotUserAdmin(currentUser);
             if (redirect != null) return redirect;
 
-            var dbService = DbService.Instance;
-            var targetUser = dbService.GetUserById(viewModel.UserId);
+            var targetUser = _dbService.GetUserById(viewModel.UserId);
             if (!targetUser.Publication.IsDescendant(currentUser.Publication))
             {
                 //currentUser is trying to move a user who doesn't work for currentUser
@@ -114,7 +113,7 @@ namespace JohannesVidnerProject.Controllers
             }
             if (targetUser.PublicationId != viewModel.SelectedPublicationId)
             {
-                var newPublication = dbService.GetPublicationById(viewModel.SelectedPublicationId);
+                var newPublication = _dbService.GetPublicationById(viewModel.SelectedPublicationId);
                 if (!newPublication.IsDescendant(currentUser.Publication))
                 {
                     //currentUser is trying to make another user work at a place he can't
@@ -131,7 +130,7 @@ namespace JohannesVidnerProject.Controllers
             targetUser.Username = viewModel.Username;
             targetUser.UserAdminAccess = viewModel.UserAdmin;
             targetUser.WriteAccess = viewModel.WriteAccess;
-            dbService.Update(targetUser);
+            _dbService.Update(targetUser);
 
             return RedirectToAction("Index", "Users");
         }
@@ -163,13 +162,16 @@ namespace JohannesVidnerProject.Controllers
             var redirect = GetRedirectIfNotUserAdmin(currentUser);
             if (redirect != null) return redirect;
             var targetUserId = vm.UserId;
-            var dbService = DbService.Instance;
-            var targetUser = dbService.GetUserById(targetUserId);
+            var targetUser = _dbService.GetUserById(targetUserId);
 
             if (targetUser == null) return RedirectToAction("Index");
-            if (!targetUser.Publication.IsDescendant(currentUser.Publication)) return RedirectToAction("Error", "Home");
+            if (!targetUser.Publication.IsDescendant(currentUser.Publication))
+            {
+                //User tried to delete another user who doesn't work for him
+                return RedirectToAction("Error", "Home");
+            }
 
-            dbService.Delete(targetUser);
+            _dbService.Delete(targetUser);
             return RedirectToAction("Index");
         }
 
@@ -182,8 +184,7 @@ namespace JohannesVidnerProject.Controllers
             {
                 return null;
             }
-            var dbService = DbService.Instance;
-            var user = dbService.GetUserById(userId);
+            var user = _dbService.GetUserById(userId);
             return user;
         }
         private ActionResult GetRedirectIfNotUserAdmin(User user)

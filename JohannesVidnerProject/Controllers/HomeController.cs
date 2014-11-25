@@ -14,7 +14,7 @@ namespace JohannesVidnerProject.Controllers
     public class HomeController : Controller
     {
 
-        private readonly DbService dbService = DbService.Instance;
+        private readonly DbService _dbService = DbService.Instance;
 
         public ActionResult Index(IndexViewModel viewModel)
         {
@@ -31,7 +31,7 @@ namespace JohannesVidnerProject.Controllers
                                                         //from the dropdown
             var topmostPublication = TopmostPublication(viewModel.p, currentUser);
             //Fill the main list of publications
-            IEnumerable<Publication> filteredPublications = dbService.GetdescendantPublications(topmostPublication);
+            IEnumerable<Publication> filteredPublications = _dbService.GetdescendantPublications(topmostPublication);
             filteredPublications = filteredPublications.Where(p => p.Editions.Any());
 
             if(!string.IsNullOrEmpty(viewModel.q))
@@ -81,7 +81,7 @@ namespace JohannesVidnerProject.Controllers
         private Publication TopmostPublication(int publicationId, User currentUser)
         {
             var topmostPublication = currentUser.Publication;
-            var requestedPublication = dbService.GetPublicationById(publicationId);
+            var requestedPublication = _dbService.GetPublicationById(publicationId);
             if (requestedPublication == null) return topmostPublication;
             topmostPublication = requestedPublication;
             if (!topmostPublication.IsDescendant(currentUser.Publication))
@@ -116,7 +116,7 @@ namespace JohannesVidnerProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginViewModel model)
         {
-            var newUser = DbService.Instance.GetUserByUsernameAndPassword(model.Username, model.Password);
+            var newUser = _dbService.GetUserByUsernameAndPassword(model.Username, model.Password);
             Session.SetCurrentUser(newUser);
 
             if (newUser != null)
