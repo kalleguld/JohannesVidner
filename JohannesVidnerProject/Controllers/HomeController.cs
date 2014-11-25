@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web.Mvc;
 using JohannesVidnerProject.Models.Home;
 using Model;
@@ -29,7 +31,8 @@ namespace JohannesVidnerProject.Controllers
             IEnumerable<Publication> filteredPublications = dbService.GetdescendantPublications(currentUser.Publication);
             filteredPublications = filteredPublications.Where(p => p.Editions.Any());
 
-                        //TODO filter filteredPublications further here
+            if(!string.IsNullOrEmpty(viewModel.q))
+                 filteredPublications = SearchPublications(filteredPublications, viewModel.q);
 
             var publicationViewModels = new List<PublicationViewModel>();
             foreach (var publication in filteredPublications)
@@ -107,6 +110,21 @@ namespace JohannesVidnerProject.Controllers
             ModelState.AddModelError("", "Error in username or password");
             model.Password = "";
             return View(model);
+        }
+
+        public IEnumerable<Publication> SearchPublications(IEnumerable<Publication> publications, string searchString)
+        {
+            
+            var foundPublications = new List<Publication>();
+            searchString = searchString.ToLower();
+            var stringArray = searchString.Split(' ');            
+            foreach (var pub in publications)
+            {
+                int foundCount = stringArray.Count(s => pub.Name.ToLower().Contains(s));
+                if(foundCount == stringArray.Length)
+                    foundPublications.Add(pub);
+            }                       
+            return foundPublications;
         }
     }
 }
