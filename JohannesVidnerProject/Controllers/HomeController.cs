@@ -25,8 +25,14 @@ namespace JohannesVidnerProject.Controllers
 
             var dbService = DbService.Instance;
 
+            var topmostPublication = currentUser.Publication;
+            var requestedPublicationId = dbService.GetPublicationById(viewModel.p);
+            if (requestedPublicationId != null)
+            {
+                topmostPublication = requestedPublicationId;
+            }
                                                         //Fill the main list of publications
-            IEnumerable<Publication> filteredPublications = dbService.GetdescendantPublications(currentUser.Publication);
+            IEnumerable<Publication> filteredPublications = dbService.GetdescendantPublications(topmostPublication);
             filteredPublications = filteredPublications.Where(p => p.Editions.Any());
 
                         //TODO filter filteredPublications further here
@@ -34,18 +40,18 @@ namespace JohannesVidnerProject.Controllers
             var publicationViewModels = new List<PublicationViewModel>();
             foreach (var publication in filteredPublications)
             {
-                var pvm = new PublicationViewModel();
                 var edition = publication.Editions.LastOrDefault();
                 if (edition == null) continue;
-                pvm.Name = publication.Name;
-                pvm.NumberOfPages = Convert.ToInt32(edition.NumberOfPages);
-                pvm.ErrorMessage = edition.ErrorMessage;
-                pvm.RunningStarted = edition.RunningStarted;
-                pvm.Running = edition.Running;
-                pvm.Status = edition.CurrentStatus;
-                var mpages = new List<Page>();
-                mpages.AddRange(edition.MissingPages);
-                pvm.MissingPages = mpages;
+                var pvm = new PublicationViewModel
+                {
+                    Name = publication.Name,
+                    NumberOfPages = Convert.ToInt32(edition.NumberOfPages),
+                    ErrorMessage = edition.ErrorMessage,
+                    RunningStarted = edition.RunningStarted,
+                    Running = edition.Running,
+                    Status = edition.CurrentStatus,
+                    MissingPages = new List<Page>(edition.MissingPages)
+                };
                 pvm.DetermineStatusColor();
                 publicationViewModels.Add(pvm);
             }
