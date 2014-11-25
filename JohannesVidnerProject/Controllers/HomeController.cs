@@ -12,6 +12,8 @@ namespace JohannesVidnerProject.Controllers
     public class HomeController : Controller
     {
 
+        private readonly DbService dbService = DbService.Instance;
+
         public ActionResult Index(IndexViewModel viewModel)
         {
             if (viewModel == null) viewModel = new IndexViewModel();
@@ -23,15 +25,10 @@ namespace JohannesVidnerProject.Controllers
                 return RedirectToAction("Login", "Home");
             }
 
-            var dbService = DbService.Instance;
-
-            var topmostPublication = currentUser.Publication;
-            var requestedPublicationId = dbService.GetPublicationById(viewModel.p);
-            if (requestedPublicationId != null)
-            {
-                topmostPublication = requestedPublicationId;
-            }
-                                                        //Fill the main list of publications
+            //Take the topmost publication 
+                                                        //from the dropdown
+            var topmostPublication = TopmostPublication(viewModel.p, currentUser);
+            //Fill the main list of publications
             IEnumerable<Publication> filteredPublications = dbService.GetdescendantPublications(topmostPublication);
             filteredPublications = filteredPublications.Where(p => p.Editions.Any());
 
@@ -76,6 +73,19 @@ namespace JohannesVidnerProject.Controllers
 
             return View(viewModel);
 
+        }
+
+        private Publication TopmostPublication(int publicationId, User currentUser)
+        {
+            var topmostPublication = currentUser.Publication;
+            var requestedPublication = dbService.GetPublicationById(publicationId);
+            if (requestedPublication == null) return topmostPublication;
+            topmostPublication = requestedPublication;
+            if (!topmostPublication.IsDescendant(currentUser.Publication))
+            {
+                topmostPublication = currentUser.Publication;
+            }
+            return topmostPublication;
         }
 
 
