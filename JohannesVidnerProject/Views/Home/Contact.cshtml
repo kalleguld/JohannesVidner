@@ -1,4 +1,5 @@
-﻿@{
+﻿@using Resources
+@{
     ViewBag.Title = "Contact";
 }
 <h2>@ViewBag.Title</h2>
@@ -10,10 +11,10 @@
     Danmark<br/>
 </div>
 <div class="mobileFloatLeft">
-    Telefon +45 7023 3544<br/>
-    Email: <a class="darklink" href="mailto:info@visiolink.com">info@visiolink.com</a><br/>
-    Support: <a class="darklink" href="mailto:support@visiolink.com">support@visiolink.com</a><br/>
-    CVR-nr: 27665314
+    @langResources.Views_Home_Contact_telephone +45 7023 3544<br/>
+    @langResources.Views_Home_Contact_email: <a class="darklink" href="mailto:info@visiolink.com">info@visiolink.com</a><br/>
+    @langResources.Views_Home_Contact_support: <a class="darklink" href="mailto:support@visiolink.com">support@visiolink.com</a><br/>
+    @langResources.Views_Home_Contact_cvr: 27665314
 </div>
 <div class="socialMedia">
     <p>
