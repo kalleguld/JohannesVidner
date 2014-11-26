@@ -23,6 +23,8 @@ namespace JohannesVidnerProject.Controllers
             {
                 return RedirectToAction("Login", "Home");
             }
+            
+            // Fill list with homeindexviewmodels:
             var viewModels = new List<HomeIndexViewModel>();
             var publications = DbService.Instance.GetdescendantPublications(currentUser.Publication);
             publications.RemoveAll(p => p.Editions.Count == 0);
@@ -36,6 +38,7 @@ namespace JohannesVidnerProject.Controllers
                 viewModel.RunningStarted = e.RunningStarted;
                 viewModel.Running = e.Running;
                 viewModel.Status = e.CurrentStatus;
+                viewModel.Id = publication.Id;
                 var mpages = new List<Page>();
                 mpages.AddRange(e.MissingPages);
                 viewModel.MissingPages = mpages;
@@ -48,6 +51,32 @@ namespace JohannesVidnerProject.Controllers
             ans.AddRange(viewModels.Where(vm => vm.CssClass == "warning"));
             ans.AddRange(viewModels.Where(vm => vm.CssClass == "success"));
             return View(ans);
+        }
+
+        public ActionResult Details(DetailViewModel hvm)
+        {
+            var id = Convert.ToInt32(Request.RequestContext.RouteData.Values["id"]);
+            var publication = DbService.Instance.GetPublicationById(id);
+            var edition = publication.Editions.Last();
+            var mpages = new List<Page>();
+            mpages.AddRange(edition.MissingPages);
+            var dmv = new DetailViewModel
+            {
+                ShortName = publication.ShortName,
+                EditionId = edition.Id,
+                ErrorMessage = edition.ErrorMessage,
+                RunningStarted = edition.RunningStarted,
+                LogText = edition.LogText,
+                NumberOfPages = edition.NumberOfPages,
+                MaxMissingPages = edition.MaxMissingPages,
+                PublicationId = edition.PublicationId,
+                LastLogCheck = edition.LastLogCheck,
+                ExpectedReleaseTime = edition.ExpectedReleaseTime,
+                MissingPages = mpages,
+                Status = edition.CurrentStatus
+            };
+            dmv.DetermineStatusColor();
+            return View(dmv);
         }
 
 
