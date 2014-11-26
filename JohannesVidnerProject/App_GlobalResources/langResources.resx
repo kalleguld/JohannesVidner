@@ -264,4 +264,10 @@
   <data name="Views_Users_Index_workplace" xml:space="preserve">
     <value>Workplace</value>
   </data>
+  <data name="Views_Home_Index_SearchFieldPlaceholder" xml:space="preserve">
+    <value>Search...</value>
+  </data>
+  <data name="Views_Home_Index_SearchButton" xml:space="preserve">
+    <value>Search</value>
+  </data>
 </root>

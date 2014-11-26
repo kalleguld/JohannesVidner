@@ -16,10 +16,16 @@
                 @Html.DropDownListFor(m => m.p, Model.PublicationDropdownItems, new {@class = "form-control"})
             </div>
             <div class="col-md-2">
-                @Html.TextBoxFor(m => m.q, new {@class = "form-control", placeholder = "Search..."})
+                @Html.TextBoxFor(m => m.q, new
+                {
+                    @class = "form-control", 
+                    placeholder = langResources.Views_Home_Index_SearchFieldPlaceholder
+                })
             </div>
             <div class="col-md-1">
-                <input type="submit" class="btn" value="Search"/>
+                <input type="submit" 
+                       class="btn" 
+                       value="@langResources.Views_Home_Index_SearchButton"/>
             </div>
         </div>
     </div>

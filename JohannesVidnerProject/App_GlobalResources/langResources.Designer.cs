@@ -187,6 +187,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Search.
+        /// </summary>
+        internal static string Views_Home_Index_SearchButton {
+            get {
+                return ResourceManager.GetString("Views_Home_Index_SearchButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search....
+        /// </summary>
+        internal static string Views_Home_Index_SearchFieldPlaceholder {
+            get {
+                return ResourceManager.GetString("Views_Home_Index_SearchFieldPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Uploaded and ready for realease.
         /// </summary>
         internal static string Views_Home_Index_sysMsg1 {
