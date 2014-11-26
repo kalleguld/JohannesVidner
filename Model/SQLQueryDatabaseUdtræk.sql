@@ -61,20 +61,21 @@ INSERT INTO EditionSet (RunningStarted,MaxMissingPages,Running,LogText,ErrorMess
 	);
 
 
-INSERT INTO UserSet (Username,PasswordText,Name,WriteAccess,UserAdminAccess,PublicationId) VALUES 
-	('VisioLinkAdmin','1234','VisioLink administrator',1,1,1),
-	('MhnAdmin','1234','Mhn administrator',1,1,2),
-	('MhnManager','1234','Mhn manager',1,0,2),
-	('MhnWorker','1234','Mhn sequrity worker',0,0,2),
-	('ShzAdmin','1234','Shz administrator',1,1,3),
-	('ShzManager','1234','Shz manager',1,0,3),
-	('ShzWorker','1234','Shz sequrity worker',0,0,3),
-	('DerInselBoteAdmin','1234','Der Insel-Bote administrator',1,1,4),
-	('DerInselBoteManager','1234','Der Insel-Bote manager',1,0,4),
-	('DerInselBoteWorker','1234','Der Insel-Bote sequrity worker',0,0,4),
-	('FlensburgerTageblattAdmin','1234','Flensburger Tageblatt administrator',1,1,6),
-	('FlensburgerTageblattManager','1234','Flensburger Tageblatt manager',1,0,6),
-	('FlensburgerTageblattWorker','1234','Flensburger Tageblatt sequrity worker',0,0,6);
+INSERT INTO UserSet (Username,PasswordText,Name,WriteAccess,UserAdminAccess,PublicationId,CultureName) VALUES 
+	('VisioLinkAdmin','1234','VisioLink administrator',1,1,1,'da'),
+	('MhnAdmin','1234','Mhn administrator',1,1,2, 'de'),
+	('MhnManager','1234','Mhn manager',1,0,2, 'de'),
+	('MhnWorker','1234','Mhn sequrity worker',0,0,2,'de'),
+	('ShzAdmin','1234','Shz administrator',1,1,3,'en'),
+	('ShzManager','1234','Shz manager',1,0,3,'en'),
+	('ShzWorker','1234','Shz sequrity worker',0,0,3,'en'),
+	('DerInselBoteAdmin','1234','Der Insel-Bote administrator',1,1,4,''),
+	('DerInselBoteManager','1234','Der Insel-Bote manager',1,0,4,''),
+	('DerInselBoteWorker','1234','Der Insel-Bote sequrity worker',0,0,4,''),
+	('FlensburgerTageblattAdmin','1234','Flensburger Tageblatt administrator',1,1,6,'de'),
+	('FlensburgerTageblattManager','1234','Flensburger Tageblatt manager',1,0,6,'de'),
+	('FlensburgerTageblattWorker','1234','Flensburger Tageblatt sequrity worker',0,0,6,'de'),
+	('asd','1234','asd administrator',1,1,1,'da');
 
 INSERT INTO PageSet (Section,PageNumber,EditionId) VALUES 
 	(2,3,2),

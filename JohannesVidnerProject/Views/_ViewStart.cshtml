@@ -7,7 +7,14 @@
     {
         if (!currentUser.CultureName.IsNullOrWhiteSpace())
         {
-            Culture = UICulture = currentUser.CultureName;
+            try
+            {
+
+                Culture = UICulture = currentUser.CultureName;
+            }
+            catch (CultureNotFoundException)
+            {
+            }
         }
         
     }
