@@ -153,11 +153,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_GlobalResources\langResources.da.designer.cs">
-      <DependentUpon>langResources.da.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="App_GlobalResources\langResources.en-GB.designer.cs">
       <DependentUpon>langResources.en-GB.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -280,12 +275,6 @@
     <Content Include="App_GlobalResources\langResources.en-GB.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>langResources.en-GB.designer.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_GlobalResources\langResources.da.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>langResources.da.designer.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <PropertyGroup>
