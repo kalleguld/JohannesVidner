@@ -142,6 +142,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Missing page: Section {0} page {1}.
+        /// </summary>
+        internal static string Views_Home_Index_MissingPages {
+            get {
+                return ResourceManager.GetString("Views_Home_Index_MissingPages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ok.
         /// </summary>
         internal static string Views_Home_Index_ok {
@@ -169,7 +178,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to pages.
+        ///   Looks up a localized string similar to {0} pages.
         /// </summary>
         internal static string Views_Home_Index_pages {
             get {
@@ -183,6 +192,15 @@ namespace Resources {
         internal static string Views_Home_Index_sysMsg1 {
             get {
                 return ResourceManager.GetString("Views_Home_Index_sysMsg1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Publications.
+        /// </summary>
+        internal static string Views_Home_Index_Title {
+            get {
+                return ResourceManager.GetString("Views_Home_Index_Title", resourceCulture);
             }
         }
         
@@ -250,6 +268,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Language.
+        /// </summary>
+        internal static string Views_Users_Create_ChooseLanguage {
+            get {
+                return ResourceManager.GetString("Views_Users_Create_ChooseLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create.
         /// </summary>
         internal static string Views_Users_Create_create {
@@ -291,6 +318,24 @@ namespace Resources {
         internal static string Views_Users_Delete_delete {
             get {
                 return ResourceManager.GetString("Views_Users_Delete_delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete the user {0} ({1})?.
+        /// </summary>
+        internal static string Views_Users_Delete_MainQuestion {
+            get {
+                return ResourceManager.GetString("Views_Users_Delete_MainQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete User.
+        /// </summary>
+        internal static string Views_Users_Delete_Title {
+            get {
+                return ResourceManager.GetString("Views_Users_Delete_Title", resourceCulture);
             }
         }
         
@@ -421,7 +466,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Navn.
+        ///   Looks up a localized string similar to Name.
         /// </summary>
         internal static string Views_Users_Index_name {
             get {

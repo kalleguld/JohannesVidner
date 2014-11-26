@@ -1,13 +1,16 @@
-﻿@using Resources
+﻿@using JohannesVidnerProject.Helpers
+@using Resources
 @model JohannesVidnerProject.Models.Users.DeleteUserViewModel
 
 @{
-    ViewBag.Title = "Delete User";
+    ViewBag.Title = langResources.Views_Users_Delete_Title;
 }
 
-<h2>Delete @Model.Username</h2>
+<h2>langResources.Views_Users_Delete_Title</h2>
 
-<h4>Are you sure you want to delete @Model.Username (@Model.Name)?</h4>
+<h4>
+    @langResources.Views_Users_Delete_MainQuestion.Fmt(@Model.Username, @Model.Name)
+</h4>
 
 @using (Html.BeginForm())
 {
@@ -15,7 +18,9 @@
     @Html.HiddenFor(m => m.UserId)
     @Html.HiddenFor(m => m.HasSeenConfirmation)
     <div >
-        <input type="submit" value="@langResources.Views_Users_Delete_delete" class="btn btn-danger" />
+        <input type="submit" 
+               value="@langResources.Views_Users_Delete_delete" 
+               class="btn btn-danger" />
         <a href="@Url.Action("Index")" class="btn btn-default">@langResources.Views_Users_Delete_cancel</a>
     </div>
 }

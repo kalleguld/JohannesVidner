@@ -144,6 +144,9 @@
   <data name="Views_Home_Index_errMsg4" xml:space="preserve">
     <value>Missing page from section</value>
   </data>
+  <data name="Views_Home_Index_MissingPages" xml:space="preserve">
+    <value>Missing page: Section {0} page {1}</value>
+  </data>
   <data name="Views_Home_Index_ok" xml:space="preserve">
     <value>Ok</value>
   </data>
@@ -154,10 +157,13 @@
     <value>page</value>
   </data>
   <data name="Views_Home_Index_pages" xml:space="preserve">
-    <value>pages</value>
+    <value>{0} pages</value>
   </data>
   <data name="Views_Home_Index_sysMsg1" xml:space="preserve">
     <value>Uploaded and ready for realease</value>
+  </data>
+  <data name="Views_Home_Index_Title" xml:space="preserve">
+    <value>Publications</value>
   </data>
   <data name="Views_Home_Login_login" xml:space="preserve">
     <value>Login</value>
@@ -180,6 +186,9 @@
   <data name="Views_Shared__LoginPartial_logoff" xml:space="preserve">
     <value>Logoff</value>
   </data>
+  <data name="Views_Users_Create_ChooseLanguage" xml:space="preserve">
+    <value>Language</value>
+  </data>
   <data name="Views_Users_Create_create" xml:space="preserve">
     <value>Create</value>
   </data>
@@ -194,6 +203,12 @@
   </data>
   <data name="Views_Users_Delete_delete" xml:space="preserve">
     <value>Delete</value>
+  </data>
+  <data name="Views_Users_Delete_MainQuestion" xml:space="preserve">
+    <value>Are you sure you want to delete the user {0} ({1})?</value>
+  </data>
+  <data name="Views_Users_Delete_Title" xml:space="preserve">
+    <value>Delete User</value>
   </data>
   <data name="Views_Users_Edit_back" xml:space="preserve">
     <value>Back to list</value>
@@ -238,7 +253,7 @@
     <value>Edit</value>
   </data>
   <data name="Views_Users_Index_name" xml:space="preserve">
-    <value>Navn</value>
+    <value>Name</value>
   </data>
   <data name="Views_Users_Index_username" xml:space="preserve">
     <value>Username</value>

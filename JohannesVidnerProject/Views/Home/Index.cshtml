@@ -1,6 +1,10 @@
-﻿@using Resources
+﻿@using JohannesVidnerProject.Helpers
+@using Resources
 @model JohannesVidnerProject.Models.Home.IndexViewModel
-@Styles.Render("~/Content/PublicationList")
+@{
+    Styles.Render("~/Content/PublicationList");
+    ViewBag.Title = langResources.Views_Home_Index_Title;
+}
 <br/>
 <div>
     @using (Html.BeginForm("Index", "Home", FormMethod.Get))
@@ -31,7 +35,9 @@
                 <span class='datetime'>@p.RunningStarted</span>
             </div>
             <div class='line2'>
-                <span class='pages'>@p.NumberOfPages @langResources.Views_Home_Index_pages</span>
+                <span class='pages'>
+                    @langResources.Views_Home_Index_pages.Fmt(p.NumberOfPages)
+                </span>
             </div>
             <div class='line3'>
                 <span class='status error'>@p.ErrorMessage</span>
@@ -41,7 +47,9 @@
                 foreach (var page in p.MissingPages)
                  {
                      <div>
-                         <span>Missing page from section @page.Section, page @page.PageNumber.</span>
+                         <span>
+                             @langResources.Views_Home_Index_MissingPages.Fmt(page.Section, page.PageNumber)
+                         </span>
                      </div>
                  }
             }
