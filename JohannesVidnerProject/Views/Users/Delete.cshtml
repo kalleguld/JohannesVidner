@@ -1,4 +1,5 @@
-﻿@model JohannesVidnerProject.Models.Users.DeleteUserViewModel
+﻿@using Resources
+@model JohannesVidnerProject.Models.Users.DeleteUserViewModel
 
 @{
     ViewBag.Title = "Delete User";
@@ -14,7 +15,7 @@
     @Html.HiddenFor(m => m.UserId)
     @Html.HiddenFor(m => m.HasSeenConfirmation)
     <div >
-        <input type="submit" value="Delete" class="btn btn-danger" />
-        <a href="@Url.Action("Index")" class="btn btn-default">Cancel</a>
+        <input type="submit" value="@langResources.Views_Users_Delete_delete" class="btn btn-danger" />
+        <a href="@Url.Action("Index")" class="btn btn-default">@langResources.Views_Users_Delete_cancel</a>
     </div>
 }

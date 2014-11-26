@@ -1,18 +1,18 @@
-﻿<ul class="nav navbar-nav navbar-right">
+﻿@using Resources
+<ul class="nav navbar-nav navbar-right">
     @if (@Session.GetCurrentUser() == null)
     {
-        <li>@Html.ActionLink("Log in", "Login", "Home", null, new {id = "loginLink"})</li>
+        <li>@Html.ActionLink(langResources.Views_Shared__LoginPartial_login, "Login", "Home", null, new {id = "loginLink"})</li>
     }
     else
     {
         <li>@Html.ActionLink(Session.GetCurrentUser().Username, "Index", "Home")</li>
-        <li>@Html.ActionLink("Log off", "Logoff", "Home")</li>
+        <li>@Html.ActionLink(langResources.Views_Shared__LoginPartial_logoff, "Logoff", "Home")</li>
     }
     <li>
         <a>
             <form method="post" id="langForm">
                 @Html.AntiForgeryToken()
-
                 <select onchange=" this.form.submit() " name="lang">
                     <option value="en-GB" @(Culture == "en-GB" ? "selected=\"selected\"" : "")>English</option>
                     <option value="da-DK" @(Culture == "da-DK" ? "selected=\"selected\"" : "")>Dansk</option>
@@ -22,6 +22,3 @@
         </a>
     </li>
 </ul>
-
-<!--<a><img id="visiolinkLogo" src="/Images/Visiolink-logo-grey.png" alt=" hmm" @(Culture == "en-GB" ? "src=\"/Images/Visiolink-logo-white.png\"" : "src=\"/Images/Visiolink-logo-grey.png\"")/></a>
-    -->

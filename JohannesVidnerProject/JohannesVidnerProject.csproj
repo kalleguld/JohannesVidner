@@ -201,6 +201,8 @@
     <Content Include="Images\twitter.png" />
     <Content Include="Images\Visiolink-logo-grey.png" />
     <Content Include="Images\Visiolink-logo-white.png" />
+    <None Include="Resources\Denmark-icon.png" />
+    <None Include="Resources\Germany-icon.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
