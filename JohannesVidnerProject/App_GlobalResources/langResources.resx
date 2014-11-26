@@ -117,28 +117,137 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="contact" xml:space="preserve">
-    <value>Kontakt</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="flag" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Denmark-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="errMsg1" xml:space="preserve">
+  <data name="Views_Home_Contact_cvr" xml:space="preserve">
+    <value>CVR-nr</value>
+  </data>
+  <data name="Views_Home_Contact_email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Views_Home_Contact_support" xml:space="preserve">
+    <value>Medarbejderhjælp</value>
+  </data>
+  <data name="Views_Home_Contact_telephone" xml:space="preserve">
+    <value>Telefon</value>
+  </data>
+  <data name="Views_Home_Index_errMsg1" xml:space="preserve">
     <value>Brugernavn skal indtastes</value>
   </data>
-  <data name="errMsg2" xml:space="preserve">
+  <data name="Views_Home_Index_errMsg2" xml:space="preserve">
     <value>Password skal indtastes</value>
   </data>
-  <data name="login" xml:space="preserve">
-    <value>Log ind</value>
+  <data name="Views_Home_Index_errMsg3" xml:space="preserve">
+    <value>En fejl er opstået. Systemet vil prøve at køre filerne igen om 10 minutter.</value>
   </data>
-  <data name="ok" xml:space="preserve">
+  <data name="Views_Home_Index_errMsg4" xml:space="preserve">
+    <value>Mangler side fra sektion</value>
+  </data>
+  <data name="Views_Home_Index_ok" xml:space="preserve">
     <value>Ok</value>
   </data>
-  <data name="password" xml:space="preserve">
+  <data name="Views_Home_Index_online" xml:space="preserve">
+    <value>Online</value>
+  </data>
+  <data name="Views_Home_Index_page" xml:space="preserve">
+    <value>side</value>
+  </data>
+  <data name="Views_Home_Index_pages" xml:space="preserve">
+    <value>sider</value>
+  </data>
+  <data name="Views_Home_Index_sysMsg1" xml:space="preserve">
+    <value>Uploaded og klar til release</value>
+  </data>
+  <data name="Views_Home_Login_login" xml:space="preserve">
+    <value>Log ind</value>
+  </data>
+  <data name="Views_Home_Login_password" xml:space="preserve">
     <value>Password</value>
   </data>
-  <data name="username" xml:space="preserve">
+  <data name="Views_Home_Login_username" xml:space="preserve">
     <value>Brugernavn</value>
   </data>
-  <data name="users" xml:space="preserve">
+  <data name="Views_Shared__Layout_contact" xml:space="preserve">
+    <value>Kontakt</value>
+  </data>
+  <data name="Views_Shared__Layout_users" xml:space="preserve">
     <value>Brugere</value>
+  </data>
+  <data name="Views_Shared__LoginPartial_login" xml:space="preserve">
+    <value>Log ind</value>
+  </data>
+  <data name="Views_Shared__LoginPartial_logoff" xml:space="preserve">
+    <value>Log af</value>
+  </data>
+  <data name="Views_Users_Create_create" xml:space="preserve">
+    <value>Opret</value>
+  </data>
+  <data name="Views_Users_Create_createNew" xml:space="preserve">
+    <value>Opret ny Bruger</value>
+  </data>
+  <data name="Views_Users_Delete_areYouSure" xml:space="preserve">
+    <value>Er du sikker på at du vil slette denne bruger?</value>
+  </data>
+  <data name="Views_Users_Delete_cancel" xml:space="preserve">
+    <value>Fortryd</value>
+  </data>
+  <data name="Views_Users_Delete_delete" xml:space="preserve">
+    <value>Slet</value>
+  </data>
+  <data name="Views_Users_Edit_back" xml:space="preserve">
+    <value>Tilbage til list</value>
+  </data>
+  <data name="Views_Users_Edit_editUser" xml:space="preserve">
+    <value>Ret Bruger</value>
+  </data>
+  <data name="Views_Users_Edit_name" xml:space="preserve">
+    <value>Navn</value>
+  </data>
+  <data name="Views_Users_Edit_password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Views_Users_Edit_save" xml:space="preserve">
+    <value>Gem</value>
+  </data>
+  <data name="Views_Users_Edit_userAdministrator" xml:space="preserve">
+    <value>Bruger Administrator</value>
+  </data>
+  <data name="Views_Users_Edit_username" xml:space="preserve">
+    <value>Brugernavn</value>
+  </data>
+  <data name="Views_Users_Edit_workplace" xml:space="preserve">
+    <value>Arbejdsplads</value>
+  </data>
+  <data name="Views_Users_Edit_writeAccess" xml:space="preserve">
+    <value>Skriveadgang til publikationer</value>
+  </data>
+  <data name="Views_Users_Index_administrator" xml:space="preserve">
+    <value>administrator</value>
+  </data>
+  <data name="Views_Users_Index_create" xml:space="preserve">
+    <value>Opret</value>
+  </data>
+  <data name="Views_Users_Index_createNewUser" xml:space="preserve">
+    <value>Opret ny bruger</value>
+  </data>
+  <data name="Views_Users_Index_delete" xml:space="preserve">
+    <value>Slet</value>
+  </data>
+  <data name="Views_Users_Index_edit" xml:space="preserve">
+    <value>Ret</value>
+  </data>
+  <data name="Views_Users_Index_name" xml:space="preserve">
+    <value>Navn</value>
+  </data>
+  <data name="Views_Users_Index_username" xml:space="preserve">
+    <value>Brugernavn</value>
+  </data>
+  <data name="Views_Users_Index_users" xml:space="preserve">
+    <value>Brugere</value>
+  </data>
+  <data name="Views_Users_Index_workplace" xml:space="preserve">
+    <value>Arbejdsplads</value>
   </data>
 </root>

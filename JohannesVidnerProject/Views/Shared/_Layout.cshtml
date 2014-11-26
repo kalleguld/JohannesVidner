@@ -1,4 +1,5 @@
 ﻿@using System
+@using Resources
 <!DOCTYPE html>
 <html>
     <head>
@@ -27,10 +28,10 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav" >
-                        <li >@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        <li >@Html.ActionLink(langResources.Views_Shared__Layout_contact, "Contact", "Home")</li>
                         @if (@Session.GetCurrentUser() != null && @Session.GetCurrentUser().UserAdminAccess)
                         {
-                            <li>@Html.ActionLink("Users", "Index", "Users")</li>
+                            <li>@Html.ActionLink(langResources.Views_Shared__Layout_users, "Index", "Users")</li>
                         }
                     </ul>
                     @Html.Partial("_LoginPartial")

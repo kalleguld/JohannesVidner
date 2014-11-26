@@ -117,28 +117,137 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="contact" xml:space="preserve">
-    <value>Kontakt2</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="flag" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Germany-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="errMsg1" xml:space="preserve">
-    <value>Brugernavn skal indtastes</value>
+  <data name="Views_Home_Contact_cvr" xml:space="preserve">
+    <value>CVR-nr</value>
   </data>
-  <data name="errMsg2" xml:space="preserve">
-    <value>Password skal indtastes</value>
+  <data name="Views_Home_Contact_email" xml:space="preserve">
+    <value>Email</value>
   </data>
-  <data name="login" xml:space="preserve">
-    <value>Log ind</value>
+  <data name="Views_Home_Contact_support" xml:space="preserve">
+    <value>Support</value>
   </data>
-  <data name="ok" xml:space="preserve">
+  <data name="Views_Home_Contact_telephone" xml:space="preserve">
+    <value>Telephone</value>
+  </data>
+  <data name="Views_Home_Index_errMsg1" xml:space="preserve">
+    <value>Username required</value>
+  </data>
+  <data name="Views_Home_Index_errMsg2" xml:space="preserve">
+    <value>Password required</value>
+  </data>
+  <data name="Views_Home_Index_errMsg3" xml:space="preserve">
+    <value>An error has ocurred. The system will try to run the files again in 10 minutes.</value>
+  </data>
+  <data name="Views_Home_Index_errMsg4" xml:space="preserve">
+    <value>Missing page from section</value>
+  </data>
+  <data name="Views_Home_Index_ok" xml:space="preserve">
     <value>Ok</value>
   </data>
-  <data name="password" xml:space="preserve">
+  <data name="Views_Home_Index_online" xml:space="preserve">
+    <value>Online</value>
+  </data>
+  <data name="Views_Home_Index_page" xml:space="preserve">
+    <value>page</value>
+  </data>
+  <data name="Views_Home_Index_pages" xml:space="preserve">
+    <value>pages</value>
+  </data>
+  <data name="Views_Home_Index_sysMsg1" xml:space="preserve">
+    <value>Uploaded and ready for realease</value>
+  </data>
+  <data name="Views_Home_Login_login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="Views_Home_Login_password" xml:space="preserve">
     <value>Password</value>
   </data>
-  <data name="username" xml:space="preserve">
-    <value>Brugernavn</value>
+  <data name="Views_Home_Login_username" xml:space="preserve">
+    <value>Username</value>
   </data>
-  <data name="users" xml:space="preserve">
-    <value>Brugere</value>
+  <data name="Views_Shared__Layout_contact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="Views_Shared__Layout_users" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="Views_Shared__LoginPartial_login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="Views_Shared__LoginPartial_logoff" xml:space="preserve">
+    <value>Logoff</value>
+  </data>
+  <data name="Views_Users_Create_create" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="Views_Users_Create_createNew" xml:space="preserve">
+    <value>Create new user</value>
+  </data>
+  <data name="Views_Users_Delete_areYouSure" xml:space="preserve">
+    <value>Are you sure you will delete this user?</value>
+  </data>
+  <data name="Views_Users_Delete_cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Views_Users_Delete_delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Views_Users_Edit_back" xml:space="preserve">
+    <value>Back to list</value>
+  </data>
+  <data name="Views_Users_Edit_editUser" xml:space="preserve">
+    <value>Edit user</value>
+  </data>
+  <data name="Views_Users_Edit_name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Views_Users_Edit_password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Views_Users_Edit_save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Views_Users_Edit_userAdministrator" xml:space="preserve">
+    <value>User Administrator</value>
+  </data>
+  <data name="Views_Users_Edit_username" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="Views_Users_Edit_workplace" xml:space="preserve">
+    <value>Workplace</value>
+  </data>
+  <data name="Views_Users_Edit_writeAccess" xml:space="preserve">
+    <value>Write access to publications</value>
+  </data>
+  <data name="Views_Users_Index_administrator" xml:space="preserve">
+    <value>Administrator</value>
+  </data>
+  <data name="Views_Users_Index_create" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="Views_Users_Index_createNewUser" xml:space="preserve">
+    <value>Create new User</value>
+  </data>
+  <data name="Views_Users_Index_delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Views_Users_Index_edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="Views_Users_Index_name" xml:space="preserve">
+    <value>Navn</value>
+  </data>
+  <data name="Views_Users_Index_username" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="Views_Users_Index_users" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="Views_Users_Index_workplace" xml:space="preserve">
+    <value>Workplace</value>
   </data>
 </root>

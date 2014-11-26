@@ -1,13 +1,14 @@
-﻿@model System.Collections.Generic.IEnumerable<JohannesVidnerProject.Models.Users.ListUsersViewModel>
+﻿@using Resources
+@model System.Collections.Generic.IEnumerable<JohannesVidnerProject.Models.Users.ListUsersViewModel>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Users</h2>
+<h2>@langResources.Views_Users_Index_users</h2>
 
 <p>
-    @Html.ActionLink("Create New User", "Create")
+    @Html.ActionLink(langResources.Views_Users_Index_createNewUser, langResources.Views_Users_Index_create)
 </p>
 <table class="table">
     <tr>
@@ -35,12 +36,12 @@
                 @Html.DisplayFor(modelItem => item.Workplace)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+                @Html.ActionLink(langResources.Views_Users_Index_edit, "Edit", new { id=item.Id }) |
+                @Html.ActionLink(langResources.Views_Users_Index_delete, "Delete", new { id=item.Id })
             </td>
         </tr>
     }
 </table>
 <p>
-    @Html.ActionLink("Create New User", "Create")
+    @Html.ActionLink(langResources.Views_Users_Index_createNewUser, "Create")
 </p>
