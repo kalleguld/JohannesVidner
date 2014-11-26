@@ -79,7 +79,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Medarbejderhjælp.
+        ///   Looks up a localized string similar to Support.
         /// </summary>
         internal static string Views_Home_Contact_support {
             get {
@@ -88,7 +88,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Telefon.
+        ///   Looks up a localized string similar to Telephone.
         /// </summary>
         internal static string Views_Home_Contact_telephone {
             get {
@@ -97,7 +97,16 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Brugernavn skal indtastes.
+        ///   Looks up a localized string similar to Contact.
+        /// </summary>
+        internal static string Views_Home_Contact_Title {
+            get {
+                return ResourceManager.GetString("Views_Home_Contact_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Username required.
         /// </summary>
         internal static string Views_Home_Index_errMsg1 {
             get {
@@ -106,7 +115,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Password skal indtastes.
+        ///   Looks up a localized string similar to Password required.
         /// </summary>
         internal static string Views_Home_Index_errMsg2 {
             get {
@@ -115,7 +124,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to En fejl er opstået. Systemet vil prøve at køre filerne igen om 10 minutter..
+        ///   Looks up a localized string similar to An error has ocurred. The system will try to run the files again in 10 minutes..
         /// </summary>
         internal static string Views_Home_Index_errMsg3 {
             get {
@@ -124,7 +133,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mangler side fra sektion.
+        ///   Looks up a localized string similar to Missing page from section.
         /// </summary>
         internal static string Views_Home_Index_errMsg4 {
             get {
@@ -151,7 +160,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to side.
+        ///   Looks up a localized string similar to page.
         /// </summary>
         internal static string Views_Home_Index_page {
             get {
@@ -160,7 +169,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to sider.
+        ///   Looks up a localized string similar to pages.
         /// </summary>
         internal static string Views_Home_Index_pages {
             get {
@@ -169,7 +178,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Uploaded og klar til release.
+        ///   Looks up a localized string similar to Uploaded and ready for realease.
         /// </summary>
         internal static string Views_Home_Index_sysMsg1 {
             get {
@@ -178,7 +187,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Log ind.
+        ///   Looks up a localized string similar to Login.
         /// </summary>
         internal static string Views_Home_Login_login {
             get {
@@ -196,7 +205,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Brugernavn.
+        ///   Looks up a localized string similar to Username.
         /// </summary>
         internal static string Views_Home_Login_username {
             get {
@@ -205,7 +214,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Kontakt.
+        ///   Looks up a localized string similar to Contact.
         /// </summary>
         internal static string Views_Shared__Layout_contact {
             get {
@@ -214,7 +223,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Brugere.
+        ///   Looks up a localized string similar to Users.
         /// </summary>
         internal static string Views_Shared__Layout_users {
             get {
@@ -223,7 +232,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Log ind.
+        ///   Looks up a localized string similar to Login.
         /// </summary>
         internal static string Views_Shared__LoginPartial_login {
             get {
@@ -232,7 +241,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Log af.
+        ///   Looks up a localized string similar to Logoff.
         /// </summary>
         internal static string Views_Shared__LoginPartial_logoff {
             get {
@@ -241,7 +250,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Opret.
+        ///   Looks up a localized string similar to Create.
         /// </summary>
         internal static string Views_Users_Create_create {
             get {
@@ -250,7 +259,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Opret ny Bruger.
+        ///   Looks up a localized string similar to Create new user.
         /// </summary>
         internal static string Views_Users_Create_createNew {
             get {
@@ -259,7 +268,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Er du sikker på at du vil slette denne bruger?.
+        ///   Looks up a localized string similar to Are you sure you will delete this user?.
         /// </summary>
         internal static string Views_Users_Delete_areYouSure {
             get {
@@ -268,7 +277,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fortryd.
+        ///   Looks up a localized string similar to Cancel.
         /// </summary>
         internal static string Views_Users_Delete_cancel {
             get {
@@ -277,7 +286,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Slet.
+        ///   Looks up a localized string similar to Delete.
         /// </summary>
         internal static string Views_Users_Delete_delete {
             get {
@@ -286,7 +295,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tilbage til list.
+        ///   Looks up a localized string similar to Back to list.
         /// </summary>
         internal static string Views_Users_Edit_back {
             get {
@@ -295,7 +304,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ret Bruger.
+        ///   Looks up a localized string similar to Edit user.
         /// </summary>
         internal static string Views_Users_Edit_editUser {
             get {
@@ -304,7 +313,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Navn.
+        ///   Looks up a localized string similar to Name.
         /// </summary>
         internal static string Views_Users_Edit_name {
             get {
@@ -322,7 +331,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Gem.
+        ///   Looks up a localized string similar to Save.
         /// </summary>
         internal static string Views_Users_Edit_save {
             get {
@@ -331,7 +340,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bruger Administrator.
+        ///   Looks up a localized string similar to User Administrator.
         /// </summary>
         internal static string Views_Users_Edit_userAdministrator {
             get {
@@ -340,7 +349,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Brugernavn.
+        ///   Looks up a localized string similar to Username.
         /// </summary>
         internal static string Views_Users_Edit_username {
             get {
@@ -349,7 +358,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Arbejdsplads.
+        ///   Looks up a localized string similar to Workplace.
         /// </summary>
         internal static string Views_Users_Edit_workplace {
             get {
@@ -358,7 +367,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Skriveadgang til publikationer.
+        ///   Looks up a localized string similar to Write access to publications.
         /// </summary>
         internal static string Views_Users_Edit_writeAccess {
             get {
@@ -367,7 +376,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to administrator.
+        ///   Looks up a localized string similar to Administrator.
         /// </summary>
         internal static string Views_Users_Index_administrator {
             get {
@@ -376,7 +385,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Opret.
+        ///   Looks up a localized string similar to Create.
         /// </summary>
         internal static string Views_Users_Index_create {
             get {
@@ -385,7 +394,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Opret ny bruger.
+        ///   Looks up a localized string similar to Create new User.
         /// </summary>
         internal static string Views_Users_Index_createNewUser {
             get {
@@ -394,7 +403,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Slet.
+        ///   Looks up a localized string similar to Delete.
         /// </summary>
         internal static string Views_Users_Index_delete {
             get {
@@ -403,7 +412,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ret.
+        ///   Looks up a localized string similar to Edit.
         /// </summary>
         internal static string Views_Users_Index_edit {
             get {
@@ -421,7 +430,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Brugernavn.
+        ///   Looks up a localized string similar to Username.
         /// </summary>
         internal static string Views_Users_Index_username {
             get {
@@ -430,7 +439,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Brugere.
+        ///   Looks up a localized string similar to Users.
         /// </summary>
         internal static string Views_Users_Index_users {
             get {
@@ -439,7 +448,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Arbejdsplads.
+        ///   Looks up a localized string similar to Workplace.
         /// </summary>
         internal static string Views_Users_Index_workplace {
             get {

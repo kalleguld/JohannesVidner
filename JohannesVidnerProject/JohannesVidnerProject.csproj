@@ -153,6 +153,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_GlobalResources\langResources.designer.cs">
+      <DependentUpon>langResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="App_GlobalResources\langResources.en-GB.designer.cs">
       <DependentUpon>langResources.en-GB.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -163,10 +168,10 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="App_GlobalResources\langResources.Designer.cs">
+    <Compile Include="App_GlobalResources\langResources.da.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>langResources.resx</DependentUpon>
+      <DependentUpon>langResources.da.resx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -260,9 +265,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_GlobalResources\langResources.resx">
+    <Content Include="App_GlobalResources\langResources.da.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>langResources.Designer.cs</LastGenOutput>
+      <LastGenOutput>langResources.da.designer.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -275,6 +280,12 @@
     <Content Include="App_GlobalResources\langResources.en-GB.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>langResources.en-GB.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\langResources.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>langResources.designer.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <PropertyGroup>
