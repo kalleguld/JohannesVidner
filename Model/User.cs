@@ -21,6 +21,7 @@ namespace Model
         public bool WriteAccess { get; set; }
         public bool UserAdminAccess { get; set; }
         public int PublicationId { get; set; }
+        private string CultureName { get; set; }
     
         public virtual Publication Publication { get; set; }
     }
