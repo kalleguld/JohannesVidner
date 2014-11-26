@@ -1,0 +1,109 @@
+﻿@using System.Web.UI.WebControls
+@using Model
+@model JohannesVidnerProject.Models.DetailViewModel
+@{
+    ViewBag.Title = "Details";
+}
+<br />
+<div class="h2 col-md-12">@ViewBag.Title</div>
+<hr />
+<div class="form-horizontal">
+    <div class="form-group">
+        <div class="col-md-2"><strong>Publication Name:</strong></div>
+        <div class="col-md-10">@Model.ShortName</div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-2"><strong>Publication ID:</strong></div>
+        <div class="col-md-10">@Model.PublicationId</div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-2 text-@Model.CssClass"><strong>Current status:</strong></div>
+        <div class="col-md-10 text-@Model.CssClass">@Model.ErrorMessage</div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-2"><strong>Edition ID:</strong></div>
+        <div class="col-md-10">@Model.EditionId</div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-2"><strong>Pagetolerance:</strong></div>
+        <div class="col-md-10">@Model.MaxMissingPages</div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-2"><strong>Number of pages:</strong></div>
+        <div class="col-md-10">@Model.NumberOfPages</div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-2"><strong>Started running at:</strong></div>
+        <div class="col-md-10">@Model.RunningStarted</div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-2"><strong>Expected release time:</strong></div>
+        <div class="col-md-10">
+            @if (@Model.ExpectedReleaseTime == null)
+            { <div>Unknown</div> }
+            else
+            {<div>@Model.ExpectedReleaseTime</div>}
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-2"><strong>Last log check:</strong></div>
+        <div class="col-md-10">@Model.LastLogCheck</div>
+    </div>
+    @*<div class="form-group">
+        @if (Session.GetCurrentUser().WriteAccess)
+        {
+            if (Model.Status == CurrentStatus.OnHold)
+            {
+                <div class="col-md-1"><button class="btn btn-primary">Release</button></div>
+                <div class="col-md-1"><button class="btn btn-primary">Re-run</button></div>
+                <div class="col-md-10"><button class="btn btn-primary" onclick="change()" id="logBtn">Show log</button></div>
+            }
+            else if (Model.Status != CurrentStatus.Running)
+            {
+                <div class="col-md-1"><button class="btn btn-primary">Re-run</button></div>
+                <div class="col-md-11"><button class="btn btn-primary" onclick="change()" id="logBtn">Show log</button></div>
+            }
+            else
+            {
+                <div class="col-md-12"><button class="btn btn-primary" onclick="change()" id="logBtn">Show log</button></div>
+            }
+        }
+    </div>*@
+    <div class="btn">
+        @if (Session.GetCurrentUser().WriteAccess)
+        {
+            if (Model.Status == CurrentStatus.OnHold)
+            {
+                <button class="btn btn-primary">Release</button>
+                <button class="btn btn-primary">Re-run</button>
+                <button class="btn btn-primary" onclick="change()" id="logBtn">Show log</button>
+            }
+            else if (Model.Status != CurrentStatus.Running)
+            {
+                <button class="btn btn-primary">Re-run</button>
+                <button class="btn btn-primary" onclick="change()" id="logBtn">Show log</button>
+            }
+            else
+            {
+                <button class="btn btn-primary" onclick="change()" id="logBtn">Show log</button>
+            }
+        }
+    </div>
+    <div class="form-group" hidden="true" id="log">
+        <hr/>
+        <div class="col-md-2"><strong>Logtext:</strong></div>
+        <div class="col-md-10">@Model.LogText</div>
+    </div>
+</div>
+<script type="text/javascript">
+    function change() {
+        if (document.getElementById("log").hidden) {
+            document.getElementById("log").hidden = false;
+            document.getElementById("logBtn").innerText = "Hide log";
+        }
+        else {
+            document.getElementById("log").hidden = true;
+            document.getElementById("logBtn").innerText = "Show log";
+        }
+    }
+</script>

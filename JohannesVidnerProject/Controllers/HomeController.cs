@@ -26,6 +26,7 @@ namespace JohannesVidnerProject.Controllers
             {
                 return RedirectToAction("Login", "Home");
             }
+<<<<<<< HEAD
 
             //Take the topmost publication 
                                                         //from the dropdown
@@ -89,6 +90,31 @@ namespace JohannesVidnerProject.Controllers
                 topmostPublication = currentUser.Publication;
             }
             return topmostPublication;
+        }
+
+        public ActionResult Details(DetailViewModel hvm)
+        {
+            var id = Convert.ToInt32(Request.RequestContext.RouteData.Values["id"]);
+            var publication = DbService.Instance.GetPublicationById(id);
+            var edition = publication.Editions.Last();
+            var mpages = new List<Page>(edition.MissingPages);
+            var dmv = new DetailViewModel
+            {
+                ShortName = publication.ShortName,
+                EditionId = edition.Id,
+                ErrorMessage = edition.ErrorMessage,
+                RunningStarted = edition.RunningStarted,
+                LogText = edition.LogText,
+                NumberOfPages = edition.NumberOfPages,
+                MaxMissingPages = edition.MaxMissingPages,
+                PublicationId = edition.PublicationId,
+                LastLogCheck = edition.LastLogCheck,
+                ExpectedReleaseTime = edition.ExpectedReleaseTime,
+                MissingPages = mpages,
+                Status = edition.CurrentStatus
+            };
+            dmv.DetermineStatusColor();
+            return View(dmv);
         }
 
 
