@@ -49,26 +49,6 @@
         <div class="col-md-2"><strong>Last log check:</strong></div>
         <div class="col-md-10">@Model.LastLogCheck</div>
     </div>
-    @*<div class="form-group">
-        @if (Session.GetCurrentUser().WriteAccess)
-        {
-            if (Model.Status == CurrentStatus.OnHold)
-            {
-                <div class="col-md-1"><button class="btn btn-primary">Release</button></div>
-                <div class="col-md-1"><button class="btn btn-primary">Re-run</button></div>
-                <div class="col-md-10"><button class="btn btn-primary" onclick="change()" id="logBtn">Show log</button></div>
-            }
-            else if (Model.Status != CurrentStatus.Running)
-            {
-                <div class="col-md-1"><button class="btn btn-primary">Re-run</button></div>
-                <div class="col-md-11"><button class="btn btn-primary" onclick="change()" id="logBtn">Show log</button></div>
-            }
-            else
-            {
-                <div class="col-md-12"><button class="btn btn-primary" onclick="change()" id="logBtn">Show log</button></div>
-            }
-        }
-    </div>*@
     <div class="btn">
         @if (Session.GetCurrentUser().WriteAccess)
         {

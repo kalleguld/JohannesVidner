@@ -5,6 +5,7 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web.Mvc;
+using JohannesVidnerProject.Models;
 using JohannesVidnerProject.Models.Home;
 using Model;
 using Services;
@@ -26,7 +27,6 @@ namespace JohannesVidnerProject.Controllers
             {
                 return RedirectToAction("Login", "Home");
             }
-<<<<<<< HEAD
 
             //Take the topmost publication 
                                                         //from the dropdown
