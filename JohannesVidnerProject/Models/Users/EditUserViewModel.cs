@@ -19,6 +19,7 @@ namespace JohannesVidnerProject.Models.Users
             UserAdmin = user.UserAdminAccess;
             SelectedPublicationId = user.PublicationId;
             UserId = user.Id;
+            SelectedCulture = user.CultureName;
         }
 
         [DataType(DataType.Password)]

@@ -14,6 +14,5 @@ namespace Model
             return (password != null && password == PasswordText);
         }
 
-        public CultureInfo Culture { get; set; }
     }
 }

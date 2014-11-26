@@ -63,6 +63,7 @@
     <Property Name="WriteAccess" Type="bit" Nullable="false" />
     <Property Name="UserAdminAccess" Type="bit" Nullable="false" />
     <Property Name="PublicationId" Type="int" Nullable="false" />
+    <Property Name="CultureName" Type="varchar" Nullable="true" MaxLength="16" />
   </EntityType>
   <EntityType Name="PageSet">
     <Key>
@@ -190,6 +191,7 @@
           <Property Name="UserAdminAccess" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Publication" Relationship="ModelClasses.PublicationUser" FromRole="User" ToRole="Publication" />
           <Property Name="PublicationId" Type="Int32" Nullable="false" />
+          <Property Name="CultureName" Type="String" Nullable="true" MaxLength="16" Unicode="false" cg:GetterAccess="Public" cg:SetterAccess="Public" />
         </EntityType>
         <Association Name="PublicationEdition">
           <End Type="ModelClasses.Publication" Role="Publication" Multiplicity="1" />
@@ -300,6 +302,7 @@
           <ScalarProperty Name="WriteAccess" ColumnName="WriteAccess" />
           <ScalarProperty Name="UserAdminAccess" ColumnName="UserAdminAccess" />
           <ScalarProperty Name="PublicationId" ColumnName="PublicationId" />
+          <ScalarProperty Name="CultureName" ColumnName="CultureName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
