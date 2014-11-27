@@ -45,6 +45,7 @@ namespace JohannesVidnerProject.Controllers
                 if (edition == null) continue;
                 var pvm = new PublicationViewModel
                 {
+                    Id = publication.Id,
                     Name = publication.Name,
                     NumberOfPages = Convert.ToInt32(edition.NumberOfPages),
                     ErrorMessage = edition.ErrorMessage,

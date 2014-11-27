@@ -26,6 +26,7 @@ namespace JohannesVidnerProject.Models.Home
 
     public class PublicationViewModel
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public DateTime RunningStarted { get; set; }
         public int NumberOfPages { get; set; }

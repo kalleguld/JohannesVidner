@@ -25,7 +25,7 @@
 <div>
     @foreach (var p in Model.PublicationViewModels)
     {
-        <div class='alert alert-@p.CssClass' role="alert" onclick="location.href='@Url.Action("Details", "PublicationList")'">
+        <div class='alert alert-@p.CssClass' role="alert" onclick="location.href='@Url.Action("Details", "Home", new {Id = p.Id})'">
             <div class='line1'>
                 <span class='name'>@p.Name</span>
                 <span class='datetime'>@p.RunningStarted</span>
