@@ -270,4 +270,7 @@
   <data name="Views_Users_Edit_language" xml:space="preserve">
     <value>Sprache</value>
   </data>
+  <data name="Views_Home_Index_SearchButton" xml:space="preserve">
+    <value>Suche</value>
+  </data>
 </root>

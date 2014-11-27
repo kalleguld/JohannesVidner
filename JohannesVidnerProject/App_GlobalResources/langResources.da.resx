@@ -321,4 +321,22 @@
   <data name="Views_Users_Edit_language" xml:space="preserve">
     <value>Sprog</value>
   </data>
+  <data name="Views_Home_Index_UnrecoverableError" xml:space="preserve">
+    <value>FEJL! KONTAKT DIN OVERORDNEDE MED DET SAMME!</value>
+  </data>
+  <data name="Views_Home_Index_RecoverableError" xml:space="preserve">
+    <value>Der er opstået en fejl. Systemet vil prøve at køre filerne igen om 10 minutter.</value>
+  </data>
+  <data name="Views_Home_Index_OnHold" xml:space="preserve">
+    <value>Uploadet og klar til frigivelse</value>
+  </data>
+  <data name="Views_Home_Index_Released" xml:space="preserve">
+    <value>Online</value>
+  </data>
+  <data name="Views_Home_Index_NotStarted" xml:space="preserve">
+    <value>Ikke startet endnu</value>
+  </data>
+  <data name="Views_Home_Index_Running" xml:space="preserve">
+    <value>Kører...</value>
+  </data>
 </root>

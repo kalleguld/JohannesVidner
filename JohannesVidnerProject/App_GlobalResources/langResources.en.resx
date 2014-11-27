@@ -276,4 +276,22 @@
   <data name="Views_Users_Edit_language" xml:space="preserve">
     <value>Language</value>
   </data>
+  <data name="Views_Home_Index_Running" xml:space="preserve">
+    <value>Running...</value>
+  </data>
+  <data name="Views_Home_Index_NotStarted" xml:space="preserve">
+    <value>Not started</value>
+  </data>
+  <data name="Views_Home_Index_Released" xml:space="preserve">
+    <value>Online</value>
+  </data>
+  <data name="Views_Home_Index_OnHold" xml:space="preserve">
+    <value>Uploaded and ready for release</value>
+  </data>
+  <data name="Views_Home_Index_RecoverableError" xml:space="preserve">
+    <value>An error has occured. The system will try to run the files again in 10 minutes.</value>
+  </data>
+  <data name="Views_Home_Index_UnrecoverableError" xml:space="preserve">
+    <value>ERROR. CONTACT YOUR SUPERVISOR RIGHT NOW!!!</value>
+  </data>
 </root>
