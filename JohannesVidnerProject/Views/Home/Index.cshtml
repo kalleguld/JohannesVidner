@@ -40,7 +40,7 @@
     {
         <div class='alert alert-@p.CssClass' role="alert">
             <div>
-                <span class='name'onclick="location.href='@Url.Action("Details", "Home", new {Id = p.Id})'">@p.Name</span>
+                <a class='name text-@p.CssClass' href="@Url.Action("Details", "Home", new {Id = p.Id})">@p.Name</a>
                 <span class='datetime'>@p.RunningStarted</span>
             </div>
             <div>
