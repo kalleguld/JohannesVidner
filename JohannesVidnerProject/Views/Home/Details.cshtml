@@ -1,5 +1,6 @@
 ﻿@using System.Web.UI.WebControls
 @using Model
+@using Resources
 @model JohannesVidnerProject.Models.DetailViewModel
 @{
     ViewBag.Title = "Details";
@@ -9,44 +10,60 @@
 <hr />
 <div class="form-horizontal">
     <div class="form-group">
-        <div class="col-md-2"><strong>Publication Name:</strong></div>
+        <div class="col-md-2"><strong>
+                                  @langResources.Views_Home_Details_PublicationName
+                              </strong></div>
         <div class="col-md-10">@Model.ShortName</div>
     </div>
     <div class="form-group">
-        <div class="col-md-2"><strong>Publication ID:</strong></div>
+        <div class="col-md-2"><strong>
+                                  @langResources.Views_Home_Details_PublicationId
+                              </strong></div>
         <div class="col-md-10">@Model.PublicationId</div>
     </div>
     <div class="form-group">
-        <div class="col-md-2 text-@Model.CssClass"><strong>Current status:</strong></div>
+        <div class="col-md-2 text-@Model.CssClass"><strong>
+                                                       @langResources.Views_Home_Details_CurrentStatus
+                                                   </strong></div>
         <div class="col-md-10 text-@Model.CssClass">@Model.ErrorMessage</div>
     </div>
     <div class="form-group">
-        <div class="col-md-2"><strong>Edition ID:</strong></div>
+        <div class="col-md-2"><strong>
+                                  @langResources.Views_Home_Details_EditionId
+                              </strong></div>
         <div class="col-md-10">@Model.EditionId</div>
     </div>
     <div class="form-group">
-        <div class="col-md-2"><strong>Pagetolerance:</strong></div>
+        <div class="col-md-2"><strong>
+                                  @langResources.Views_Home_Details_PageTolerance
+                              </strong></div>
         <div class="col-md-10">@Model.MaxMissingPages</div>
     </div>
     <div class="form-group">
-        <div class="col-md-2"><strong>Number of pages:</strong></div>
+        <div class="col-md-2"><strong>
+                                  @langResources.Views_Home_Details_NumPages
+                              </strong></div>
         <div class="col-md-10">@Model.NumberOfPages</div>
     </div>
     <div class="form-group">
-        <div class="col-md-2"><strong>Started running at:</strong></div>
+        <div class="col-md-2"><strong>
+                                  @langResources.Views_Home_Details_StartedRunning
+                              </strong></div>
         <div class="col-md-10">@Model.RunningStarted</div>
     </div>
     <div class="form-group">
-        <div class="col-md-2"><strong>Expected release time:</strong></div>
+        <div class="col-md-2"><strong>
+                                  @langResources.Views_Home_Details_ExpectedReleaseTime
+                              </strong></div>
         <div class="col-md-10">
             @if (@Model.ExpectedReleaseTime == null)
-            { <div>Unknown</div> }
+            { <div>@langResources.Views_Home_Details_ReleaseTimeUnknown</div> }
             else
             {<div>@Model.ExpectedReleaseTime</div>}
         </div>
     </div>
     <div class="form-group">
-        <div class="col-md-2"><strong>Last log check:</strong></div>
+        <div class="col-md-2"><strong>@langResources.Views_Home_Details_LastLogCheck</strong></div>
         <div class="col-md-10">@Model.LastLogCheck</div>
     </div>
     <div class="btn">
@@ -54,24 +71,32 @@
         {
             if (Model.Status == CurrentStatus.OnHold)
             {
-                <button class="btn btn-primary">Release</button>
-                <button class="btn btn-primary">Re-run</button>
-                <button class="btn btn-primary" onclick="change()" id="logBtn">Show log</button>
+                <button class="btn btn-primary">@langResources.Views_Home_Details_BtnRelease</button>
+                <button class="btn btn-primary">@langResources.Views_Home_Details_BtnRerun</button>
+                <button class="btn btn-primary" onclick="change()" id="logBtn">
+                    @langResources.Views_Home_Details_BtnShowLog
+                </button>
             }
             else if (Model.Status != CurrentStatus.Running)
             {
-                <button class="btn btn-primary">Re-run</button>
-                <button class="btn btn-primary" onclick="change()" id="logBtn">Show log</button>
+                <button class="btn btn-primary">@langResources.Views_Home_Details_BtnRerun</button>
+                <button class="btn btn-primary" onclick="change()" id="logBtn">
+                    @langResources.Views_Home_Details_BtnShowLog
+                </button>
             }
             else
             {
-                <button class="btn btn-primary" onclick="change()" id="logBtn">Show log</button>
+                <button class="btn btn-primary" onclick="change()" id="logBtn">
+                    @langResources.Views_Home_Details_BtnShowLog
+                </button>
             }
         }
     </div>
     <div class="form-group" hidden="true" id="log">
         <hr/>
-        <div class="col-md-2"><strong>Logtext:</strong></div>
+        <div class="col-md-2"><strong>
+                                  @langResources.Views_Home_Details_LogText
+                              </strong></div>
         <div class="col-md-10">@Model.LogText</div>
     </div>
 </div>
@@ -79,11 +104,11 @@
     function change() {
         if (document.getElementById("log").hidden) {
             document.getElementById("log").hidden = false;
-            document.getElementById("logBtn").innerText = "Hide log";
+            document.getElementById("logBtn").innerText = "@langResources.Views_Home_Details_BtnHideLog";
         }
         else {
             document.getElementById("log").hidden = true;
-            document.getElementById("logBtn").innerText = "Show log";
+            document.getElementById("logBtn").innerText = "@langResources.Views_Home_Details_BtnShowLog";
         }
     }
 </script>
