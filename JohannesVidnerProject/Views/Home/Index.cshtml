@@ -1,5 +1,6 @@
 @using JohannesVidnerProject.Helpers
 @using System.Linq
+@using Model
 @using Resources
 @model JohannesVidnerProject.Models.Home.IndexViewModel
 @Styles.Render("~/Content/PublicationList")
@@ -48,7 +49,10 @@
                 </span>
             </div>
             <div>
-                <span class='error'>@p.ErrorMessage</span>
+                <span class='error'>
+                    
+                    @p.ErrorMessage
+                </span>
             </div>
             @if (p.MissingPages.Any())
             {
