@@ -22,6 +22,10 @@ namespace JohannesVidnerProject.Models
         public string CssClass { get; set; }
         public CurrentStatus Status { get; set; }
 
+        public bool ShowRerunButton { get; set; }
+        public bool ShowReleaseButton { get; set; }
+        public bool ShowShowLogButton { get; set; }
+
         // maybe TODO: Change conditions for determining colors
         public void DetermineStatusColor()
         {

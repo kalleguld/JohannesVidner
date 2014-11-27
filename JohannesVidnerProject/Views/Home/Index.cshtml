@@ -14,7 +14,7 @@
     {
         <div class="form-horizontal">
             <div class="form-group">
-                <div class="col-md-7"></div>
+                <div class="col-md-6"></div>
                 <div class="col-md-2">
                     @Html.DropDownListFor(m => m.p, Model.PublicationDropdownItems, new { @class = "form-control" })
                 </div>
@@ -25,9 +25,9 @@
                     placeholder = langResources.Views_Home_Index_SearchFieldPlaceholder
                 })
                 </div>
-                <div class="col-md-1">
+                <div class="col-md-2">
                     <input type="submit"
-                           class="btn"
+                           class="btn btn-block"
                            value="@langResources.Views_Home_Index_SearchButton" />
                 </div>
             </div>

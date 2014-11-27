@@ -10,51 +10,59 @@
 <hr />
 <div class="form-horizontal">
     <div class="form-group">
-        <div class="col-md-2"><strong>
-                                  @langResources.Views_Home_Details_PublicationName
-                              </strong></div>
+        <div class="col-md-2">
+            <strong>
+                @langResources.Views_Home_Details_PublicationName
+            </strong>
+        </div>
         <div class="col-md-10">@Model.ShortName</div>
     </div>
     <div class="form-group">
-        <div class="col-md-2"><strong>
-                                  @langResources.Views_Home_Details_PublicationId
-                              </strong></div>
+        <div class="col-md-2">
+            <strong>
+                @langResources.Views_Home_Details_PublicationId
+            </strong>
+        </div>
         <div class="col-md-10">@Model.PublicationId</div>
     </div>
     <div class="form-group">
-        <div class="col-md-2 text-@Model.CssClass"><strong>
-                                                       @langResources.Views_Home_Details_CurrentStatus
-                                                   </strong></div>
+        <div class="col-md-2 text-@Model.CssClass">
+            <strong>
+                @langResources.Views_Home_Details_CurrentStatus
+            </strong>
+        </div>
         <div class="col-md-10 text-@Model.CssClass">@Model.ErrorMessage</div>
     </div>
     <div class="form-group">
-        <div class="col-md-2"><strong>
-                                  @langResources.Views_Home_Details_EditionId
-                              </strong></div>
-        <div class="col-md-10">@Model.EditionId</div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-2"><strong>
-                                  @langResources.Views_Home_Details_PageTolerance
-                              </strong></div>
+        <div class="col-md-2">
+            <strong>
+                @langResources.Views_Home_Details_PageTolerance
+            </strong>
+        </div>
         <div class="col-md-10">@Model.MaxMissingPages</div>
     </div>
     <div class="form-group">
-        <div class="col-md-2"><strong>
-                                  @langResources.Views_Home_Details_NumPages
-                              </strong></div>
+        <div class="col-md-2">
+            <strong>
+                @langResources.Views_Home_Details_NumPages
+            </strong>
+        </div>
         <div class="col-md-10">@Model.NumberOfPages</div>
     </div>
     <div class="form-group">
-        <div class="col-md-2"><strong>
-                                  @langResources.Views_Home_Details_StartedRunning
-                              </strong></div>
+        <div class="col-md-2">
+            <strong>
+                @langResources.Views_Home_Details_StartedRunning
+            </strong>
+        </div>
         <div class="col-md-10">@Model.RunningStarted</div>
     </div>
     <div class="form-group">
-        <div class="col-md-2"><strong>
-                                  @langResources.Views_Home_Details_ExpectedReleaseTime
-                              </strong></div>
+        <div class="col-md-2">
+            <strong>
+                @langResources.Views_Home_Details_ExpectedReleaseTime
+            </strong>
+        </div>
         <div class="col-md-10">
             @if (@Model.ExpectedReleaseTime == null)
             { <div>@langResources.Views_Home_Details_ReleaseTimeUnknown</div> }
@@ -62,43 +70,54 @@
             {<div>@Model.ExpectedReleaseTime</div>}
         </div>
     </div>
-    <div class="form-group">
-        <div class="col-md-2"><strong>@langResources.Views_Home_Details_LastLogCheck</strong></div>
-        <div class="col-md-10">@Model.LastLogCheck</div>
-    </div>
-    <div class="btn">
-        @if (Session.GetCurrentUser().WriteAccess)
+    <div>
+        @if (Model.ShowShowLogButton)
         {
-            if (Model.Status == CurrentStatus.OnHold)
-            {
+            <div class="form-group">
 
-                <button class="btn btn-primary">@langResources.Views_Home_Details_BtnRelease</button>
-                <button class="btn btn-primary">@langResources.Views_Home_Details_BtnRerun</button>
-                <button class="btn btn-primary" onclick="change()" id="logBtn">
-                    @langResources.Views_Home_Details_BtnShowLog
-                </button>
-            }
-            else if (Model.Status != CurrentStatus.Running)
-            {
-                <button class="btn btn-primary">@langResources.Views_Home_Details_BtnRerun</button>
-                <button class="btn btn-primary" onclick="change()" id="logBtn">
-                    @langResources.Views_Home_Details_BtnShowLog
-                </button>
-            }
-            else
-            {
-                <button class="btn btn-primary" onclick="change()" id="logBtn">
-                    @langResources.Views_Home_Details_BtnShowLog
-                </button>
-            }
+                <div class="col-md-2">
+                    <button class="btn btn-primary btn-block" onclick="change()" id="logBtn">
+                        @langResources.Views_Home_Details_BtnShowLog
+                    </button>
+                </div>
+                <div class="col-md-10"
+                     hidden="hidden"
+                     id="log">
+                    @Model.LogText
+                </div>
+            </div>
+        }
+        @if (Model.ShowReleaseButton)
+        {
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    <button class="btn btn-primary btn-block">
+                        @langResources.Views_Home_Details_BtnRelease
+                    </button>
+                </div>
+            </div>
+        }
+        @if (Model.ShowRerunButton)
+        {
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    <button class="btn btn-primary btn-block">
+                        @langResources.Views_Home_Details_BtnRerun
+                    </button>
+                </div>
+            </div>
         }
     </div>
     <div class="form-group" hidden="hidden" id="log">
-        <hr/>
-        <div class="col-md-2"><strong>
-                                  @langResources.Views_Home_Details_LogText
-                              </strong></div>
-        <div class="col-md-10">@Model.LogText</div>
+        <hr />
+        <div class="col-md-2">
+            <strong>
+                @langResources.Views_Home_Details_LogText
+            </strong>
+        </div>
+
     </div>
 </div>
 <script type="text/javascript">

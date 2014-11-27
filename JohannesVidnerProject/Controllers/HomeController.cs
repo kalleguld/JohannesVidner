@@ -94,10 +94,21 @@ namespace JohannesVidnerProject.Controllers
 
         public ActionResult Details(DetailViewModel hvm)
         {
-            var id = Convert.ToInt32(Request.RequestContext.RouteData.Values["id"]);
+            var currentUser = Session.GetCurrentUser();
+            if (currentUser == null) return RedirectToAction("Login", "Home");
+
+            string idStr = Request.RequestContext.RouteData.Values["id"].ToString();
+            int id;
+            if (!int.TryParse(idStr, out id))
+            {
+                return RedirectToAction("Login", "Home");
+            }
             var publication = DbService.Instance.GetPublicationById(id);
-            var edition = publication.Editions.Last();
+            if (publication == null) return RedirectToAction("Login", "Home");
+            var edition = publication.Editions.LastOrDefault();
+            if (edition == null) return RedirectToAction("Login", "Home");
             var mpages = new List<Page>(edition.MissingPages);
+
             var dmv = new DetailViewModel
             {
                 ShortName = publication.ShortName,
@@ -111,8 +122,14 @@ namespace JohannesVidnerProject.Controllers
                 LastLogCheck = edition.LastLogCheck,
                 ExpectedReleaseTime = edition.ExpectedReleaseTime,
                 MissingPages = mpages,
-                Status = edition.CurrentStatus
+                Status = edition.CurrentStatus,
+                ShowRerunButton = currentUser.WriteAccess && 
+                                  (edition.CurrentStatus != CurrentStatus.Running),
+                ShowReleaseButton = currentUser.WriteAccess && 
+                                    (edition.CurrentStatus == CurrentStatus.OnHold),
+                ShowShowLogButton = currentUser.WriteAccess
             };
+
             dmv.DetermineStatusColor();
             return View(dmv);
         }
@@ -138,7 +155,6 @@ namespace JohannesVidnerProject.Controllers
 
         // POST: 
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginViewModel model)
         {
