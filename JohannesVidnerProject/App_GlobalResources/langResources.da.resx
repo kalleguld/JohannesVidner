@@ -270,4 +270,55 @@
   <data name="Views_Home_Index_SearchButton" xml:space="preserve">
     <value>Søg</value>
   </data>
+  <data name="Views_Home_Details_BtnHideLog" xml:space="preserve">
+    <value>Skjul Log</value>
+  </data>
+  <data name="Views_Home_Details_BtnRelease" xml:space="preserve">
+    <value>Frigiv</value>
+  </data>
+  <data name="Views_Home_Details_BtnRerun" xml:space="preserve">
+    <value>Kør Igen</value>
+  </data>
+  <data name="Views_Home_Details_BtnShowLog" xml:space="preserve">
+    <value>Vis Log</value>
+  </data>
+  <data name="Views_Home_Details_CurrentStatus" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Views_Home_Details_EditionId" xml:space="preserve">
+    <value>Udgave Id</value>
+  </data>
+  <data name="Views_Home_Details_ExpectedReleaseTime" xml:space="preserve">
+    <value>Forventet Frigivelses-tidspunkt</value>
+  </data>
+  <data name="Views_Home_Details_LastLogCheck" xml:space="preserve">
+    <value>Sidste Log-opdatering</value>
+  </data>
+  <data name="Views_Home_Details_LogText" xml:space="preserve">
+    <value>Logtekst</value>
+  </data>
+  <data name="Views_Home_Details_NumPages" xml:space="preserve">
+    <value>Antal Sider</value>
+  </data>
+  <data name="Views_Home_Details_PageTolerance" xml:space="preserve">
+    <value>Sidetolerance</value>
+  </data>
+  <data name="Views_Home_Details_PublicationId" xml:space="preserve">
+    <value>Publikations-id</value>
+  </data>
+  <data name="Views_Home_Details_PublicationName" xml:space="preserve">
+    <value>Publikationsnavn</value>
+  </data>
+  <data name="Views_Home_Details_ReleaseTimeUnknown" xml:space="preserve">
+    <value>Ukendt</value>
+  </data>
+  <data name="Views_Home_Details_StartedRunning" xml:space="preserve">
+    <value>Kørsel startet</value>
+  </data>
+  <data name="Views_Home_Details_Title" xml:space="preserve">
+    <value>Detaljer</value>
+  </data>
+  <data name="Views_Users_Edit_language" xml:space="preserve">
+    <value>Sprog</value>
+  </data>
 </root>

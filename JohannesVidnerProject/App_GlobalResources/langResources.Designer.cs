@@ -164,9 +164,6 @@ namespace Resources {
                 return ResourceManager.GetString("Views_Home_Details_numberOfPages", resourceCulture);
             }
         }
-        /// <summary>
-Looks up a localized string similar to Sidetolerance:.
-        /// </summary>
         internal static string Views_Home_Details_pageTolerance {
             get {
                 return ResourceManager.GetString("Views_Home_Details_pageTolerance", resourceCulture);
@@ -511,6 +508,15 @@ Looks up a localized string similar to Sidetolerance:.
         internal static string Views_Users_Edit_editUser {
             get {
                 return ResourceManager.GetString("Views_Users_Edit_editUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Language.
+        /// </summary>
+        internal static string Views_Users_Edit_language {
+            get {
+                return ResourceManager.GetString("Views_Users_Edit_language", resourceCulture);
             }
         }
         

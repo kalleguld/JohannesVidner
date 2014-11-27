@@ -318,52 +318,7 @@
   <data name="Views_Home_Details_Title" xml:space="preserve">
     <value>Details</value>
   </data>
-  <data name="Views_Home_Details_currentStatus" xml:space="preserve">
-    <value>Nuværende status:</value>
-  </data>
-  <data name="Views_Home_Details_editionID" xml:space="preserve">
-    <value>Udgave ID:</value>
-  </data>
-  <data name="Views_Home_Details_expectedReleaseTime" xml:space="preserve">
-    <value>Forventet udgivelsestid:</value>
-  </data>
-  <data name="Views_Home_Details_hideLog" xml:space="preserve">
-    <value>Skjul log</value>
-  </data>
-  <data name="Views_Home_Details_lastLogCheck" xml:space="preserve">
-    <value>Sidste logtjek:</value>
-  </data>
-  <data name="Views_Home_Details_logText" xml:space="preserve">
-    <value>Logtekst:</value>
-  </data>
-  <data name="Views_Home_Details_numberOfPages" xml:space="preserve">
-    <value>Antal sider:</value>
-  </data>
-  <data name="Views_Home_Details_pageTolerance" xml:space="preserve">
-    <value>Sidetolerance:</value>
-  </data>
-  <data name="Views_Home_Details_publicationID" xml:space="preserve">
-    <value>PublikationsID:</value>
-  </data>
-  <data name="Views_Home_Details_publicationName" xml:space="preserve">
-    <value>Publikationsnavn:</value>
-  </data>
-  <data name="Views_Home_Details_release" xml:space="preserve">
-    <value>Udgiv</value>
-  </data>
-  <data name="Views_Home_Details_rerun" xml:space="preserve">
-    <value>Kør igen</value>
-  </data>
-  <data name="Views_Home_Details_runningStarted" xml:space="preserve">
-    <value>Start af kørsel:</value>
-  </data>
-  <data name="Views_Home_Details_showLog" xml:space="preserve">
-    <value>Vis log</value>
-  </data>
-  <data name="Views_Home_Details_unknown" xml:space="preserve">
-    <value>Ukendt</value>
-  </data>
-  <data name="Views_Home_Index_missingInSection" xml:space="preserve">
-    <value>Mangler side i sektion </value>
+  <data name="Views_Users_Edit_language" xml:space="preserve">
+    <value>Language</value>
   </data>
 </root>

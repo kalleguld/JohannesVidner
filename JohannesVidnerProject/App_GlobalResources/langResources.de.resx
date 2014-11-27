@@ -121,28 +121,28 @@
     <value>CVR-nr</value>
   </data>
   <data name="Views_Home_Contact_email" xml:space="preserve">
-    <value>Email</value>
+    <value>E-mail</value>
   </data>
   <data name="Views_Home_Contact_support" xml:space="preserve">
-    <value>Support</value>
+    <value>Unterstützung</value>
   </data>
   <data name="Views_Home_Contact_telephone" xml:space="preserve">
-    <value>Telephone</value>
+    <value>Telefon</value>
   </data>
   <data name="Views_Home_Contact_Title" xml:space="preserve">
-    <value>Contact</value>
+    <value>Kontakt</value>
   </data>
   <data name="Views_Home_Index_errMsg1" xml:space="preserve">
-    <value>Username required</value>
+    <value>Benutzername erforderlich</value>
   </data>
   <data name="Views_Home_Index_errMsg2" xml:space="preserve">
-    <value>Password required</value>
+    <value>Passwort erforderlich</value>
   </data>
   <data name="Views_Home_Index_errMsg3" xml:space="preserve">
-    <value>An error has ocurred. The system will try to run the files again in 10 minutes.</value>
+    <value>Ein Fehler ist aufgetreten . Das System versucht , die Dateien in 10 Minuten erneut ausführen.</value>
   </data>
   <data name="Views_Home_Index_errMsg4" xml:space="preserve">
-    <value>Missing page from section</value>
+    <value>Fehlende Seite von Abschnitt</value>
   </data>
   <data name="Views_Home_Index_ok" xml:space="preserve">
     <value>Ok</value>
@@ -151,171 +151,123 @@
     <value>Online</value>
   </data>
   <data name="Views_Home_Index_page" xml:space="preserve">
-    <value>page</value>
+    <value>Seite</value>
   </data>
   <data name="Views_Home_Index_pages" xml:space="preserve">
-    <value>{0} pages</value>
+    <value>{0} seite</value>
   </data>
   <data name="Views_Home_Index_sysMsg1" xml:space="preserve">
-    <value>Uploaded and ready for realease</value>
+    <value>Hochgeladen fertig realease</value>
   </data>
   <data name="Views_Home_Login_login" xml:space="preserve">
     <value>Login</value>
   </data>
   <data name="Views_Home_Login_password" xml:space="preserve">
-    <value>Password</value>
+    <value>Passwort</value>
   </data>
   <data name="Views_Home_Login_username" xml:space="preserve">
-    <value>Username</value>
+    <value>Benutzername</value>
   </data>
   <data name="Views_Shared__Layout_contact" xml:space="preserve">
-    <value>Contact</value>
+    <value>Kontakt</value>
   </data>
   <data name="Views_Shared__Layout_users" xml:space="preserve">
-    <value>Users</value>
+    <value>Benutzer</value>
   </data>
   <data name="Views_Shared__LoginPartial_login" xml:space="preserve">
     <value>Login</value>
   </data>
   <data name="Views_Shared__LoginPartial_logoff" xml:space="preserve">
-    <value>Logoff</value>
+    <value>Abmelden</value>
   </data>
   <data name="Views_Users_Create_create" xml:space="preserve">
-    <value>Create</value>
+    <value>Schaffen</value>
   </data>
   <data name="Views_Users_Create_createNew" xml:space="preserve">
-    <value>Create new user</value>
+    <value>Neuen benutzer</value>
   </data>
   <data name="Views_Users_Delete_areYouSure" xml:space="preserve">
-    <value>Are you sure you will delete this user?</value>
+    <value>Sind Sie sicher, dass Sie diesen Benutzer löschen?</value>
   </data>
   <data name="Views_Users_Delete_cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Benutzer löschen?</value>
   </data>
   <data name="Views_Users_Delete_delete" xml:space="preserve">
-    <value>Delete</value>
+    <value>Stornieren</value>
   </data>
   <data name="Views_Users_Edit_back" xml:space="preserve">
-    <value>Back to list</value>
+    <value>Zurück zur Liste</value>
   </data>
   <data name="Views_Users_Edit_editUser" xml:space="preserve">
-    <value>Edit user</value>
+    <value>Benutzer bearbeiten</value>
   </data>
   <data name="Views_Users_Edit_name" xml:space="preserve">
     <value>Name</value>
   </data>
   <data name="Views_Users_Edit_password" xml:space="preserve">
-    <value>Password</value>
+    <value>Passwort</value>
   </data>
   <data name="Views_Users_Edit_save" xml:space="preserve">
-    <value>Save</value>
+    <value>Speichern</value>
   </data>
   <data name="Views_Users_Edit_userAdministrator" xml:space="preserve">
-    <value>User Administrator</value>
+    <value>Benutzer Administrator</value>
   </data>
   <data name="Views_Users_Edit_username" xml:space="preserve">
-    <value>Username</value>
+    <value>Benutzername</value>
   </data>
   <data name="Views_Users_Edit_workplace" xml:space="preserve">
-    <value>Workplace</value>
+    <value>Arbeitsplatz</value>
   </data>
   <data name="Views_Users_Edit_writeAccess" xml:space="preserve">
-    <value>Write access to publications</value>
+    <value>Der Schreibzugriff auf Veröffentlichungen</value>
   </data>
   <data name="Views_Users_Index_administrator" xml:space="preserve">
     <value>Administrator</value>
   </data>
   <data name="Views_Users_Index_create" xml:space="preserve">
-    <value>Create</value>
+    <value>Schaffen</value>
   </data>
   <data name="Views_Users_Index_createNewUser" xml:space="preserve">
-    <value>Create new User</value>
+    <value>Erstellen neuen Benutzer</value>
   </data>
   <data name="Views_Users_Index_delete" xml:space="preserve">
-    <value>Delete</value>
+    <value>Löschen</value>
   </data>
   <data name="Views_Users_Index_edit" xml:space="preserve">
-    <value>Edit</value>
+    <value>Bearbeiten</value>
   </data>
   <data name="Views_Users_Index_name" xml:space="preserve">
     <value>Name</value>
   </data>
   <data name="Views_Users_Index_username" xml:space="preserve">
-    <value>Username</value>
+    <value>Benutzername</value>
   </data>
   <data name="Views_Users_Index_users" xml:space="preserve">
-    <value>Users</value>
+    <value>Benutzen</value>
   </data>
   <data name="Views_Users_Index_workplace" xml:space="preserve">
-    <value>Workplace</value>
+    <value>Arbeitsplatz</value>
   </data>
   <data name="Views_Home_Index_MissingPages" xml:space="preserve">
-    <value>Missing page: Section {0} page {1}</value>
+    <value>Fehlende Seite: Abschnitt {0} Seite {1}</value>
   </data>
   <data name="Views_Home_Index_Title" xml:space="preserve">
-    <value>Publications</value>
+    <value>Publikationen</value>
   </data>
   <data name="Views_Users_Create_ChooseLanguage" xml:space="preserve">
-    <value>Language</value>
+    <value>Sprache</value>
   </data>
   <data name="Views_Users_Delete_MainQuestion" xml:space="preserve">
-    <value>Are you sure you want to delete the user {0} ({1})?</value>
+    <value>Sind Sie sicher, dass Sie den Benutzer {0} wirklich löschen ({1} ) ?</value>
   </data>
   <data name="Views_Users_Delete_Title" xml:space="preserve">
-    <value>Delete User</value>
+    <value>Benutzer löschen</value>
   </data>
   <data name="Views_Home_Index_SearchFieldPlaceholder" xml:space="preserve">
-    <value>Search...</value>
+    <value>Suche...</value>
   </data>
-  <data name="Views_Home_Index_SearchButton" xml:space="preserve">
-    <value>Search</value>
-=======
-  <data name="Views_Home_Details_currentStatus" xml:space="preserve">
-    <value>Current status:</value>
-  </data>
-  <data name="Views_Home_Details_editionID" xml:space="preserve">
-    <value>Edition ID:</value>
-  </data>
-  <data name="Views_Home_Details_expectedReleaseTime" xml:space="preserve">
-    <value>Expected release time:</value>
-  </data>
-  <data name="Views_Home_Details_hideLog" xml:space="preserve">
-    <value>Hide log</value>
-  </data>
-  <data name="Views_Home_Details_lastLogCheck" xml:space="preserve">
-    <value>Last log check:</value>
-  </data>
-  <data name="Views_Home_Details_logText" xml:space="preserve">
-    <value>Logtext:</value>
-  </data>
-  <data name="Views_Home_Details_numberOfPages" xml:space="preserve">
-    <value>Number of pages:</value>
-  </data>
-  <data name="Views_Home_Details_pageTolerance" xml:space="preserve">
-    <value>Pagetolerance:</value>
-  </data>
-  <data name="Views_Home_Details_publicationID" xml:space="preserve">
-    <value>Publication ID:</value>
-  </data>
-  <data name="Views_Home_Details_publicationName" xml:space="preserve">
-    <value>Publication Name:</value>
-  </data>
-  <data name="Views_Home_Details_release" xml:space="preserve">
-    <value>Release</value>
-  </data>
-  <data name="Views_Home_Details_rerun" xml:space="preserve">
-    <value>Re-run</value>
-  </data>
-  <data name="Views_Home_Details_runningStarted" xml:space="preserve">
-    <value>Started running at:</value>
-  </data>
-  <data name="Views_Home_Details_showLog" xml:space="preserve">
-    <value>Show log</value>
-  </data>
-  <data name="Views_Home_Details_unknown" xml:space="preserve">
-    <value>Unknown</value>
-  </data>
-  <data name="Views_Home_Index_missingInSection" xml:space="preserve">
-    <value>Missing page in section </value>
+  <data name="Views_Users_Edit_language" xml:space="preserve">
+    <value>Sprache</value>
   </data>
 </root>
