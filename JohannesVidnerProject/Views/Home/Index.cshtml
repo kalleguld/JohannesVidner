@@ -1,4 +1,5 @@
-﻿@using JohannesVidnerProject.Helpers
+@using JohannesVidnerProject.Helpers
+@using System.Linq
 @using Resources
 @model JohannesVidnerProject.Models.Home.IndexViewModel
 @{
@@ -35,7 +36,10 @@
 <div>
     @foreach (var p in Model.PublicationViewModels)
     {
-        <div class='alert alert-@p.CssClass' role="alert" onclick="location.href='@Url.Action("Details", "PublicationList")'">
+        <div class='alert alert-@p.CssClass' 
+             role="alert" 
+             onclick="location.href='@Url.Action("Details", "Home", new {Id = p.Id})'">
+            
             <div class='line1'>
                 <span class='name'>@p.Name</span>
                 <span class='datetime'>@p.RunningStarted</span>
@@ -47,18 +51,18 @@
             </div>
             <div class='line3'>
                 <span class='status error'>@p.ErrorMessage</span>
+                </div>
+                @if (p.MissingPages.Any())
+                {
+                    foreach (var page in p.MissingPages)
+                    {
+                        <div>
+                            <span>
+                                @langResources.Views_Home_Index_MissingPages.Fmt(page.Section, page.PageNumber)
+                            </span>
+                        </div>
+                    }
+                }
             </div>
-            @if (p.MissingPages.Count != 0)
-            {
-                foreach (var page in p.MissingPages)
-                 {
-                     <div>
-                         <span>
-                             @langResources.Views_Home_Index_MissingPages.Fmt(page.Section, page.PageNumber)
-                         </span>
-                     </div>
-                 }
-            }
-        </div>
     }
 </div>

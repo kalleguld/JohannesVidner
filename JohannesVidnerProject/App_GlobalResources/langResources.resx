@@ -270,4 +270,52 @@
   <data name="Views_Home_Index_SearchButton" xml:space="preserve">
     <value>Search</value>
   </data>
+  <data name="Views_Home_Details_BtnHideLog" xml:space="preserve">
+    <value>Hide Log</value>
+  </data>
+  <data name="Views_Home_Details_BtnRelease" xml:space="preserve">
+    <value>Release</value>
+  </data>
+  <data name="Views_Home_Details_BtnRerun" xml:space="preserve">
+    <value>Re-run</value>
+  </data>
+  <data name="Views_Home_Details_BtnShowLog" xml:space="preserve">
+    <value>Show Log</value>
+  </data>
+  <data name="Views_Home_Details_CurrentStatus" xml:space="preserve">
+    <value>Current Status</value>
+  </data>
+  <data name="Views_Home_Details_EditionId" xml:space="preserve">
+    <value>Edition Id</value>
+  </data>
+  <data name="Views_Home_Details_ExpectedReleaseTime" xml:space="preserve">
+    <value>Expected Release Time</value>
+  </data>
+  <data name="Views_Home_Details_LastLogCheck" xml:space="preserve">
+    <value>Last log check</value>
+  </data>
+  <data name="Views_Home_Details_LogText" xml:space="preserve">
+    <value>Log Text</value>
+  </data>
+  <data name="Views_Home_Details_NumPages" xml:space="preserve">
+    <value>Number of pages</value>
+  </data>
+  <data name="Views_Home_Details_PageTolerance" xml:space="preserve">
+    <value>Page tolerance</value>
+  </data>
+  <data name="Views_Home_Details_PublicationId" xml:space="preserve">
+    <value>Publication Id</value>
+  </data>
+  <data name="Views_Home_Details_PublicationName" xml:space="preserve">
+    <value>Publication Name</value>
+  </data>
+  <data name="Views_Home_Details_ReleaseTimeUnknown" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="Views_Home_Details_StartedRunning" xml:space="preserve">
+    <value>Started running</value>
+  </data>
+  <data name="Views_Home_Details_Title" xml:space="preserve">
+    <value>Details</value>
+  </data>
 </root>

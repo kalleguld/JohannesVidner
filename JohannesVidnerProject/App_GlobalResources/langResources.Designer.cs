@@ -106,6 +106,150 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hide Log.
+        /// </summary>
+        internal static string Views_Home_Details_BtnHideLog {
+            get {
+                return ResourceManager.GetString("Views_Home_Details_BtnHideLog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Release.
+        /// </summary>
+        internal static string Views_Home_Details_BtnRelease {
+            get {
+                return ResourceManager.GetString("Views_Home_Details_BtnRelease", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Re-run.
+        /// </summary>
+        internal static string Views_Home_Details_BtnRerun {
+            get {
+                return ResourceManager.GetString("Views_Home_Details_BtnRerun", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show Log.
+        /// </summary>
+        internal static string Views_Home_Details_BtnShowLog {
+            get {
+                return ResourceManager.GetString("Views_Home_Details_BtnShowLog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current Status.
+        /// </summary>
+        internal static string Views_Home_Details_CurrentStatus {
+            get {
+                return ResourceManager.GetString("Views_Home_Details_CurrentStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edition Id.
+        /// </summary>
+        internal static string Views_Home_Details_EditionId {
+            get {
+                return ResourceManager.GetString("Views_Home_Details_EditionId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expected Release Time.
+        /// </summary>
+        internal static string Views_Home_Details_ExpectedReleaseTime {
+            get {
+                return ResourceManager.GetString("Views_Home_Details_ExpectedReleaseTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last log check.
+        /// </summary>
+        internal static string Views_Home_Details_LastLogCheck {
+            get {
+                return ResourceManager.GetString("Views_Home_Details_LastLogCheck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Log Text.
+        /// </summary>
+        internal static string Views_Home_Details_LogText {
+            get {
+                return ResourceManager.GetString("Views_Home_Details_LogText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of pages.
+        /// </summary>
+        internal static string Views_Home_Details_NumPages {
+            get {
+                return ResourceManager.GetString("Views_Home_Details_NumPages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Page tolerance.
+        /// </summary>
+        internal static string Views_Home_Details_PageTolerance {
+            get {
+                return ResourceManager.GetString("Views_Home_Details_PageTolerance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Publication Id.
+        /// </summary>
+        internal static string Views_Home_Details_PublicationId {
+            get {
+                return ResourceManager.GetString("Views_Home_Details_PublicationId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Publication Name.
+        /// </summary>
+        internal static string Views_Home_Details_PublicationName {
+            get {
+                return ResourceManager.GetString("Views_Home_Details_PublicationName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unknown.
+        /// </summary>
+        internal static string Views_Home_Details_ReleaseTimeUnknown {
+            get {
+                return ResourceManager.GetString("Views_Home_Details_ReleaseTimeUnknown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Started running.
+        /// </summary>
+        internal static string Views_Home_Details_StartedRunning {
+            get {
+                return ResourceManager.GetString("Views_Home_Details_StartedRunning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Details.
+        /// </summary>
+        internal static string Views_Home_Details_Title {
+            get {
+                return ResourceManager.GetString("Views_Home_Details_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Username required.
         /// </summary>
         internal static string Views_Home_Index_errMsg1 {
