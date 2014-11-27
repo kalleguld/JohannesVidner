@@ -54,9 +54,8 @@ namespace JohannesVidnerProject.Controllers
                     Status = edition.CurrentStatus,
                     MissingPages = new List<Page>(edition.MissingPages),
                     ErrorMessage = TranslateErrorMessage(edition.CurrentStatus),
-                    CssClass = "warning"
                 };
-                //pvm.DetermineStatusColor();
+                pvm.DetermineStatusColor();
                 publicationViewModels.Add(pvm);
             }
                                                         // Sort by color - red, yellow, green

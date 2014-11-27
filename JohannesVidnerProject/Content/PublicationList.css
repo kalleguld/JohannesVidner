@@ -1,6 +1,19 @@
 ﻿.name {
     font-weight: bold;
     font-size: larger;
+    text-decoration: underline;
+}
+.text-danger:hover {
+    color: #b94a48;
+    text-decoration: underline;
+}
+.text-success:hover {
+    color: #468847;
+    text-decoration: underline;
+}
+.text-warning:hover {
+    color: #c09853;
+    text-decoration: underline;
 }
 
 .datetime {
