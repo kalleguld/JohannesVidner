@@ -102,136 +102,145 @@ namespace Resources {
         internal static string Views_Home_Contact_Title {
             get {
                 return ResourceManager.GetString("Views_Home_Contact_Title", resourceCulture);
-                }
-                }
-               /// <summary>
-        ///   Looks up a localized string similar to Nuværende status:.
-        /// </summary>
-        internal static string Views_Home_Details_currentStatus {
-            get {
-                return ResourceManager.GetString("Views_Home_Details_currentStatus", resourceCulture);
-            }
-        }
-
-/// <summary>
-        ///   Looks up a localized string similar to Udgave ID:.
-        /// </summary>
-        internal static string Views_Home_Details_editionID {
-            get {
-                return ResourceManager.GetString("Views_Home_Details_editionID", resourceCulture);
-            }
-        }
-/// <summary>
-        ///   Looks up a localized string similar to Forventet udgivelsestid:.
-        /// </summary>
-        internal static string Views_Home_Details_expectedReleaseTime {
-            get {
-                return ResourceManager.GetString("Views_Home_Details_expectedReleaseTime", resourceCulture);
-            }
-        }
-/// <summary>
-        ///   Looks up a localized string similar to Skjul log.
-        /// </summary>
-        internal static string Views_Home_Details_hideLog {
-            get {
-                return ResourceManager.GetString("Views_Home_Details_hideLog", resourceCulture);
             }
         }
         
-/// <summary>
-        ///   Looks up a localized string similar to Sidste logtjek:.
-        /// </summary>
-        internal static string Views_Home_Details_lastLogCheck {
-            get {
-                return ResourceManager.GetString("Views_Home_Details_lastLogCheck", resourceCulture);
-            }
-        }
-        
-/// <summary>
-        ///   Looks up a localized string similar to Logtekst:.
-        /// </summary>
-        internal static string Views_Home_Details_logText {
-            get {
-                return ResourceManager.GetString("Views_Home_Details_logText", resourceCulture);
-            }
-        }
-        
-/// <summary>
-        ///   Looks up a localized string similar to Antal sider:.
-        /// </summary>
-        internal static string Views_Home_Details_numberOfPages {
-            get {
-                return ResourceManager.GetString("Views_Home_Details_numberOfPages", resourceCulture);
-            }
-        }
-        internal static string Views_Home_Details_pageTolerance {
-            get {
-                return ResourceManager.GetString("Views_Home_Details_pageTolerance", resourceCulture);
-            }
-        }
         /// <summary>
-
-        ///   Looks up a localized string similar to PublikationsID:.
+        ///   Looks up a localized string similar to Hide Log.
         /// </summary>
-        internal static string Views_Home_Details_publicationID {
+        internal static string Views_Home_Details_BtnHideLog {
             get {
-                return ResourceManager.GetString("Views_Home_Details_publicationID", resourceCulture);
+                return ResourceManager.GetString("Views_Home_Details_BtnHideLog", resourceCulture);
             }
         }
         
-/// <summary>
-        ///   Looks up a localized string similar to Publikationsnavn:.
+        /// <summary>
+        ///   Looks up a localized string similar to Release.
         /// </summary>
-        internal static string Views_Home_Details_publicationName {
+        internal static string Views_Home_Details_BtnRelease {
             get {
-                return ResourceManager.GetString("Views_Home_Details_publicationName", resourceCulture);
-            }
-        }
-/// <summary>
-        ///   Looks up a localized string similar to Udgiv.
-        /// </summary>
-        internal static string Views_Home_Details_release {
-            get {
-                return ResourceManager.GetString("Views_Home_Details_release", resourceCulture);
-            }
-        }
-
-/// <summary>
-        ///   Looks up a localized string similar to Kør igen.
-        /// </summary>
-        internal static string Views_Home_Details_rerun {
-            get {
-                return ResourceManager.GetString("Views_Home_Details_rerun", resourceCulture);
-            }
-        }
-/// <summary>
-        ///   Looks up a localized string similar to Start af kørsel:.
-        /// </summary>
-        internal static string Views_Home_Details_runningStarted {
-            get {
-                return ResourceManager.GetString("Views_Home_Details_runningStarted", resourceCulture);
+                return ResourceManager.GetString("Views_Home_Details_BtnRelease", resourceCulture);
             }
         }
         
-/// <summary>
-        ///   Looks up a localized string similar to Vis log.
+        /// <summary>
+        ///   Looks up a localized string similar to Re-run.
         /// </summary>
-        internal static string Views_Home_Details_showLog {
+        internal static string Views_Home_Details_BtnRerun {
             get {
-                return ResourceManager.GetString("Views_Home_Details_showLog", resourceCulture);
+                return ResourceManager.GetString("Views_Home_Details_BtnRerun", resourceCulture);
             }
         }
         
-/// <summary>
-        ///   Looks up a localized string similar to Ukendt.
+        /// <summary>
+        ///   Looks up a localized string similar to Show Log.
         /// </summary>
-        internal static string Views_Home_Details_unknown {
+        internal static string Views_Home_Details_BtnShowLog {
             get {
-                return ResourceManager.GetString("Views_Home_Details_unknown", resourceCulture);
+                return ResourceManager.GetString("Views_Home_Details_BtnShowLog", resourceCulture);
             }
         }
         
-/// <summary>
+        /// <summary>
+        ///   Looks up a localized string similar to Current Status.
+        /// </summary>
+        internal static string Views_Home_Details_CurrentStatus {
+            get {
+                return ResourceManager.GetString("Views_Home_Details_CurrentStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edition Id.
+        /// </summary>
+        internal static string Views_Home_Details_EditionId {
+            get {
+                return ResourceManager.GetString("Views_Home_Details_EditionId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expected Release Time.
+        /// </summary>
+        internal static string Views_Home_Details_ExpectedReleaseTime {
+            get {
+                return ResourceManager.GetString("Views_Home_Details_ExpectedReleaseTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last log check.
+        /// </summary>
+        internal static string Views_Home_Details_LastLogCheck {
+            get {
+                return ResourceManager.GetString("Views_Home_Details_LastLogCheck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Log Text.
+        /// </summary>
+        internal static string Views_Home_Details_LogText {
+            get {
+                return ResourceManager.GetString("Views_Home_Details_LogText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of pages.
+        /// </summary>
+        internal static string Views_Home_Details_NumPages {
+            get {
+                return ResourceManager.GetString("Views_Home_Details_NumPages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Page tolerance.
+        /// </summary>
+        internal static string Views_Home_Details_PageTolerance {
+            get {
+                return ResourceManager.GetString("Views_Home_Details_PageTolerance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Publication Id.
+        /// </summary>
+        internal static string Views_Home_Details_PublicationId {
+            get {
+                return ResourceManager.GetString("Views_Home_Details_PublicationId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Publication Name.
+        /// </summary>
+        internal static string Views_Home_Details_PublicationName {
+            get {
+                return ResourceManager.GetString("Views_Home_Details_PublicationName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unknown.
+        /// </summary>
+        internal static string Views_Home_Details_ReleaseTimeUnknown {
+            get {
+                return ResourceManager.GetString("Views_Home_Details_ReleaseTimeUnknown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Started running.
+        /// </summary>
+        internal static string Views_Home_Details_StartedRunning {
+            get {
+                return ResourceManager.GetString("Views_Home_Details_StartedRunning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Details.
         /// </summary>
         internal static string Views_Home_Details_Title {
@@ -242,7 +251,6 @@ namespace Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to Username required.
-        ///   Looks up a localized string similar to Brugernavn skal indtastes.
         /// </summary>
         internal static string Views_Home_Index_errMsg1 {
             get {
