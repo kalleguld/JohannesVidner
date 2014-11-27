@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using JohannesVidnerProject.Models;
 using JohannesVidnerProject.Models.Home;
 using Model;
+using Resources;
 using Services;
 
 namespace JohannesVidnerProject.Controllers
@@ -48,13 +49,14 @@ namespace JohannesVidnerProject.Controllers
                     Id = publication.Id,
                     Name = publication.Name,
                     NumberOfPages = Convert.ToInt32(edition.NumberOfPages),
-                    ErrorMessage = edition.ErrorMessage,
                     RunningStarted = edition.RunningStarted,
                     Running = edition.Running,
                     Status = edition.CurrentStatus,
-                    MissingPages = new List<Page>(edition.MissingPages)
+                    MissingPages = new List<Page>(edition.MissingPages),
+                    ErrorMessage = TranslateErrorMessage(edition.CurrentStatus),
+                    CssClass = "warning"
                 };
-                pvm.DetermineStatusColor();
+                //pvm.DetermineStatusColor();
                 publicationViewModels.Add(pvm);
             }
                                                         // Sort by color - red, yellow, green
@@ -168,6 +170,33 @@ namespace JohannesVidnerProject.Controllers
                     foundPublications.Add(pub);
             }                       
             return foundPublications;
+        }
+
+        private string TranslateErrorMessage(CurrentStatus status)
+        {
+            var errorMessage = "";
+            switch (status)
+            {
+                case CurrentStatus.Released:
+                    errorMessage = langResources.Views_Home_Index_Released;
+                    break;
+                case CurrentStatus.OnHold:
+                    errorMessage = langResources.Views_Home_Index_OnHold;
+                    break;
+                case CurrentStatus.NotStarted:
+                    errorMessage = langResources.Views_Home_Index_NotStarted;
+                    break;
+                case CurrentStatus.Running:
+                    errorMessage = langResources.Views_Home_Index_Running;
+                    break;
+                case CurrentStatus.UnrecoverableError:
+                    errorMessage = langResources.Views_Home_Index_UnrecoverableError;
+                    break;
+                case CurrentStatus.RecoverableError:
+                    errorMessage = langResources.Views_Home_Index_RecoverableError;
+                    break;
+            }
+            return errorMessage;
         }
     }
 }

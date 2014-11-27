@@ -268,24 +268,6 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An error has ocurred. The system will try to run the files again in 10 minutes..
-        /// </summary>
-        internal static string Views_Home_Index_errMsg3 {
-            get {
-                return ResourceManager.GetString("Views_Home_Index_errMsg3", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Missing page from section.
-        /// </summary>
-        internal static string Views_Home_Index_errMsg4 {
-            get {
-                return ResourceManager.GetString("Views_Home_Index_errMsg4", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Missing page: Section {0} page {1}.
         /// </summary>
         internal static string Views_Home_Index_MissingPages {
@@ -295,11 +277,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Not started.
+        /// </summary>
+        internal static string Views_Home_Index_NotStarted {
+            get {
+                return ResourceManager.GetString("Views_Home_Index_NotStarted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ok.
         /// </summary>
         internal static string Views_Home_Index_ok {
             get {
                 return ResourceManager.GetString("Views_Home_Index_ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uploaded and ready for release.
+        /// </summary>
+        internal static string Views_Home_Index_OnHold {
+            get {
+                return ResourceManager.GetString("Views_Home_Index_OnHold", resourceCulture);
             }
         }
         
@@ -327,6 +327,33 @@ namespace Resources {
         internal static string Views_Home_Index_pages {
             get {
                 return ResourceManager.GetString("Views_Home_Index_pages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error has occured. The system will try to run the files again in 10 minutes..
+        /// </summary>
+        internal static string Views_Home_Index_RecoverableError {
+            get {
+                return ResourceManager.GetString("Views_Home_Index_RecoverableError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Online.
+        /// </summary>
+        internal static string Views_Home_Index_Released {
+            get {
+                return ResourceManager.GetString("Views_Home_Index_Released", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Running....
+        /// </summary>
+        internal static string Views_Home_Index_Running {
+            get {
+                return ResourceManager.GetString("Views_Home_Index_Running", resourceCulture);
             }
         }
         
@@ -363,6 +390,15 @@ namespace Resources {
         internal static string Views_Home_Index_Title {
             get {
                 return ResourceManager.GetString("Views_Home_Index_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ERROR. CONTACT YOUR SUPERVISOR RIGHT NOW!!!.
+        /// </summary>
+        internal static string Views_Home_Index_UnrecoverableError {
+            get {
+                return ResourceManager.GetString("Views_Home_Index_UnrecoverableError", resourceCulture);
             }
         }
         
