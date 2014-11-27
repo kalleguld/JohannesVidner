@@ -9,16 +9,4 @@
         <li>@Html.ActionLink(Session.GetCurrentUser().Username, "Index", "Home")</li>
         <li>@Html.ActionLink(langResources.Views_Shared__LoginPartial_logoff, "Logoff", "Home")</li>
     }
-    <li>
-        <a>
-            <form method="post" id="langForm">
-                @Html.AntiForgeryToken()
-                <select onchange=" this.form.submit() " name="lang">
-                    <option value="en-GB" @(Culture == "en-GB" ? "selected=\"selected\"" : "")>English</option>
-                    <option value="da-DK" @(Culture == "da-DK" ? "selected=\"selected\"" : "")>Dansk</option>
-                    <option value="de-DE" @(Culture == "de-DE" ? "selected=\"selected\"" : "")>Deutsch</option>
-                </select>
-            </form>
-        </a>
-    </li>
 </ul>

@@ -117,10 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="flag" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Germany-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Views_Home_Contact_cvr" xml:space="preserve">
     <value>CVR-nr</value>
   </data>
@@ -132,6 +128,9 @@
   </data>
   <data name="Views_Home_Contact_telephone" xml:space="preserve">
     <value>Telephone</value>
+  </data>
+  <data name="Views_Home_Contact_Title" xml:space="preserve">
+    <value>Contact</value>
   </data>
   <data name="Views_Home_Index_errMsg1" xml:space="preserve">
     <value>Username required</value>
@@ -155,7 +154,7 @@
     <value>page</value>
   </data>
   <data name="Views_Home_Index_pages" xml:space="preserve">
-    <value>pages</value>
+    <value>{0} pages</value>
   </data>
   <data name="Views_Home_Index_sysMsg1" xml:space="preserve">
     <value>Uploaded and ready for realease</value>
@@ -239,7 +238,7 @@
     <value>Edit</value>
   </data>
   <data name="Views_Users_Index_name" xml:space="preserve">
-    <value>Navn</value>
+    <value>Name</value>
   </data>
   <data name="Views_Users_Index_username" xml:space="preserve">
     <value>Username</value>
@@ -249,5 +248,26 @@
   </data>
   <data name="Views_Users_Index_workplace" xml:space="preserve">
     <value>Workplace</value>
+  </data>
+  <data name="Views_Home_Index_MissingPages" xml:space="preserve">
+    <value>Missing page: Section {0} page {1}</value>
+  </data>
+  <data name="Views_Home_Index_Title" xml:space="preserve">
+    <value>Publications</value>
+  </data>
+  <data name="Views_Users_Create_ChooseLanguage" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="Views_Users_Delete_MainQuestion" xml:space="preserve">
+    <value>Are you sure you want to delete the user {0} ({1})?</value>
+  </data>
+  <data name="Views_Users_Delete_Title" xml:space="preserve">
+    <value>Delete User</value>
+  </data>
+  <data name="Views_Home_Index_SearchFieldPlaceholder" xml:space="preserve">
+    <value>Search...</value>
+  </data>
+  <data name="Views_Home_Index_SearchButton" xml:space="preserve">
+    <value>Search</value>
   </data>
 </root>

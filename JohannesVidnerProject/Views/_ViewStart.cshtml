@@ -1,7 +1,21 @@
-﻿@{
+﻿@using System.Globalization
+@using Microsoft.Ajax.Utilities
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    if (!Request["lang"].IsEmpty())
+    var currentUser = Session.GetCurrentUser();
+    if (currentUser != null)
     {
-        Culture = UICulture = Request["lang"];
+        if (!currentUser.CultureName.IsNullOrWhiteSpace())
+        {
+            try
+            {
+
+                Culture = UICulture = currentUser.CultureName;
+            }
+            catch (CultureNotFoundException)
+            {
+            }
+        }
+        
     }
 }

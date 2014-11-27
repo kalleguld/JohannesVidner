@@ -2,10 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/21/2014 09:36:18
--- Generated from EDMX file: C:\Users\HolgerKyhl\Documents\Datamatik\4. sem\SUM2 - 2\SUM Visiolink Projekt\Model\ModelClasses.edmx
--- Date Created: 11/19/2014 23:24:04
--- Generated from EDMX file: C:\Users\Anders\Desktop\JohannesVidner\Model\ModelClasses.edmx
+-- Date Created: 11/26/2014 12:56:26
+-- Generated from EDMX file: C:\Users\kalleguld\Documents\JohannesVidnerProject\Model\ModelClasses.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -35,10 +33,19 @@ GO
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
-drop table EditionSet;
-drop table PageSet;
-drop table PublicationSet;
-drop table UserSet;
+
+IF OBJECT_ID(N'[dbo].[PublicationSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[PublicationSet];
+GO
+IF OBJECT_ID(N'[dbo].[EditionSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[EditionSet];
+GO
+IF OBJECT_ID(N'[dbo].[UserSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[UserSet];
+GO
+IF OBJECT_ID(N'[dbo].[PageSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[PageSet];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -77,7 +84,8 @@ CREATE TABLE [dbo].[UserSet] (
     [Name] nvarchar(max)  NOT NULL,
     [WriteAccess] bit  NOT NULL,
     [UserAdminAccess] bit  NOT NULL,
-    [PublicationId] int  NOT NULL
+    [PublicationId] int  NOT NULL,
+    [CultureName] varchar(16)  NULL
 );
 GO
 
@@ -129,6 +137,7 @@ ADD CONSTRAINT [FK_PublicationEdition]
     REFERENCES [dbo].[PublicationSet]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_PublicationEdition'
 CREATE INDEX [IX_FK_PublicationEdition]
@@ -143,6 +152,7 @@ ADD CONSTRAINT [FK_PublicationUser]
     REFERENCES [dbo].[PublicationSet]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_PublicationUser'
 CREATE INDEX [IX_FK_PublicationUser]
@@ -157,6 +167,7 @@ ADD CONSTRAINT [FK_EditionPage]
     REFERENCES [dbo].[EditionSet]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_EditionPage'
 CREATE INDEX [IX_FK_EditionPage]
@@ -171,6 +182,7 @@ ADD CONSTRAINT [FK_PublicationPublication]
     REFERENCES [dbo].[PublicationSet]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_PublicationPublication'
 CREATE INDEX [IX_FK_PublicationPublication]

@@ -43,7 +43,7 @@ namespace JohannesVidnerProject.Controllers
             if (redirect != null) return redirect;
 
             var viewModel = new CreateUserViewModel(currentUser.Publication);
-            
+            viewModel.SelectedCulture = currentUser.CultureName;
             return View(viewModel);
         }
 
@@ -69,7 +69,8 @@ namespace JohannesVidnerProject.Controllers
                 PasswordText =      viewModel.Password,
                 Publication =       targetPublication,
                 UserAdminAccess =   viewModel.UserAdmin,
-                WriteAccess =       viewModel.WriteAccess
+                WriteAccess =       viewModel.WriteAccess,
+                CultureName =       viewModel.SelectedCulture
             };
             _dbService.Create(user);
 
@@ -130,6 +131,7 @@ namespace JohannesVidnerProject.Controllers
             targetUser.Username = viewModel.Username;
             targetUser.UserAdminAccess = viewModel.UserAdmin;
             targetUser.WriteAccess = viewModel.WriteAccess;
+            targetUser.CultureName = viewModel.SelectedCulture;
             _dbService.Update(targetUser);
 
             return RedirectToAction("Index", "Users");

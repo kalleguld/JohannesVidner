@@ -2,7 +2,7 @@
 @model JohannesVidnerProject.Models.Users.CreateUserViewModel
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = langResources.Views_Users_Create_createNew;
 }
 
 <h2>@langResources.Views_Users_Create_createNew</h2>
@@ -67,7 +67,14 @@
                 @Html.DropDownListFor(pub => pub.SelectedPublicationId, Model.AllowedPublications, new { @class = "form-control"})
             </div>
         </div>
-
+        <div class="form-group">
+            <div class="control-label col-md-2">
+                @langResources.Views_Users_Create_ChooseLanguage
+            </div>
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.SelectedCulture, Model.AllowedCultures, new { @class = "form-control" })
+            </div>
+        </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="@langResources.Views_Users_Create_create" class="btn btn-default" />

@@ -60,9 +60,15 @@
         </div>
 
         <div class="form-group">
-            <div class="control-label col-md-2" align="left">@langResources.Views_Users_Edit_workplace</div>
+            <label class="control-label col-md-2">@langResources.Views_Users_Edit_workplace</label>
             <div class="col-md-10">
                 @Html.DropDownListFor(m => m.SelectedPublicationId, Model.AllowedPublications, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="control-label col-md-2">Language</div>
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.SelectedCulture, Model.AllowedCultures, new { @class = "form-control" })
             </div>
         </div>
         @Html.HiddenFor(m => m.UserId)

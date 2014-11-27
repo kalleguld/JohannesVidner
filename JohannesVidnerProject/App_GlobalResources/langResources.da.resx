@@ -124,28 +124,22 @@
     <value>Email</value>
   </data>
   <data name="Views_Home_Contact_support" xml:space="preserve">
-    <value>Support</value>
+    <value>Medarbejderhjælp</value>
   </data>
   <data name="Views_Home_Contact_telephone" xml:space="preserve">
-    <value>Telephone</value>
-  </data>
-  <data name="Views_Home_Contact_Title" xml:space="preserve">
-    <value>Contact</value>
+    <value>Telefon</value>
   </data>
   <data name="Views_Home_Index_errMsg1" xml:space="preserve">
-    <value>Username required</value>
+    <value>Brugernavn skal indtastes</value>
   </data>
   <data name="Views_Home_Index_errMsg2" xml:space="preserve">
-    <value>Password required</value>
+    <value>Password skal indtastes</value>
   </data>
   <data name="Views_Home_Index_errMsg3" xml:space="preserve">
-    <value>An error has ocurred. The system will try to run the files again in 10 minutes.</value>
+    <value>En fejl er opstået. Systemet vil prøve at køre filerne igen om 10 minutter.</value>
   </data>
   <data name="Views_Home_Index_errMsg4" xml:space="preserve">
-    <value>Missing page from section</value>
-  </data>
-  <data name="Views_Home_Index_MissingPages" xml:space="preserve">
-    <value>Missing page: Section {0} page {1}</value>
+    <value>Mangler side fra sektion</value>
   </data>
   <data name="Views_Home_Index_ok" xml:space="preserve">
     <value>Ok</value>
@@ -154,168 +148,126 @@
     <value>Online</value>
   </data>
   <data name="Views_Home_Index_page" xml:space="preserve">
-    <value>page</value>
+    <value>side</value>
   </data>
   <data name="Views_Home_Index_pages" xml:space="preserve">
-    <value>{0} pages</value>
+    <value>{0} sider</value>
   </data>
   <data name="Views_Home_Index_sysMsg1" xml:space="preserve">
-    <value>Uploaded and ready for realease</value>
-  </data>
-  <data name="Views_Home_Index_Title" xml:space="preserve">
-    <value>Publications</value>
+    <value>Uploaded og klar til release</value>
   </data>
   <data name="Views_Home_Login_login" xml:space="preserve">
-    <value>Login</value>
+    <value>Log ind</value>
   </data>
   <data name="Views_Home_Login_password" xml:space="preserve">
     <value>Password</value>
   </data>
   <data name="Views_Home_Login_username" xml:space="preserve">
-    <value>Username</value>
+    <value>Brugernavn</value>
   </data>
   <data name="Views_Shared__Layout_contact" xml:space="preserve">
-    <value>Contact</value>
+    <value>Kontakt</value>
   </data>
   <data name="Views_Shared__Layout_users" xml:space="preserve">
-    <value>Users</value>
+    <value>Brugere</value>
   </data>
   <data name="Views_Shared__LoginPartial_login" xml:space="preserve">
-    <value>Login</value>
+    <value>Log ind</value>
   </data>
   <data name="Views_Shared__LoginPartial_logoff" xml:space="preserve">
-    <value>Logoff</value>
-  </data>
-  <data name="Views_Users_Create_ChooseLanguage" xml:space="preserve">
-    <value>Language</value>
+    <value>Log af</value>
   </data>
   <data name="Views_Users_Create_create" xml:space="preserve">
-    <value>Create</value>
+    <value>Opret</value>
   </data>
   <data name="Views_Users_Create_createNew" xml:space="preserve">
-    <value>Create new user</value>
+    <value>Opret ny Bruger</value>
   </data>
   <data name="Views_Users_Delete_areYouSure" xml:space="preserve">
-    <value>Are you sure you will delete this user?</value>
+    <value>Er du sikker på at du vil slette denne bruger?</value>
   </data>
   <data name="Views_Users_Delete_cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Fortryd</value>
   </data>
   <data name="Views_Users_Delete_delete" xml:space="preserve">
-    <value>Delete</value>
-  </data>
-  <data name="Views_Users_Delete_MainQuestion" xml:space="preserve">
-    <value>Are you sure you want to delete the user {0} ({1})?</value>
-  </data>
-  <data name="Views_Users_Delete_Title" xml:space="preserve">
-    <value>Delete User</value>
+    <value>Slet</value>
   </data>
   <data name="Views_Users_Edit_back" xml:space="preserve">
-    <value>Back to list</value>
+    <value>Tilbage til list</value>
   </data>
   <data name="Views_Users_Edit_editUser" xml:space="preserve">
-    <value>Edit user</value>
+    <value>Ret Bruger</value>
   </data>
   <data name="Views_Users_Edit_name" xml:space="preserve">
-    <value>Name</value>
+    <value>Navn</value>
   </data>
   <data name="Views_Users_Edit_password" xml:space="preserve">
     <value>Password</value>
   </data>
   <data name="Views_Users_Edit_save" xml:space="preserve">
-    <value>Save</value>
+    <value>Gem</value>
   </data>
   <data name="Views_Users_Edit_userAdministrator" xml:space="preserve">
-    <value>User Administrator</value>
+    <value>Bruger Administrator</value>
   </data>
   <data name="Views_Users_Edit_username" xml:space="preserve">
-    <value>Username</value>
+    <value>Brugernavn</value>
   </data>
   <data name="Views_Users_Edit_workplace" xml:space="preserve">
-    <value>Workplace</value>
+    <value>Arbejdsplads</value>
   </data>
   <data name="Views_Users_Edit_writeAccess" xml:space="preserve">
-    <value>Write access to publications</value>
+    <value>Skriveadgang til publikationer</value>
   </data>
   <data name="Views_Users_Index_administrator" xml:space="preserve">
-    <value>Administrator</value>
+    <value>administrator</value>
   </data>
   <data name="Views_Users_Index_create" xml:space="preserve">
-    <value>Create</value>
+    <value>Opret</value>
   </data>
   <data name="Views_Users_Index_createNewUser" xml:space="preserve">
-    <value>Create new User</value>
+    <value>Opret ny bruger</value>
   </data>
   <data name="Views_Users_Index_delete" xml:space="preserve">
-    <value>Delete</value>
+    <value>Slet</value>
   </data>
   <data name="Views_Users_Index_edit" xml:space="preserve">
-    <value>Edit</value>
+    <value>Ret</value>
   </data>
   <data name="Views_Users_Index_name" xml:space="preserve">
-    <value>Name</value>
+    <value>Navn</value>
   </data>
   <data name="Views_Users_Index_username" xml:space="preserve">
-    <value>Username</value>
+    <value>Brugernavn</value>
   </data>
   <data name="Views_Users_Index_users" xml:space="preserve">
-    <value>Users</value>
+    <value>Brugere</value>
   </data>
   <data name="Views_Users_Index_workplace" xml:space="preserve">
-    <value>Workplace</value>
+    <value>Arbejdsplads</value>
+  </data>
+  <data name="Views_Home_Index_MissingPages" xml:space="preserve">
+    <value>Mangler side: Sektion {0} side {1}</value>
+  </data>
+  <data name="Views_Home_Contact_Title" xml:space="preserve">
+    <value>Kontakt</value>
+  </data>
+  <data name="Views_Home_Index_Title" xml:space="preserve">
+    <value>Publikationer</value>
+  </data>
+  <data name="Views_Users_Create_ChooseLanguage" xml:space="preserve">
+    <value>Sprog</value>
+  </data>
+  <data name="Views_Users_Delete_MainQuestion" xml:space="preserve">
+    <value>Er du sikker på du vil slette brugeren {0} ({1})?</value>
+  </data>
+  <data name="Views_Users_Delete_Title" xml:space="preserve">
+    <value>Slet Bruger</value>
   </data>
   <data name="Views_Home_Index_SearchFieldPlaceholder" xml:space="preserve">
-    <value>Search...</value>
+    <value>Søg...</value>
   </data>
   <data name="Views_Home_Index_SearchButton" xml:space="preserve">
-    <value>Search</value>
-  </data>
-  <data name="Views_Home_Details_BtnHideLog" xml:space="preserve">
-    <value>Hide Log</value>
-  </data>
-  <data name="Views_Home_Details_BtnRelease" xml:space="preserve">
-    <value>Release</value>
-  </data>
-  <data name="Views_Home_Details_BtnRerun" xml:space="preserve">
-    <value>Re-run</value>
-  </data>
-  <data name="Views_Home_Details_BtnShowLog" xml:space="preserve">
-    <value>Show Log</value>
-  </data>
-  <data name="Views_Home_Details_CurrentStatus" xml:space="preserve">
-    <value>Current Status</value>
-  </data>
-  <data name="Views_Home_Details_EditionId" xml:space="preserve">
-    <value>Edition Id</value>
-  </data>
-  <data name="Views_Home_Details_ExpectedReleaseTime" xml:space="preserve">
-    <value>Expected Release Time</value>
-  </data>
-  <data name="Views_Home_Details_LastLogCheck" xml:space="preserve">
-    <value>Last log check</value>
-  </data>
-  <data name="Views_Home_Details_LogText" xml:space="preserve">
-    <value>Log Text</value>
-  </data>
-  <data name="Views_Home_Details_NumPages" xml:space="preserve">
-    <value>Number of pages</value>
-  </data>
-  <data name="Views_Home_Details_PageTolerance" xml:space="preserve">
-    <value>Page tolerance</value>
-  </data>
-  <data name="Views_Home_Details_PublicationId" xml:space="preserve">
-    <value>Publication Id</value>
-  </data>
-  <data name="Views_Home_Details_PublicationName" xml:space="preserve">
-    <value>Publication Name</value>
-  </data>
-  <data name="Views_Home_Details_ReleaseTimeUnknown" xml:space="preserve">
-    <value>Unknown</value>
-  </data>
-  <data name="Views_Home_Details_StartedRunning" xml:space="preserve">
-    <value>Started running</value>
-  </data>
-  <data name="Views_Home_Details_Title" xml:space="preserve">
-    <value>Details</value>
+    <value>Søg</value>
   </data>
 </root>

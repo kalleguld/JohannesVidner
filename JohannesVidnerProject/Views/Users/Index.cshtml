@@ -2,24 +2,24 @@
 @model System.Collections.Generic.IEnumerable<JohannesVidnerProject.Models.Users.ListUsersViewModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = @langResources.Views_Users_Index_users;
 }
 
 <h2>@langResources.Views_Users_Index_users</h2>
 
 <p>
-    @Html.ActionLink(langResources.Views_Users_Index_createNewUser, langResources.Views_Users_Index_create)
+    @Html.ActionLink(langResources.Views_Users_Index_createNewUser, "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Username)
+            @langResources.Views_Users_Edit_username
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @langResources.Views_Users_Edit_name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Workplace)
+            @langResources.Views_Users_Edit_workplace
         </th>
         <th></th>
     </tr>

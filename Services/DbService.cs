@@ -61,7 +61,15 @@ namespace Services
 
         public User GetUserByUsernameAndPassword(string username, string password)
         {
-            var user = _dbContext.UserSet.FirstOrDefault(u => u.Username == username);
+            User user = null;
+            try
+            {
+                user = _dbContext.UserSet.FirstOrDefault(u => u.Username == username);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
             if (user == null) return null;
             if (!user.HasPassword(password)) return null;
             return user;

@@ -1,15 +1,7 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.Reflection;
-using System.Resources;
-using System.Web;
-using Microsoft.Ajax.Utilities;
-using Newtonsoft.Json;
-using Resources;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace JohannesVidnerProject.Models.Home
 {
-    //HttpContext.GetGlobalResourceObject(“Resourcefilename”, “resourcekey″).ToString();
     public class LoginViewModel
     {
         [Required]
