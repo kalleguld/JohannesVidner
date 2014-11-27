@@ -273,4 +273,22 @@
   <data name="Views_Home_Index_SearchButton" xml:space="preserve">
     <value>Suche</value>
   </data>
+  <data name="Views_Home_Index_NotStarted" xml:space="preserve">
+    <value>Nicht begonnen</value>
+  </data>
+  <data name="Views_Home_Index_OnHold" xml:space="preserve">
+    <value>Hochgeladen und zur Veröffentlichung bereit</value>
+  </data>
+  <data name="Views_Home_Index_RecoverableError" xml:space="preserve">
+    <value>Ein Fehler ist aufgetreten. Das System versucht, die Dateien in 10 Minuten wieder laufen</value>
+  </data>
+  <data name="Views_Home_Index_Released" xml:space="preserve">
+    <value>Online</value>
+  </data>
+  <data name="Views_Home_Index_Running" xml:space="preserve">
+    <value>Ausführen</value>
+  </data>
+  <data name="Views_Home_Index_UnrecoverableError" xml:space="preserve">
+    <value>ERROR! WENDEN SIE AN IHREN VORGESETZTEN JETZT!</value>
+  </data>
 </root>
