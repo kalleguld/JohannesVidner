@@ -113,7 +113,6 @@ namespace JohannesVidnerProject.Controllers
             {
                 ShortName = publication.ShortName,
                 EditionId = edition.Id,
-                ErrorMessage = edition.ErrorMessage,
                 RunningStarted = edition.RunningStarted,
                 LogText = edition.LogText,
                 NumberOfPages = edition.NumberOfPages,
@@ -129,8 +128,6 @@ namespace JohannesVidnerProject.Controllers
                                     (edition.CurrentStatus == CurrentStatus.OnHold),
                 ShowShowLogButton = currentUser.WriteAccess
             };
-
-            dmv.DetermineStatusColor();
             return View(dmv);
         }
 
@@ -183,33 +180,6 @@ namespace JohannesVidnerProject.Controllers
                     foundPublications.Add(pub);
             }                       
             return foundPublications;
-        }
-
-        private string TranslateErrorMessage(CurrentStatus status)
-        {
-            var errorMessage = "";
-            switch (status)
-            {
-                case CurrentStatus.Released:
-                    errorMessage = langResources.Views_Home_Index_Released;
-                    break;
-                case CurrentStatus.OnHold:
-                    errorMessage = langResources.Views_Home_Index_OnHold;
-                    break;
-                case CurrentStatus.NotStarted:
-                    errorMessage = langResources.Views_Home_Index_NotStarted;
-                    break;
-                case CurrentStatus.Running:
-                    errorMessage = langResources.Views_Home_Index_Running;
-                    break;
-                case CurrentStatus.UnrecoverableError:
-                    errorMessage = langResources.Views_Home_Index_UnrecoverableError;
-                    break;
-                case CurrentStatus.RecoverableError:
-                    errorMessage = langResources.Views_Home_Index_RecoverableError;
-                    break;
-            }
-            return errorMessage;
         }
     }
 }

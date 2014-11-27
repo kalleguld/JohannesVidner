@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Model;
+using Resources;
 
 namespace JohannesVidnerProject.Models
 {
@@ -11,7 +12,6 @@ namespace JohannesVidnerProject.Models
         public int EditionId { get; set; }
         public DateTime RunningStarted { get; set; }
         public string LogText { get; set; }
-        public string ErrorMessage { get; set; }
         public int NumberOfPages { get; set; }
         public int MaxMissingPages { get; set; }
         public string ShortName { get; set; }
@@ -19,41 +19,59 @@ namespace JohannesVidnerProject.Models
         public DateTime LastLogCheck { get; set; }
         public DateTime? ExpectedReleaseTime { get; set; }
         public List<Page> MissingPages { get; set; }
-        public string CssClass { get; set; }
         public CurrentStatus Status { get; set; }
 
         public bool ShowRerunButton { get; set; }
         public bool ShowReleaseButton { get; set; }
         public bool ShowShowLogButton { get; set; }
 
-        // maybe TODO: Change conditions for determining colors
-        public void DetermineStatusColor()
+        public string CssClass
         {
-            CssClass = "danger";
-            switch (Status)
+            get
             {
-                case CurrentStatus.Released:
-                    CssClass = "success";
-                    ErrorMessage = "Online";
-                    break;
-                case CurrentStatus.OnHold:
-                    CssClass = "success";
-                    ErrorMessage = "Uploaded and ready for release";
-                    break;
-                case CurrentStatus.NotStarted:
-                    CssClass = "warning";
-                    ErrorMessage = "Not started";
-                    break;
-                case CurrentStatus.Running:
-                    CssClass = "warning";
-                    ErrorMessage = "Running...";
-                    break;
-                case CurrentStatus.UnrecoverableError:
-                    ErrorMessage = "ERROR. CONTACT YOUR SUPERVISOR RIGHT NOW!!!";
-                    break;
-                case CurrentStatus.RecoverableError:
-                    ErrorMessage = "An error has occured. The system will try to run the files again in 10 minutes.";
-                    break;
+                switch (Status)
+                {
+                    case CurrentStatus.Released:
+                        return "success";
+                    case CurrentStatus.OnHold:
+                        return "success";
+                    case CurrentStatus.NotStarted:
+                        return "warning";
+                    case CurrentStatus.Running:
+                        return "warning";
+                    default:
+                        return "danger";
+                }
+            }
+        }
+
+        public string ErrorMessage
+        {
+            get
+            {
+                var errorMessage = "";
+                switch (Status)
+                {
+                    case CurrentStatus.Released:
+                        errorMessage = langResources.Views_Home_Index_Released;
+                        break;
+                    case CurrentStatus.OnHold:
+                        errorMessage = langResources.Views_Home_Index_OnHold;
+                        break;
+                    case CurrentStatus.NotStarted:
+                        errorMessage = langResources.Views_Home_Index_NotStarted;
+                        break;
+                    case CurrentStatus.Running:
+                        errorMessage = langResources.Views_Home_Index_Running;
+                        break;
+                    case CurrentStatus.UnrecoverableError:
+                        errorMessage = langResources.Views_Home_Index_UnrecoverableError;
+                        break;
+                    case CurrentStatus.RecoverableError:
+                        errorMessage = langResources.Views_Home_Index_RecoverableError;
+                        break;
+                }
+                return errorMessage;
             }
         }
 
