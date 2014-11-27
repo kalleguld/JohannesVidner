@@ -250,4 +250,52 @@
   <data name="Views_Users_Index_workplace" xml:space="preserve">
     <value>Workplace</value>
   </data>
+  <data name="Views_Home_Details_currentStatus" xml:space="preserve">
+    <value>Current status:</value>
+  </data>
+  <data name="Views_Home_Details_editionID" xml:space="preserve">
+    <value>Edition ID:</value>
+  </data>
+  <data name="Views_Home_Details_expectedReleaseTime" xml:space="preserve">
+    <value>Expected release time:</value>
+  </data>
+  <data name="Views_Home_Details_hideLog" xml:space="preserve">
+    <value>Hide log</value>
+  </data>
+  <data name="Views_Home_Details_lastLogCheck" xml:space="preserve">
+    <value>Last log check:</value>
+  </data>
+  <data name="Views_Home_Details_logText" xml:space="preserve">
+    <value>Logtext:</value>
+  </data>
+  <data name="Views_Home_Details_numberOfPages" xml:space="preserve">
+    <value>Number of pages:</value>
+  </data>
+  <data name="Views_Home_Details_pageTolerance" xml:space="preserve">
+    <value>Pagetolerance:</value>
+  </data>
+  <data name="Views_Home_Details_publicationID" xml:space="preserve">
+    <value>Publication ID:</value>
+  </data>
+  <data name="Views_Home_Details_publicationName" xml:space="preserve">
+    <value>Publication Name:</value>
+  </data>
+  <data name="Views_Home_Details_release" xml:space="preserve">
+    <value>Release</value>
+  </data>
+  <data name="Views_Home_Details_rerun" xml:space="preserve">
+    <value>Re-run</value>
+  </data>
+  <data name="Views_Home_Details_runningStarted" xml:space="preserve">
+    <value>Started running at:</value>
+  </data>
+  <data name="Views_Home_Details_showLog" xml:space="preserve">
+    <value>Show log</value>
+  </data>
+  <data name="Views_Home_Details_unknown" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="Views_Home_Index_missingInSection" xml:space="preserve">
+    <value>Missing page in section </value>
+  </data>
 </root>

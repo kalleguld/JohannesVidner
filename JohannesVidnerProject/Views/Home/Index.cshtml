@@ -41,7 +41,7 @@
                     foreach (var page in p.MissingPages)
                     {
                         <div>
-                            <span>Missing page from section @page.Section, page @page.PageNumber.</span>
+                            <span>@langResources.Views_Home_Index_missingInSection @page.Section, @langResources.Views_Home_Index_page @page.PageNumber.</span>
                         </div>
                     }
                 }
