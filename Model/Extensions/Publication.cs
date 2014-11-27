@@ -11,11 +11,12 @@ namespace Model
     {
         public bool IsDescendant(Publication possibleParent)
         {
+            if (this == possibleParent) return true;
             var item = this;
 
             while (item.ParentPublicationId != item.Id && item.ParentPublicationId.HasValue)
             {
-                if (item.Id == possibleParent.Id)
+                if (item.ParentPublicationId == possibleParent.Id)
                 {
                     return true;
                 }
