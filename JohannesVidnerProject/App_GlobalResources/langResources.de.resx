@@ -273,4 +273,7 @@
   <data name="Views_Home_Details_BtnHideLog" xml:space="preserve">
     <value>Hide Log</value>
   </data>
+  <data name="Views_Users_Edit_language" xml:space="preserve">
+    <value>Sprache</value>
+  </data>
 </root>

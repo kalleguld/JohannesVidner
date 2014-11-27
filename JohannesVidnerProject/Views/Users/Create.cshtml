@@ -60,17 +60,17 @@
         </div>
 
         <div class="form-group">
-            <div class="control-label col-md-2">
+            <label class="control-label col-md-2">
                 @langResources.Views_Users_Edit_workplace
-            </div>
+            </label>
             <div class="col-md-10">
                 @Html.DropDownListFor(pub => pub.SelectedPublicationId, Model.AllowedPublications, new { @class = "form-control"})
             </div>
         </div>
         <div class="form-group">
-            <div class="control-label col-md-2">
+            <label class="control-label col-md-2">
                 @langResources.Views_Users_Create_ChooseLanguage
-            </div>
+            </label>
             <div class="col-md-10">
                 @Html.DropDownListFor(m => m.SelectedCulture, Model.AllowedCultures, new { @class = "form-control" })
             </div>
