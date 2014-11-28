@@ -18,6 +18,68 @@ namespace JohannesVidnerProject.Controllers
 
         private readonly DbService _dbService = DbService.Instance;
 
+
+        //This method is only used for testing
+        public List<Publication> IndexTest(IndexViewModel viewModel, User currentUser)
+        {
+   
+
+            //check for login                        
+
+            //Take the topmost publication 
+            //from the dropdown
+            var topmostPublication = TopmostPublication(viewModel.p, currentUser);
+            
+            //Fill the main list of publications
+            IEnumerable<Publication> filteredPublications = _dbService.GetdescendantPublications(topmostPublication);
+            filteredPublications = filteredPublications.Where(p => p.Editions.Any());
+
+            if (!string.IsNullOrEmpty(viewModel.q))
+                filteredPublications = SearchPublications(filteredPublications, viewModel.q);
+
+            var publicationViewModels = new List<PublicationViewModel>();
+            var publications = filteredPublications as IList<Publication> ?? filteredPublications.ToList();
+            foreach (var publication in publications)
+            {
+                var edition = publication.Editions.LastOrDefault();
+                if (edition == null) continue;
+                var pvm = new PublicationViewModel
+                {
+                    Id = publication.Id,
+                    Name = publication.Name,
+                    NumberOfPages = Convert.ToInt32(edition.NumberOfPages),
+                    ErrorMessage = edition.ErrorMessage,
+                    RunningStarted = edition.RunningStarted,
+                    Running = edition.Running,
+                    Status = edition.CurrentStatus,
+                    MissingPages = new List<Page>(edition.MissingPages)
+                };
+                pvm.DetermineStatusColor();
+                publicationViewModels.Add(pvm);
+            }
+            // Sort by color - red, yellow, green
+            var sortedPubs = new List<PublicationViewModel>(publicationViewModels.Count);
+            sortedPubs.AddRange(publicationViewModels.Where(pvm => pvm.CssClass == "danger"));
+            sortedPubs.AddRange(publicationViewModels.Where(pvm => pvm.CssClass == "warning"));
+            sortedPubs.AddRange(publicationViewModels.Where(pvm => pvm.CssClass == "success"));
+
+            viewModel.PublicationViewModels = sortedPubs;
+
+            //Fill the filtering dropdown box with publications
+            var publicationDepths = DbService.Instance.GetDescendantPublicationDepths(currentUser.Publication);
+            var publicationDropdownItems = new List<SelectListItem>(publicationDepths.Count);
+            publicationDropdownItems.AddRange(publicationDepths.Select(pd => new SelectListItem
+            {
+                Value = pd.Publication.Id.ToString(),
+                Text = new string('-', pd.Depth) + pd.Publication.Name
+            }));
+
+            viewModel.PublicationDropdownItems = publicationDropdownItems;
+
+            return publications.ToList();
+
+        }
+
         public ActionResult Index(IndexViewModel viewModel)
         {
             if (viewModel == null) viewModel = new IndexViewModel();

@@ -13,7 +13,8 @@ namespace Model
         {
             if (this == possibleParent) return true;
             var item = this;
-
+            if (this == possibleParent)
+                return true;
             while (item.ParentPublicationId != item.Id && item.ParentPublicationId.HasValue)
             {
                 if (item.ParentPublicationId == possibleParent.Id)
