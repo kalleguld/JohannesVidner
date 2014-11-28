@@ -1,7 +1,7 @@
 ﻿@using System.Web.UI.WebControls
 @using Model
 @using Resources
-@model JohannesVidnerProject.Models.DetailViewModel
+@model JohannesVidnerProject.Models.Home.DetailViewModel
 @{
     ViewBag.Title = @langResources.Views_Home_Details_Title;
 }
@@ -23,7 +23,7 @@
                 @langResources.Views_Home_Details_PublicationId
             </strong>
         </div>
-        <div class="col-md-10">@Model.PublicationId</div>
+        <div class="col-md-10">@Model.Id</div>
     </div>
     <div class="form-group">
         <div class="col-md-2 text-@Model.CssClass">

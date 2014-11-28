@@ -185,9 +185,10 @@
     </Compile>
     <Compile Include="Helpers\CultureHelper.cs" />
     <Compile Include="Helpers\StringHelper.cs" />
-    <Compile Include="Models\DetailViewModel.cs" />
+    <Compile Include="Models\Home\DetailViewModel.cs" />
     <Compile Include="Models\Home\IndexViewModel.cs" />
     <Compile Include="Models\Home\LoginViewModel.cs" />
+    <Compile Include="Models\Home\PublicationViewModel.cs" />
     <Compile Include="Models\Users\CreateEditViewModel.cs" />
     <Compile Include="Models\Users\CreateUserViewModel.cs" />
     <Compile Include="Models\Users\DeleteUserViewModel.cs" />

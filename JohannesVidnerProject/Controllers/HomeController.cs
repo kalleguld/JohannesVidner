@@ -53,7 +53,6 @@ namespace JohannesVidnerProject.Controllers
                     Status = edition.CurrentStatus,
                     MissingPages = new List<Page>(edition.MissingPages)
                 };
-                pvm.DetermineStatusColor();
                 publicationViewModels.Add(pvm);
             }
             // Sort by color - red, yellow, green
@@ -178,7 +177,7 @@ namespace JohannesVidnerProject.Controllers
                 LogText = edition.LogText,
                 NumberOfPages = edition.NumberOfPages,
                 MaxMissingPages = edition.MaxMissingPages,
-                PublicationId = edition.PublicationId,
+                Id = edition.PublicationId,
                 LastLogCheck = edition.LastLogCheck,
                 ExpectedReleaseTime = edition.ExpectedReleaseTime,
                 MissingPages = mpages,

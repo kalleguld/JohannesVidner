@@ -1,29 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using Model;
 using Resources;
 
-namespace JohannesVidnerProject.Models
+namespace JohannesVidnerProject.Models.Home
 {
-    public class DetailViewModel
+    public class PublicationViewModel
     {
-        public int EditionId { get; set; }
+        public int Id { get; set; }
         public DateTime RunningStarted { get; set; }
-        public string LogText { get; set; }
+        public string Name { get; set; }
         public int NumberOfPages { get; set; }
-        public int MaxMissingPages { get; set; }
-        public string ShortName { get; set; }
-        public int PublicationId { get; set; }
-        public DateTime LastLogCheck { get; set; }
-        public DateTime? ExpectedReleaseTime { get; set; }
         public List<Page> MissingPages { get; set; }
         public CurrentStatus Status { get; set; }
 
-        public bool ShowRerunButton { get; set; }
-        public bool ShowReleaseButton { get; set; }
-        public bool ShowShowLogButton { get; set; }
+        public bool Running { get; set; }
+
+     
 
         public string CssClass
         {
@@ -74,7 +67,6 @@ namespace JohannesVidnerProject.Models
                 return errorMessage;
             }
         }
-
 
     }
 }
