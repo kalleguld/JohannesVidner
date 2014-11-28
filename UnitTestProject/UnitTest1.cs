@@ -16,12 +16,16 @@ namespace UnitTestProject
         public void TestSearchTopLevelOneWord()
         {
             var hc = new HomeController();
+            var hcPo = new PrivateObject(hc);
             var ivModel = new IndexViewModel();
             var user = DbService.Instance.GetUserById(1);
 
             ivModel.q = "ipsum";
-            List<Publication> pubs = hc.IndexTest(ivModel,user);
-            Assert.AreEqual(6,pubs.Count);
+
+            var outVm = (IndexViewModel) hcPo.Invoke("FillViewModel", 
+                                                     ivModel, 
+                                                     user.Publication);
+            Assert.AreEqual(6, outVm.PublicationViewModels.Count);
         }
 
         //Test of a search by more than one word, with top administrator level. Should only return the publications that contains all the words.
@@ -29,12 +33,15 @@ namespace UnitTestProject
         public void TestSearchTopLevelManyWords()
         {
             var hc = new HomeController();
+            var hcPo = new PrivateObject(hc);
             var ivModel = new IndexViewModel();
             var user = DbService.Instance.GetUserById(1);
 
             ivModel.q = "ipsum llc";
-            List<Publication> pubs = hc.IndexTest(ivModel, user);
-            Assert.AreEqual(2, pubs.Count);
+            var outVm = (IndexViewModel)hcPo.Invoke("FillViewModel",
+                                                     ivModel,
+                                                     user.Publication);
+            Assert.AreEqual(2, outVm.PublicationViewModels.Count);
         }
 
         //Test of selecting a publication in the dropdown list, and only searching among the children of that one.
@@ -42,14 +49,17 @@ namespace UnitTestProject
         public void TestSearchLowerLevel()
         {
             var hc = new HomeController();
+            var hcPo = new PrivateObject(hc);
             var ivModel = new IndexViewModel();
             var user = DbService.Instance.GetUserById(1);
 
             ivModel.p = 3;
-
             ivModel.q = "in";
-            List<Publication> pubs = hc.IndexTest(ivModel, user);
-            Assert.AreEqual(1, pubs.Count);
+            
+            var outVm = (IndexViewModel)hcPo.Invoke("FillViewModel",
+                                                     ivModel,
+                                                     user.Publication);
+            Assert.AreEqual(1, outVm.PublicationViewModels.Count);
         }
 
 

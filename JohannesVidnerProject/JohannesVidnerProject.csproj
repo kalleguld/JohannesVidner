@@ -178,7 +178,12 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Home\Contact.cs" />
+    <Compile Include="Controllers\Home\Details.cs" />
+    <Compile Include="Controllers\Home\Index.cs" />
+    <Compile Include="Controllers\Home\Login.cs" />
+    <Compile Include="Controllers\Home\Logoff.cs" />
+    <Compile Include="Controllers\Home\_Common.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
