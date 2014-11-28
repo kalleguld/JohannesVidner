@@ -184,7 +184,11 @@
     <Compile Include="Controllers\Home\Login.cs" />
     <Compile Include="Controllers\Home\Logoff.cs" />
     <Compile Include="Controllers\Home\_Common.cs" />
-    <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Controllers\Users\Create.cs" />
+    <Compile Include="Controllers\Users\Delete.cs" />
+    <Compile Include="Controllers\Users\Edit.cs" />
+    <Compile Include="Controllers\Users\Index.cs" />
+    <Compile Include="Controllers\Users\_Common.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
