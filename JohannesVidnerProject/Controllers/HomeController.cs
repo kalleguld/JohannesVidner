@@ -48,7 +48,6 @@ namespace JohannesVidnerProject.Controllers
                     Id = publication.Id,
                     Name = publication.Name,
                     NumberOfPages = Convert.ToInt32(edition.NumberOfPages),
-                    ErrorMessage = edition.ErrorMessage,
                     RunningStarted = edition.RunningStarted,
                     Running = edition.Running,
                     Status = edition.CurrentStatus,
