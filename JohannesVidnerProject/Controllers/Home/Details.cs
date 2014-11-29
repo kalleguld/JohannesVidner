@@ -10,18 +10,13 @@ namespace JohannesVidnerProject.Controllers
 {
     public partial class HomeController
     {
-        public ActionResult Details(DetailViewModel hvm)
+        public ActionResult Details(int? id)
         {
             var currentUser = Session.GetCurrentUser();
             if (currentUser == null) return RedirectToAction("Login", "Home");
+            if (!id.HasValue) return RedirectToAction("Index");
 
-            string idStr = Request.RequestContext.RouteData.Values["id"].ToString();
-            int id;
-            if (!int.TryParse(idStr, out id))
-            {
-                return RedirectToAction("Login", "Home");
-            }
-            var publication = DbService.Instance.GetPublicationById(id);
+            var publication = DbService.Instance.GetPublicationById(id.Value);
             if (publication == null) return RedirectToAction("Login", "Home");
             if (!publication.Editions.Any()) return RedirectToAction("Login", "Home");
             

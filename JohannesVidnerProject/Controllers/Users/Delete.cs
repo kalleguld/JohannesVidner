@@ -10,12 +10,15 @@ namespace JohannesVidnerProject.Controllers
 {
     public partial class UsersController
     {
-        public ActionResult Delete()
+        public ActionResult Delete(int? id)
         {
+
             var currentUser = Session.GetCurrentUser();
             var redirect = GetRedirectIfNotUserAdmin(currentUser);
             if (redirect != null) return redirect;
-            var targetUser = GetUserFromRequestId();
+            if (!id.HasValue) return RedirectToAction("Index");
+
+            var targetUser = _dbService.GetUserById(id.Value);
             if (targetUser == null) return RedirectToAction("Index");
 
             var vm = new DeleteUserViewModel
@@ -36,6 +39,7 @@ namespace JohannesVidnerProject.Controllers
             var currentUser = Session.GetCurrentUser();
             var redirect = GetRedirectIfNotUserAdmin(currentUser);
             if (redirect != null) return redirect;
+            if (!vm.HasSeenConfirmation) return RedirectToAction("index");
             var targetUserId = vm.UserId;
             var targetUser = _dbService.GetUserById(targetUserId);
 
@@ -50,17 +54,5 @@ namespace JohannesVidnerProject.Controllers
             return RedirectToAction("Index");
         }
 
-
-        private User GetUserFromRequestId()
-        {
-            var userIdObj = Request.RequestContext.RouteData.Values["id"];
-            int userId;
-            if (!int.TryParse((string)userIdObj, out userId))
-            {
-                return null;
-            }
-            var user = _dbService.GetUserById(userId);
-            return user;
-        }
     }
 }

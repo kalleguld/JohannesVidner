@@ -10,19 +10,14 @@ namespace JohannesVidnerProject.Controllers
 {
     public partial class UsersController
     {
-        public ActionResult Edit()
+        public ActionResult Edit(int? id)
         {
             var currentUser = Session.GetCurrentUser();
             var redirect = GetRedirectIfNotUserAdmin(currentUser);
             if (redirect != null) return redirect;
+            if (!id.HasValue) return RedirectToAction("Index");
 
-            var userIdObj = Request.RequestContext.RouteData.Values["id"];
-            int userId;
-            if (!int.TryParse((string)userIdObj, out userId))
-            {
-                return RedirectToAction("Index");
-            }
-            var user = _dbService.GetUserById(userId);
+            var user = _dbService.GetUserById(id.Value);
             if (user == null)
             {
                 return RedirectToAction("Index");
