@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using JohannesVidnerProject.Models.Users;
-using Model;
 
+// ReSharper disable once CheckNamespace
 namespace JohannesVidnerProject.Controllers
 {
     public partial class UsersController

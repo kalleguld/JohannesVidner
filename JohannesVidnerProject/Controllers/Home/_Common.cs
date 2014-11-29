@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Services;
 
+// ReSharper disable once CheckNamespace
 namespace JohannesVidnerProject.Controllers
 {
     public partial class HomeController : Controller
