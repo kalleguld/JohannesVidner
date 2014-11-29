@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Model;
 using Resources;
 
@@ -7,9 +8,24 @@ namespace JohannesVidnerProject.Models.Home
 {
     public class PublicationViewModel
     {
+        public PublicationViewModel() { /*Nothing*/ }
+        public PublicationViewModel(Publication publication)
+        {
+            var edition = publication.Editions.Last();
+            Id = publication.Id;
+            Name = publication.Name;
+            
+            RunningStarted = edition.RunningStarted;
+            NumberOfPages = edition.NumberOfPages;
+            MissingPages = new List<Page>(edition.MissingPages);
+            Status = edition.CurrentStatus;
+            Running = edition.Running;
+
+        }
         public int Id { get; set; }
-        public DateTime RunningStarted { get; set; }
         public string Name { get; set; }
+
+        public DateTime RunningStarted { get; set; }
         public int NumberOfPages { get; set; }
         public List<Page> MissingPages { get; set; }
         public CurrentStatus Status { get; set; }

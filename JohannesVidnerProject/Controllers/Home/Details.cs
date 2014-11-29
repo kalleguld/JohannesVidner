@@ -5,6 +5,7 @@ using JohannesVidnerProject.Models.Home;
 using Model;
 using Services;
 
+// ReSharper disable once CheckNamespace
 namespace JohannesVidnerProject.Controllers
 {
     public partial class HomeController
@@ -22,29 +23,10 @@ namespace JohannesVidnerProject.Controllers
             }
             var publication = DbService.Instance.GetPublicationById(id);
             if (publication == null) return RedirectToAction("Login", "Home");
-            var edition = publication.Editions.LastOrDefault();
-            if (edition == null) return RedirectToAction("Login", "Home");
-            var mpages = new List<Page>(edition.MissingPages);
-
-            var dmv = new DetailViewModel
-            {
-                ShortName = publication.ShortName,
-                EditionId = edition.Id,
-                RunningStarted = edition.RunningStarted,
-                LogText = edition.LogText,
-                NumberOfPages = edition.NumberOfPages,
-                MaxMissingPages = edition.MaxMissingPages,
-                Id = edition.PublicationId,
-                LastLogCheck = edition.LastLogCheck,
-                ExpectedReleaseTime = edition.ExpectedReleaseTime,
-                MissingPages = mpages,
-                Status = edition.CurrentStatus,
-                ShowRerunButton = currentUser.WriteAccess &&
-                                  (edition.CurrentStatus != CurrentStatus.Running),
-                ShowReleaseButton = currentUser.WriteAccess &&
-                                    (edition.CurrentStatus == CurrentStatus.OnHold),
-                ShowShowLogButton = currentUser.WriteAccess
-            };
+            if (!publication.Editions.Any()) return RedirectToAction("Login", "Home");
+            
+            var dmv = new DetailViewModel(publication, currentUser.WriteAccess);
+            
             return View(dmv);
         }
     }

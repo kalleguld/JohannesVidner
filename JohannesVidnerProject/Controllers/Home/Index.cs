@@ -41,18 +41,8 @@ namespace JohannesVidnerProject.Controllers
             var publicationViewModels = new List<PublicationViewModel>();
             foreach (var publication in filteredPublications)
             {
-                var edition = publication.Editions.LastOrDefault();
-                if (edition == null) continue;
-                var pvm = new PublicationViewModel
-                {
-                    Id = publication.Id,
-                    Name = publication.Name,
-                    NumberOfPages = Convert.ToInt32(edition.NumberOfPages),
-                    RunningStarted = edition.RunningStarted,
-                    Running = edition.Running,
-                    Status = edition.CurrentStatus,
-                    MissingPages = new List<Page>(edition.MissingPages),
-                };
+                if (!publication.Editions.Any()) continue;
+                var pvm = new PublicationViewModel(publication);
                 publicationViewModels.Add(pvm);
             }
             // Sort by color - red, yellow, green
