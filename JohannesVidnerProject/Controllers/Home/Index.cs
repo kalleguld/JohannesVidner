@@ -12,14 +12,13 @@ namespace JohannesVidnerProject.Controllers
     {
         public ActionResult Index(IndexViewModel viewModel)
         {
-            if (viewModel == null) viewModel = new IndexViewModel();
-
             //check for login
             var currentUser = Session.GetCurrentUser();
-            if (currentUser == null)
-            {
-                return RedirectToAction("Login", "Home");
-            }
+            if (currentUser == null) return RedirectToAction("Login", "Home");
+            
+            
+            if (viewModel == null) viewModel = new IndexViewModel();
+
 
             var vm = FillViewModel(viewModel, currentUser.Publication);
             
@@ -29,9 +28,7 @@ namespace JohannesVidnerProject.Controllers
 
         private IndexViewModel FillViewModel(IndexViewModel viewModel, Publication currentUserPublication)
         {
-            var topmostPublication = GetDeepestPublication(viewModel.p, currentUserPublication);
-            //Fill the main list of publications
-            IEnumerable<Publication> filteredPublications = _dbService.GetdescendantPublications(topmostPublication);
+            var filteredPublications = GetSubTree(viewModel.p, currentUserPublication);
             filteredPublications = filteredPublications.Where(p => p.Editions.Any());
 
             if (!string.IsNullOrEmpty(viewModel.q))
@@ -52,7 +49,15 @@ namespace JohannesVidnerProject.Controllers
 
             viewModel.PublicationViewModels = sortedPubs;
 
-            //Fill the filtering dropdown box with publications
+            var publicationDropdownItems = GetPublicationDropdownItems(currentUserPublication);
+
+            viewModel.PublicationDropdownItems = publicationDropdownItems;
+
+            return viewModel;
+        }
+
+        private static List<SelectListItem> GetPublicationDropdownItems(Publication currentUserPublication)
+        {
             var publicationDepths = DbService.Instance.GetDescendantPublicationDepths(currentUserPublication);
             var publicationDropdownItems = new List<SelectListItem>(publicationDepths.Count);
             publicationDropdownItems.AddRange(publicationDepths.Select(pd => new SelectListItem
@@ -60,12 +65,17 @@ namespace JohannesVidnerProject.Controllers
                 Value = pd.Publication.Id.ToString(),
                 Text = new string('-', pd.Depth) + pd.Publication.Name
             }));
-
-            viewModel.PublicationDropdownItems = publicationDropdownItems;
-
-            return viewModel;
+            return publicationDropdownItems;
         }
 
+        private IEnumerable<Publication> GetSubTree(int topPublicationId, 
+                                                    Publication currentUserPublication)
+        {
+            var topmostPublication = GetDeepestPublication(topPublicationId, currentUserPublication);
+            //Fill the main list of publications
+            IEnumerable<Publication> filteredPublications = _dbService.GetdescendantPublications(topmostPublication);
+            return filteredPublications;
+        }
 
         private Publication GetDeepestPublication(int possibleChildPublicationId, 
                                                   Publication parentPublication)
