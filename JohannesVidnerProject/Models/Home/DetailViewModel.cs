@@ -13,17 +13,17 @@ namespace JohannesVidnerProject.Models.Home
         public DetailViewModel(Publication publication, bool userWriteAccess)
                         : base(publication)
         {
-            var edition = publication.Editions.Last();
             ShortName = publication.ShortName;
 
-            EditionId = edition.Id;
-            LogText = edition.LogText;
-            MaxMissingPages = edition.MaxMissingPages;
-            LastLogCheck = edition.LastLogCheck;
+            var edition = publication.Editions.Last();
+            EditionId           = edition.Id;
+            LogText             = edition.LogText;
+            MaxMissingPages     = edition.MaxMissingPages;
+            LastLogCheck        = edition.LastLogCheck;
             ExpectedReleaseTime = edition.ExpectedReleaseTime;
 
             ShowShowLogButton = userWriteAccess;
-            ShowRerunButton = userWriteAccess && (edition.CurrentStatus != CurrentStatus.Running);
+            ShowRerunButton   = userWriteAccess && (edition.CurrentStatus != CurrentStatus.Running);
             ShowReleaseButton = userWriteAccess && (edition.CurrentStatus == CurrentStatus.OnHold);
         }
 

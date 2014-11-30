@@ -12,27 +12,24 @@ namespace JohannesVidnerProject.Models.Home
         public PublicationViewModel(Publication publication)
         {
             var edition = publication.Editions.Last();
-            Id = publication.Id;
-            Name = publication.Name;
+            Id          = publication.Id;
+            Name        = publication.Name;
             
             RunningStarted = edition.RunningStarted;
-            NumberOfPages = edition.NumberOfPages;
-            MissingPages = new List<Page>(edition.MissingPages);
-            Status = edition.CurrentStatus;
-            Running = edition.Running;
+            NumberOfPages  = edition.NumberOfPages;
+            Status         = edition.CurrentStatus;
+            Running        = edition.Running;
+            MissingPages   = new List<Page>(edition.MissingPages);
 
         }
+
         public int Id { get; set; }
         public string Name { get; set; }
-
         public DateTime RunningStarted { get; set; }
         public int NumberOfPages { get; set; }
         public List<Page> MissingPages { get; set; }
         public CurrentStatus Status { get; set; }
-
         public bool Running { get; set; }
-
-     
 
         public string CssClass
         {
@@ -58,31 +55,23 @@ namespace JohannesVidnerProject.Models.Home
         {
             get
             {
-                var errorMessage = "";
                 switch (Status)
                 {
                     case CurrentStatus.Released:
-                        errorMessage = langResources.Views_Home_Index_Released;
-                        break;
+                        return langResources.Views_Home_Index_Released;
                     case CurrentStatus.OnHold:
-                        errorMessage = langResources.Views_Home_Index_OnHold;
-                        break;
+                        return langResources.Views_Home_Index_OnHold;
                     case CurrentStatus.NotStarted:
-                        errorMessage = langResources.Views_Home_Index_NotStarted;
-                        break;
+                        return langResources.Views_Home_Index_NotStarted;
                     case CurrentStatus.Running:
-                        errorMessage = langResources.Views_Home_Index_Running;
-                        break;
+                        return langResources.Views_Home_Index_Running;
                     case CurrentStatus.UnrecoverableError:
-                        errorMessage = langResources.Views_Home_Index_UnrecoverableError;
-                        break;
+                        return langResources.Views_Home_Index_UnrecoverableError;
                     case CurrentStatus.RecoverableError:
-                        errorMessage = langResources.Views_Home_Index_RecoverableError;
-                        break;
+                    default:
+                        return langResources.Views_Home_Index_RecoverableError;
                 }
-                return errorMessage;
             }
         }
-
     }
 }

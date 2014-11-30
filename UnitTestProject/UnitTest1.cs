@@ -87,8 +87,10 @@ namespace UnitTestProject
             //The Mock class is part of Moq, found on NuGet
             var mockHttpContextBase = new Mock<HttpContextBase>();
             mockHttpContextBase.SetupGet(hcb => hcb.Session).Returns(mockSession);
+            
             var mockControllerContext = new Mock<ControllerContext>();
             mockControllerContext.SetupGet(hcc => hcc.HttpContext).Returns(mockHttpContextBase.Object);
+            
             controller.ControllerContext = mockControllerContext.Object;
         }
 
